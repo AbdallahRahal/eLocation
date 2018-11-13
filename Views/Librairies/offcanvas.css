@@ -42,7 +42,7 @@ body {
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
   padding-bottom: 1rem;
-  margin-top: -1px;
+  margin-top: 0px;
   overflow-x: auto;
   color: rgba(255, 255, 255, .75);
   text-align: center;
