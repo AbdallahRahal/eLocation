@@ -2427,13 +2427,13 @@ a.btn.disabled, fieldset:disabled a.btn {
 
 .btn-primary {
     color: #fff;
-    background-color: #ff8400;
+    background-color: #ef7f1b;
 }
 
 .btn-primary:hover {
-    color: #ff8400;
+    color: #ef7f1b;
     background-color: #fff;
-    border-color: #ff8400
+    border-color: #ef7f1b
 }
 
 .btn-primary.focus, .btn-primary:focus {
@@ -2460,13 +2460,13 @@ a.btn.disabled, fieldset:disabled a.btn {
 
 .btn-secondary {
     color: #fff;
-    background-color: #ff8400;
+    background-color: #ef7f1b;
 }
 
 .btn-secondary:hover {
-    color: #ff8400;
+    color: #ef7f1b;
     background-color: #fff;
-    border-color: #ff8400
+    border-color: #ef7f1b
 }
 
 .btn-secondary.focus, .btn-secondary:focus {
@@ -4390,7 +4390,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 
 .navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
-    color: #ff6200
+    color: #ef7f1b
 }
 
 .navbar-dark .navbar-nav .nav-link.disabled {
@@ -4399,7 +4399,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 
 .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show > .nav-link {
-    color: #fff
+    color: #ef7f1b
 }
 
 .navbar-dark .navbar-toggler {
