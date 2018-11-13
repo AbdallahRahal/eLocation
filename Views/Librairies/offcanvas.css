@@ -58,12 +58,12 @@ body {
 }
 
 .nav-underline .nav-link:hover {
-  color: #007bff;
+  color: #ff6200;
 }
 
 .nav-underline .active {
   font-weight: 500;
-  color: #343a40;
+  color: #fff;
 }
 
 .text-white-50 { color: rgba(255, 255, 255, .5); }

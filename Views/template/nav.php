@@ -1,23 +1,14 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" 
-      <?php if( !isset($_GET['page']) || $_GET['page'] != "accueil"  ) {  ?>
-       href="index.php">Eval</a> 
-     <?php } else {  ?> 
-       href="">Eval</a> 
-    <?php  } ?>
+      <a class="navbar-brand" href="index.php"><img src="Views/template/eLocation.png" style="width: 11%"></a> 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">  
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="https://example.com/" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <?php if(!isset($_GET['page']) ||  $_GET['page'] != "accueil" ) {  ?>
+            <a style="margin-left: -195px"class="nav-link dropdown-toggle" href="https://example.com/" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i style="font-size: 43px" class="fas fa-user-cog"></i> Mon compte</a>
+            <div style="margin-left: -188px" class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item" href="index.php?page=login"> Se connecter</a>
-            <?php } else  { ?>
-              <a class="dropdown-item" href="index.php?page=login&&act=deconnecter"> Se deconnecter</a>
-            <?php } ?>
             </div>
           </li>
         </ul>

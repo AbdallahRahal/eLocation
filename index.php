@@ -12,9 +12,6 @@ include 'Views/template/html_top.html';
 
 if(isset($_GET['page'])) {
   switch($_GET['page']):
-    case 'login';
-        include 'Controllers/handling_data/login.php';
-        break;
     case 'accueil';
 	include 'Controllers/redirection_user.php';
         break;
