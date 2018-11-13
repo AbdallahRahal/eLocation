@@ -4,6 +4,7 @@ $_SESSION['compte'] = "admin";
 
 include 'Views/template/nav.php';
 include 'Views/template/rubrique.php';
+include 'Views/template/login_form.php';
 
 //si l'user est un prof
 if( !isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
