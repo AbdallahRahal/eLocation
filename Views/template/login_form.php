@@ -8,10 +8,11 @@
         </button>
       </div>
       <div class="modal-body">
+        <h3>Me connecter :</h3>
         <form action="login" method="">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Mail:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="Mail" class="form-control" id="recipient-name">
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Password:</label>
