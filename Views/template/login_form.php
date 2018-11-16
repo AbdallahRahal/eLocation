@@ -10,12 +10,12 @@
       <div class="modal-body">
         <form action="login" method="">
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Mail:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label for="recipient-name" class="col-form-label">Mail ou pseudo:</label>
+            <input type="text" class="form-control" name="pseudo" id="recipient-name">
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Password:</label>
-            <input type="Password" class="form-control" id="message-text"></textarea>
+            <input type="password" class="form-control" name="mdp" id="message-text"></textarea>
           </div>
         </form>
       </div>
