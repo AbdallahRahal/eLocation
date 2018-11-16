@@ -1,7 +1,7 @@
 <?php
 function rubriques ($rubrique) { ?>
 
-<div class="nav-scroller bg-white shadow-sm" style="margin-top: 48">
+<div class="nav-scroller bg-white shadow-sm" style="margin-top: 40px">
       <nav class="nav nav-underline">
       	<?php 
       	
