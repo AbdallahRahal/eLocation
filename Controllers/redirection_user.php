@@ -2,10 +2,10 @@
 session_start();
 $_SESSION['compte'] = "admin";
 
-include 'Views/template/nav.php';
-include 'Views/template/rubrique.php';
-include 'Views/template/login_form.php';
-include 'Views/template/settings_form.php';
+include 'views/template/nav.php';
+include 'views/template/rubrique.php';
+include 'views/template/login_form.php';
+include 'views/template/settings_form.php';
 
 
 //si l'user est un prof

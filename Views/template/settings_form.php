@@ -2,13 +2,13 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="SettingsModalLabel"><a class="navbar-brand"><img src="Views/template/eLocation.png" style="width: 30%"></a> </h5>
+        <h5 class="modal-title" id="SettingsModalLabel"><a class="navbar-brand"><img src="views/template/eLocation.png" style="width: 30%"></a> </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <h3>Mes informations personelles :</h3>
+        <h3>Modifier mes informations personelles :</h3>
         <form action="popo" method="">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Mail:</label>
