@@ -5,7 +5,7 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault"  >
     <ul class="navbar-nav mr-auto" style="position:absolute;right:0px">
       <li class="nav-item dropdown">
-         <a class="nav-link dropdown-toggle" href="https://example.com/" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><i style="font-size: 43px" class="fas fa-user-cog"></i> Mon compte</a>
+         <a class="nav-link dropdown-toggle" href="https://example.com/" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i style="font-size: 43px" class="fas fa-user"></i> Mon compte</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" href=""> Se connecter</a>
           <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#SettingsModal" href=""> Paramètres du compte</a>
