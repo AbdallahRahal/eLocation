@@ -11,13 +11,10 @@
         <h3>Me connecter :</h3>
         <form action="login" method="">
           <div class="form-group">
-<<<<<<< HEAD
+
             <label for="recipient-name" class="col-form-label">Mail ou pseudo:</label>
             <input type="text" class="form-control" name="pseudo" id="recipient-name">
-=======
-            <label for="recipient-name" class="col-form-label">Mail:</label>
-            <input type="Mail" class="form-control" id="recipient-name">
->>>>>>> 978e6ceefd17ee5aaad0e4b0e8f633fd47e5db24
+
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Password:</label>
