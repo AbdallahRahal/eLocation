@@ -1,6 +1,5 @@
 <?php 
 session_start();
-$_SESSION['compte'] = "admin";
 
 include 'views/template/nav.php';
 include 'views/template/rubrique.php';
@@ -29,7 +28,8 @@ if( !isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 		echo "ici, seront visible nos loc";
 	//affichage de la rubique profil
 	}elseif ($_GET['rub'] == 'vendre') { 
-		echo "ici on peut vendre des articless";
+		
+		include 'views/div/form_proposition_vente.php';
 
 	}
 
