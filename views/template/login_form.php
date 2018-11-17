@@ -13,17 +13,17 @@
           <div class="form-group">
 
             <label for="recipient-name" class="col-form-label">Mail ou pseudo:</label>
-            <input type="text" class="form-control" name="pseudo" id="recipient-name">
+            <input type="text" class="form-control" name="pseudo" id="recipient-identification">
 
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Password:</label>
-            <input type="password" class="form-control" name="mdp" id="message-text"></textarea>
+            <input type="password" class="form-control" name="mdp" id="current-password"></textarea>
           </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </form>
         <button type="button" class="btn btn-primary">Se connecter</button>
       </div>
     </div>

@@ -7,8 +7,13 @@
       <li class="nav-item dropdown">
          <a class="nav-link dropdown-toggle" href="https://example.com/" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i style="font-size: 43px" class="fas fa-user"></i> Mon compte</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <?php if(!isset($_SESSION['compte'])) {    ?>
           <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" href=""> Se connecter</a>
+          <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#RegisterModal" href=""> S'inscrire</a>
+          <?php  }else{   ?>
           <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#SettingsModal" href=""> Paramètres du compte</a>
+          <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#" href=""> Deconnexion</a>
+        <?php  }      ?>
         </div>
       </li>
     </ul>

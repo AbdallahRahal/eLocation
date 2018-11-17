@@ -5,6 +5,7 @@ $_SESSION['compte'] = "admin";
 include 'views/template/nav.php';
 include 'views/template/rubrique.php';
 include 'views/template/login_form.php';
+include 'views/template/register_form.php';
 include 'views/template/settings_form.php';
 
 
@@ -27,8 +28,7 @@ if( !isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 
 		echo "ici, seront visible nos loc";
 	//affichage de la rubique profil
-	}elseif ($_GET['rub'] == 'vendre') {
-		
+	}elseif ($_GET['rub'] == 'vendre') { 
 		echo "ici on peut vendre des articless";
 
 	}
