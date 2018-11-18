@@ -12,26 +12,27 @@
         <form action="popo" method="">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Mail:</label>
-            <input type="Mail" class="form-control" id="recipient-name">
+            <input type="Mail" name="mail" class="form-control" id="recipient-name">
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Pseudo:</label>
-            <input type="text" class="form-control" id="message-text"></textarea>
+            <input type="text" name="pseudo" class="form-control" id="message-text"></textarea>
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Mot de passe actuel:</label>
-            <input type="Password" class="form-control" id="message-text"></textarea>
+            <input type="Password" name="mdp" class="form-control" id="message-text"></textarea>
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Nouveau mot de passe:</label>
-            <input type="Password" class="form-control" id="message-text"></textarea>
+            <input type="Password" name="nouveau_mdp" class="form-control" id="message-text"></textarea>
           </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Modifier</button>
-      </div>
+        
+           </div>
+            <div class="modal-footer">
+          <button type="button" name="modifier" value="true" class="btn btn-primary">Modifier</button>
+          </form>
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
+          </div>
     </div>
   </div>
 </div>

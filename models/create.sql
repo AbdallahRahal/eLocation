@@ -79,9 +79,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`action` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_action_article1_idx` ON `mydb`.`action` (`article_id` ASC) VISIBLE;
+CREATE INDEX `fk_action_article1_idx` ON `mydb`.`action` (`article_id` ASC) ;
 
-CREATE INDEX `fk_action_utilisateur1_idx` ON `mydb`.`action` (`utilisateur_id` ASC) VISIBLE;
+CREATE INDEX `fk_action_utilisateur1_idx` ON `mydb`.`action` (`utilisateur_id` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`point_relais` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-CREATE UNIQUE INDEX `adresse_UNIQUE` ON `mydb`.`point_relais` (`adresse` ASC) VISIBLE;
+CREATE UNIQUE INDEX `adresse_UNIQUE` ON `mydb`.`point_relais` (`adresse` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -129,9 +129,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`louer` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_location_action1_idx` ON `mydb`.`louer` (`action_id` ASC) VISIBLE;
+CREATE INDEX `fk_location_action1_idx` ON `mydb`.`louer` (`action_id` ASC)  ;
 
-CREATE INDEX `fk_location_point_relais1_idx` ON `mydb`.`louer` (`point_relais_id` ASC) VISIBLE;
+CREATE INDEX `fk_location_point_relais1_idx` ON `mydb`.`louer` (`point_relais_id` ASC)  ;
 
 
 -- -----------------------------------------------------
@@ -184,9 +184,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`appartenir` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_appartenir_categorie_idx` ON `mydb`.`appartenir` (`categorie_id` ASC) VISIBLE;
+CREATE INDEX `fk_appartenir_categorie_idx` ON `mydb`.`appartenir` (`categorie_id` ASC)  ;
 
-CREATE INDEX `fk_appartenir_article1_idx` ON `mydb`.`appartenir` (`article_id` ASC) VISIBLE;
+CREATE INDEX `fk_appartenir_article1_idx` ON `mydb`.`appartenir` (`article_id` ASC)  ;
 
 
 -- -----------------------------------------------------
@@ -206,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`vendre` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_vente_action1_idx` ON `mydb`.`vendre` (`action_id` ASC) VISIBLE;
+CREATE INDEX `fk_vente_action1_idx` ON `mydb`.`vendre` (`action_id` ASC)  ;
 
 
 -- -----------------------------------------------------
@@ -227,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`num_proposition` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_num_proposition_utilisateur1_idx` ON `mydb`.`num_proposition` (`utilisateur_id` ASC) VISIBLE;
+CREATE INDEX `fk_num_proposition_utilisateur1_idx` ON `mydb`.`num_proposition` (`utilisateur_id` ASC)  ;
 
 
 -- -----------------------------------------------------
@@ -251,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`ligne_proposition` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_ligne_proposition_num_proposition1_idx` ON `mydb`.`ligne_proposition` (`num_proposition_id` ASC) VISIBLE;
+CREATE INDEX `fk_ligne_proposition_num_proposition1_idx` ON `mydb`.`ligne_proposition` (`num_proposition_id` ASC)  ;
 
 
 -- -----------------------------------------------------
@@ -260,6 +260,7 @@ CREATE INDEX `fk_ligne_proposition_num_proposition1_idx` ON `mydb`.`ligne_propos
 DROP TABLE IF EXISTS `mydb`.`ligne_vente` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`ligne_vente` (
+   `id` INT NOT NULL AUTO_INCREMENT,
 )
 ENGINE = InnoDB;
 
