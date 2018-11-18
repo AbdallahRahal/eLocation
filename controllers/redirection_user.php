@@ -7,6 +7,7 @@ include 'views/template/login_form.php';
 include 'views/template/register_form.php';
 include 'views/template/settings_form.php';
 
+$_SESSION['compte'] = 'utilisateur';
 
 //si l'user est un prof
 if( !isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
