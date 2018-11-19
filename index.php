@@ -16,7 +16,7 @@ if(isset($_GET['page'])) {
 	include 'controllers/redirection_user.php';
         break;
     default:
-        echo 'error <br> page not found';
+        echo 'error <br> (index)page not found';
   endswitch;
 } else {
     include 'controllers/handling_data/home.php';

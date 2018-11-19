@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$_SESSION['compte'] = "admin";
+
 
 include 'views/template/nav.php';
 include 'views/template/rubrique.php';
@@ -32,6 +32,7 @@ if( !isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 		echo "ici on peut vendre des articless";
 
 	}
+	echo"vous etes connecté en tant que ".$_SESSION['compte'];
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
