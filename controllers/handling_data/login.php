@@ -1,7 +1,5 @@
 <?php
 
-include('../../models/get.php');
-
 if(empty($_POST['identifiant'])){ 
 
 }elseif(empty($_POST['mdp'])){ 
@@ -9,9 +7,8 @@ if(empty($_POST['identifiant'])){
 }else{
     $result =  connexion($_POST['identifiant'],$_POST['mdp']);
     if($result != NULL){
-        session_start();
-        $_SESSION['compte']= $result;
-        header("Location: ../../index.php?page=".$_POST['page']."&rub=".$_POST['page']." ");
+        $_SESSION['compte']= $result['statut'];
+        $_SESSION['pseudo'] = $_SESSION['pseudo'];
         exit(); 
     }else{
         echo"erreur le compte n'existe pas";

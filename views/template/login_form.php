@@ -9,7 +9,7 @@
       </div>
       <div class="modal-body">
         <h3>Me connecter :</h3>
-        <form action="controllers/handling_data/login.php" method="POST">
+        <form action="" method="POST">
 
         <?php if(isset($_GET['page'])){
          echo"<input type='hidden' name='page' value='".$_GET['page']."' >";
@@ -35,7 +35,7 @@
        
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
         <button type="submit" name="connexion" value="true" class="btn btn-primary">Se connecter</button>
       </div>
       </form>
