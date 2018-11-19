@@ -11,4 +11,5 @@ function connexion($id,$mdp) {
         $donnees =  $donnees[0]['statut'];
     }
     return $donnees;
+
 }
