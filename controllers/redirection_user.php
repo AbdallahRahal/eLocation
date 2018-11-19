@@ -31,8 +31,9 @@ if( !isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 		include 'views/div/form_proposition_vente.php';
 
 	}
+	if(isset($_SESSION['compte']){
 	echo"vous etes connecté en tant que ".$_SESSION['compte'];
-
+	}
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 
