@@ -37,7 +37,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`utilisateur` (
   `statut` ENUM('utilisateur', 'admin') NULL,
   `etat` ENUM('fidele', 'lambda') NULL,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -54,7 +53,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`article` (
   `statut` ENUM('dispo', 'loue', 'reserve') NULL,
   `etat` ENUM('neuf', 'abime') NULL,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -77,11 +75,10 @@ CREATE TABLE IF NOT EXISTS `mydb`.`action` (
     REFERENCES `mydb`.`utilisateur` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
-CREATE INDEX `fk_action_article1_idx` ON `mydb`.`action` (`article_id` ASC) VISIBLE;
+CREATE INDEX `fk_action_article1_idx` ON `mydb`.`action` (`article_id` ASC);
 
-CREATE INDEX `fk_action_utilisateur1_idx` ON `mydb`.`action` (`utilisateur_id` ASC) VISIBLE;
+CREATE INDEX `fk_action_utilisateur1_idx` ON `mydb`.`action` (`utilisateur_id` ASC);
 
 
 -- -----------------------------------------------------
@@ -99,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`point_relais` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-CREATE UNIQUE INDEX `adresse_UNIQUE` ON `mydb`.`point_relais` (`adresse` ASC) VISIBLE;
+CREATE UNIQUE INDEX `adresse_UNIQUE` ON `mydb`.`point_relais` (`adresse` ASC);
 
 
 -- -----------------------------------------------------
@@ -127,11 +124,10 @@ CREATE TABLE IF NOT EXISTS `mydb`.`louer` (
     REFERENCES `mydb`.`point_relais` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
-CREATE INDEX `fk_location_action1_idx` ON `mydb`.`louer` (`action_id` ASC) VISIBLE;
+CREATE INDEX `fk_location_action1_idx` ON `mydb`.`louer` (`action_id` ASC);
 
-CREATE INDEX `fk_location_point_relais1_idx` ON `mydb`.`louer` (`point_relais_id` ASC) VISIBLE;
+CREATE INDEX `fk_location_point_relais1_idx` ON `mydb`.`louer` (`point_relais_id` ASC);
 
 
 -- -----------------------------------------------------
@@ -146,7 +142,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`avis` (
   `id_utilisateur` VARCHAR(45) NULL,
   `id_article` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -159,7 +154,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`categorie` (
   `nom` VARCHAR(45) NULL,
   `promo` INT NULL,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -182,7 +176,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`appartenir` (
     REFERENCES `mydb`.`article` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 CREATE INDEX `fk_appartenir_categorie_idx` ON `mydb`.`appartenir` (`categorie_id` ASC) VISIBLE;
 
@@ -204,7 +197,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`vendre` (
     REFERENCES `mydb`.`action` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 CREATE INDEX `fk_vente_action1_idx` ON `mydb`.`vendre` (`action_id` ASC) VISIBLE;
 
@@ -225,7 +217,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`num_proposition` (
     REFERENCES `mydb`.`utilisateur` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 CREATE INDEX `fk_num_proposition_utilisateur1_idx` ON `mydb`.`num_proposition` (`utilisateur_id` ASC) VISIBLE;
 
@@ -249,7 +240,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`ligne_proposition` (
     REFERENCES `mydb`.`num_proposition` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 CREATE INDEX `fk_ligne_proposition_num_proposition1_idx` ON `mydb`.`ligne_proposition` (`num_proposition_id` ASC) VISIBLE;
 
@@ -261,7 +251,6 @@ DROP TABLE IF EXISTS `mydb`.`ligne_vente` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`ligne_vente` (
 )
-ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
