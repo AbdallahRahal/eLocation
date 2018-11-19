@@ -7,6 +7,9 @@ include('models/requete.php');
 if(isset($_POST['connexion'])){
 	include('controllers/handling_data/login.php');
 }
+if(isset($_POST['inscrition'])){
+	include('controllers/handling_data/register.php');
+}
 
 if(isset($_POST['compte'])) {
 	include 'views/template/settings_form.php';

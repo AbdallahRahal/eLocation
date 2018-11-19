@@ -32,6 +32,20 @@
           <button type="button" name="modifier" value="true" class="btn btn-primary">Modifier</button>
           </form>
              <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
+
+            <input type="Mail" class="form-control" id="recipient-change_mail">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Pseudo:</label>
+            <input type="text" class="form-control" id="recipient-change_pseudo"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Mot de passe actuel:</label>
+            <input type="Password" class="form-control" id="recipient-ancien_mdp"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Nouveau mot de passe:</label>
+            <input type="Password" class="form-control" id="recipient-nv_mdp"></textarea>
           </div>
     </div>
   </div>
