@@ -1,0 +1,6 @@
+Git commands
+
+git pull origin "branche"
+git add —a
+git commit -m "commentaire"
+git push
