@@ -9,49 +9,21 @@
       </div>
       <div class="modal-body">
         <h3>M'inscrire :</h3>
-<<<<<<< HEAD
-        <form action="login" method="">
-          <div class="form-group">
-
-            <label for="recipient-name" class="col-form-label">Mail :</label>
-            <input type="text" class="form-control" name="pseudo" id="recipient-mail">
-=======
         <form action="" method="POST">
           <div class="form-group">
 
             <label for="recipient-name" class="col-form-label">Mail :</label>
             <input type="mail" class="form-control" name="mail" id="recipient-mail">
->>>>>>> b40ee7ae4e69f6257ad0f1ce2d872ee37fbe0b50
 
           </div>
           <div class="form-group">
 
-<<<<<<< HEAD
-            <label for="recipient-name" class="col-form-label">pseudo :</label>
-=======
             <label for="recipient-name" class="col-form-label">Pseudo :</label>
->>>>>>> b40ee7ae4e69f6257ad0f1ce2d872ee37fbe0b50
             <input type="text" class="form-control" name="pseudo" id="recipient-pseudo">
 
           </div>
           <div class="form-group">
 
-<<<<<<< HEAD
-            <label for="recipient-name" class="col-form-label">prenom :</label>
-            <input type="text" class="form-control" name="pseudo" id="recipient-prenom">
-
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">nom :</label>
-            <input type="password" class="form-control" name="mdp" id="message-nom">
-          </div>
-      </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-primary">S'inscrire</button>
-        </form>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-=======
             <label for="recipient-name" class="col-form-label">Mot de passe :</label>
             <input type="password" class="form-control" name="mdp" id="recipient-mail">
 
@@ -92,7 +64,6 @@
           <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
           </div>
->>>>>>> b40ee7ae4e69f6257ad0f1ce2d872ee37fbe0b50
     </div>
   </div>
 </div>
