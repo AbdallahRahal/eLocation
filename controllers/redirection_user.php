@@ -1,7 +1,4 @@
 <?php 
-session_start();
-
-
 
 if(isset($_POST['connexion'])) {
 
@@ -25,7 +22,11 @@ include 'views/template/rubrique.php';
 //include 'models/requete.php';
 
 if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
+	if(isset($_SESSION['compte'])) {
 	$rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations","vendre"=>"Vendre");
+	}else{
+	$rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations");
+	}
 	rubriques($rubrique);
 	if($_GET['rub'] == 'cat' ) {
 		echo "Ici, on affiche les catégories";
