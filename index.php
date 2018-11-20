@@ -7,6 +7,7 @@
 <script src='views/librairies/bootstrap.min.js'></script>
 
 <?php
+session_start();
 
 include 'views/template/html_top.html';
 

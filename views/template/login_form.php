@@ -20,10 +20,10 @@
           echo"<input type='hidden' name='rub' value='".$_GET['rub']."' >";
         }?>
 
-
-
           <div class="form-group">
-
+            <div class="alert alert-danger" id="alerterror" role="alert" style="display:none;">
+              <strong>Erreur!</strong> PTDR T KI?
+            </div>
             <label for="recipient-name" class="col-form-label">Mail:</label>
             <input type="text" class="form-control" name="identifiant" id="recipient-name">
 
@@ -35,7 +35,7 @@
        
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
         <button type="submit" name="connexion" value="true" class="btn btn-primary">Se connecter</button>
       </div>
       </form>
