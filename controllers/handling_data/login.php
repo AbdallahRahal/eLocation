@@ -1,21 +1,24 @@
 <?php
 
-include("../../models/get.php");
-
 if(empty($_POST['identifiant'])){ 
 
 }elseif(empty($_POST['mdp'])){ 
 
 }else{
+	include_once 'models/requete.php';
     $result =  connexion($_POST['identifiant'],$_POST['mdp']);
     if($result != NULL){
-        session_start();
-        $_SESSION['compte']= $result;
-        header("Location: ../../index.php?page=".$_POST['page']."&rub=".$_POST['page']." ");
-        exit(); 
-    }else{
-        echo"erreur le compte n'existe pas";
-    }
+        $_SESSION['compte']= $result['statut'];
+        $_SESSION['pseudo'] = $result['pseudo'];         
+    }else{ 
+			require_once 'views/template/login_form.php'; ?>
+
+		<script> 
+			$('#exampleModal').modal('show');
+			$('#alerterror').show();
+		</script>
+	<?php	
+	 }
 }
 
 ?>
