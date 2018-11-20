@@ -8,17 +8,13 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema mydb
 -- -----------------------------------------------------
 DROP SCHEMA IF EXISTS `mydb`;
-
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8;
-USE `mydb` ;
+CREATE SCHEMA mydb DEFAULT CHARACTER SET utf8;
+USE mydb ;
 
 -- -----------------------------------------------------
 -- Table `mydb`.`utilisateur`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`utilisateur`;
+-- DROP TABLE IF EXISTS `mydb`.`utilisateur`;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`utilisateur` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -27,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`utilisateur` (
   `nom` VARCHAR(45) NOT NULL,
   `prenom` VARCHAR(45) NOT NULL,
   `adresse` VARCHAR(45) NOT NULL,
-  `sexe` ENUM('H', 'F') NOT NULL,
+  `sexe` ENUM('M', 'F') NOT NULL,
   `mail` VARCHAR(45) NOT NULL,
   `cp` CHAR(5) NOT NULL,
   `ville` VARCHAR(45) NOT NULL,
@@ -38,8 +34,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`utilisateur` (
 
 -- -----------------------------------------------------
 -- Table `mydb`.`article`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`article`;
+-- -----------------------------------------------------DROP TABLE IF EXISTS `mydb`.`article`;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`article` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -102,11 +97,11 @@ DROP TABLE IF EXISTS `mydb`.`louer`;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`louer` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `date_location` DATE NULL,
-  `date_butoire` DATE NULL,
-  `date_reelle` DATE NULL,
-  `note` CHAR(1) NULL,
-  `commentaire` VARCHAR(45) NULL,
+  `date_location` DATE NOT NULL,
+  `date_butoire` DATE NOT NULL,
+  `date_reelle` DATE NOT NULL,
+  `note` INT NOT NULL,
+  `commentaire` VARCHAR(45) NOT NULL,
   `action_id` INT NOT NULL,
   `point_relais_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -133,10 +128,10 @@ DROP TABLE IF EXISTS `mydb`.`avis`;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`avis` (
   `id` INT NOT NULL,
-  `note` VARCHAR(45) NULL,
-  `commentaire` VARCHAR(45) NULL,
-  `id_utilisateur` VARCHAR(45) NULL,
-  `id_article` VARCHAR(45) NULL,
+  `note` INT NOT NULL,
+  `commentaire` VARCHAR(45) NOT NULL,
+  `id_utilisateur` VARCHAR(45) NOT NULL,
+  `id_article` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 
 
@@ -148,7 +143,7 @@ DROP TABLE IF EXISTS `mydb`.`categorie`;
 CREATE TABLE IF NOT EXISTS `mydb`.`categorie` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(45) NOT NULL,
-  `promo` INT NULL,
+  `promo` INT NOT NULL,
   PRIMARY KEY (`id`))
 
 
@@ -238,16 +233,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`ligne_proposition` (
     ON UPDATE NO ACTION)
 
 CREATE INDEX `fk_ligne_proposition_num_proposition1_idx` ON `mydb`.`ligne_proposition` (`num_proposition_id` ASC);
-
-
--- -----------------------------------------------------
--- Table `mydb`.`ligne_vente`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`ligne_vente`;
-
-CREATE TABLE IF NOT EXISTS `mydb`.`ligne_vente` (
-   `id` INT NOT NULL AUTO_INCREMENT,
-)
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
