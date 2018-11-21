@@ -17,4 +17,31 @@ function name() {
     return($name);
 }
 
+
+function inscription ($POST) {
+    include("models/db_connect.php");
+    $query = "INSERT INTO utilisateur (`pseudo`, `mdp`, `nom`, `prenom`, `adresse`, `sexe`, `mail`, `cp`, `ville`, `statut`, `etat`) VALUES (:pseudo, :mdp, :nom, :prenom, :adresse, :sexe, :mail, :cp, :ville, :statut, :etat) ";
+    $req = $bdd->prepare($query);    
+    try {
+
+    $req-> execute(array(":pseudo" => $_POST['pseudo'],
+                         ":mdp" => $_POST['mdp'],
+                         ":nom" => $_POST['nom'],
+                         ":prenom" => $_POST['prenom'],
+                         ":adresse" => $_POST['adresse'],
+                         ":sexe" => $_POST['sexe'],                       
+                         ":mail"=> $_POST['mail'],
+                         ":cp" => $_POST['cp'],
+                         ":ville" => $_POST['ville'],
+                         ":statut" => "utilisateur",
+                         ":etat" => "lambda"));
+    
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        die("raterr");
+    }
+    
+
+}
+
 ?>

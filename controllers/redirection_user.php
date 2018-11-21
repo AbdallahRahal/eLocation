@@ -4,6 +4,10 @@ if(isset($_POST['connexion'])) {
 
 	include_once('controllers/handling_data/login.php');
 
+} elseif(isset($_POST['inscription']) && $_POST['inscription'] == "true" ) {
+	
+	include('controllers/handling_data/register.php');
+	register();
 }
 
 if(isset($_SESSION['compte'])) {
