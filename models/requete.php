@@ -11,11 +11,6 @@ function connexion($id,$mdp) {
     return $donnees;
 }
     
-function name() {
-    include('models/db_connect.php');
-    $name = $bdd->query('');
-    return($name);
-}
 
 
 function inscription ($POST) {
@@ -44,4 +39,15 @@ function inscription ($POST) {
 
 }
 
+function affichage_utilisateur() {
+    include('models/db_connect.php');
+    $affichage_utilisateur = $bdd->query("SELECT * FROM `utilisateur` WHERE statut LIKE 'utilisateur'");
+    return($affichage_utilisateur);
+}
+
+function name() {
+    include('models/db_connect.php');
+    $name = $bdd->query('');
+    return($name);
+}
 ?>

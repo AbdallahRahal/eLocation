@@ -1,5 +1,7 @@
 <?php 
 
+include('models/requete.php');
+
 if(isset($_POST['connexion'])) {
 
 	include_once('controllers/handling_data/login.php');
@@ -50,7 +52,8 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 	}elseif ($_GET['rub'] == 'reprises') {
 		echo "Ici, seront visible nos reprises";
 	}elseif ($_GET['rub'] == 'uti') {
-		echo "Ici, seront visible nos utilisateurs";
+		$affichage_utilisateur = affichage_utilisateur();
+		include('views/template/mes_utilisateurs.php');
 	}
 }
 ?>
