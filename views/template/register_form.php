@@ -9,35 +9,60 @@
       </div>
       <div class="modal-body">
         <h3>M'inscrire :</h3>
-        <form action="login" method="">
+        <form action="" method="POST">
           <div class="form-group">
 
             <label for="recipient-name" class="col-form-label">Mail :</label>
-            <input type="text" class="form-control" name="pseudo" id="recipient-mail">
+            <input type="mail" class="form-control" name="mail" id="recipient-mail">
 
           </div>
           <div class="form-group">
 
-            <label for="recipient-name" class="col-form-label">pseudo :</label>
+            <label for="recipient-name" class="col-form-label">Pseudo :</label>
             <input type="text" class="form-control" name="pseudo" id="recipient-pseudo">
 
           </div>
           <div class="form-group">
 
-            <label for="recipient-name" class="col-form-label">prenom :</label>
-            <input type="text" class="form-control" name="pseudo" id="recipient-prenom">
+            <label for="recipient-name" class="col-form-label">Mot de passe :</label>
+            <input type="password" class="form-control" name="mdp" id="recipient-mail">
 
           </div>
           <div class="form-group">
-            <label for="message-text" class="col-form-label">nom :</label>
-            <input type="password" class="form-control" name="mdp" id="message-nom">
+
+            <label for="recipient-name" class="col-form-label">Prenom :</label>
+            <input type="text" class="form-control" name="prenom" id="recipient-prenom">
+
           </div>
-      </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-primary">S'inscrire</button>
-        </form>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Nom :</label>
+            <input type="text" class="form-control" name="nom" id="message-nom">
+          </div>
+          <div class="form-group">
+             <label for="recipient-name" class="col-form-label">Adresse postale :</label>
+             <input type="text" class="form-control" name="adresse" id="recipient-prenom">
+          </div>
+          <div class="form-group">
+          Sexe : </br>
+          <select name="sexe" >
+            <option value="H">Homme</option>
+            <option value="F">Femme</option>
+          </select>
+          </div>
+          <div class="form-group">
+             <label for="recipient-name" class="col-form-label">Code Postale :</label>
+             <input type="number" max="99999" min="0" class="form-control" name="cp" id="recipient-prenom">
+          </div>
+          <div class="form-group">
+             <label for="recipient-name" class="col-form-label">Ville :</label>
+             <input type="text" class="form-control" name="ville" id="recipient-prenom">
+          </div>
         </div>
+          <div class="modal-footer">
+            <button type="submit" name="inscription" value="true" class="btn btn-primary">S'inscrire</button>
+          </form>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          </div>
     </div>
   </div>
 </div>
