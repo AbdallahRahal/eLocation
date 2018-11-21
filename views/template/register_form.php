@@ -44,9 +44,9 @@
           </div>
           <div class="form-group">
           Sexe : </br>
-          <SELECT name="sexe" >
-            <option value="m">Homme</option>
-            <option value="f">Femme</option>
+          <select name="sexe" >
+            <option value="H">Homme</option>
+            <option value="F">Femme</option>
           </select>
           </div>
           <div class="form-group">
@@ -57,11 +57,10 @@
              <label for="recipient-name" class="col-form-label">Ville :</label>
              <input type="text" class="form-control" name="ville" id="recipient-prenom">
           </div>
+        </div>
           <div class="modal-footer">
-            <button type="submit" name="page" value="inscription" class="btn btn-primary">S'inscrire</button>
-          </div>
+            <button type="submit" name="inscription" value="true" class="btn btn-primary">S'inscrire</button>
           </form>
-          <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
           </div>
     </div>

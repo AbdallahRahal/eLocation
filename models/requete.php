@@ -18,10 +18,29 @@ function name() {
 }
 
 
-function inscription($mail,$pseudo,$mdp,$prenom,$nom,$adresse_post,$sexe,$cp,$ville) {
-    include("../../models/db_connect.php");
-    $req = $bdd->prepare("INSERT INTO utilisateur (mail,pseudo,mdp,prenom,nom,adresse,sexe,cp,ville,statut,etat) Values(:mail,:pseudo,:mdp,:prenom,:nom,:adresse_post,:sexe,:cp,:ville,'utilisateur','lambda') ");
-    $req-> execute(array(":mail"=> $mail, ":pseudo" =>$pseudo, ":mdp" =>$mdp, ":prenom" =>$prenom, ":nom" =>$nom, ":adresse_post" =>$adresse_post, ":sexe" =>$sexe, ":cp" =>$cp, ":ville" =>$ville) );
+function inscription ($POST) {
+    include("models/db_connect.php");
+    $query = "INSERT INTO utilisateur (`pseudo`, `mdp`, `nom`, `prenom`, `adresse`, `sexe`, `mail`, `cp`, `ville`, `statut`, `etat`) VALUES (:pseudo, :mdp, :nom, :prenom, :adresse, :sexe, :mail, :cp, :ville, :statut, :etat) ";
+    $req = $bdd->prepare($query);    
+    try {
+
+    $req-> execute(array(":pseudo" => $_POST['pseudo'],
+                         ":mdp" => $_POST['mdp'],
+                         ":nom" => $_POST['nom'],
+                         ":prenom" => $_POST['prenom'],
+                         ":adresse" => $_POST['adresse'],
+                         ":sexe" => $_POST['sexe'],                       
+                         ":mail"=> $_POST['mail'],
+                         ":cp" => $_POST['cp'],
+                         ":ville" => $_POST['ville'],
+                         ":statut" => "utilisateur",
+                         ":etat" => "lambda"));
+    
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        die("raterr");
+    }
+    
 
 }
 
