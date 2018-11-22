@@ -28,7 +28,10 @@ $rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations","vendre"=>"Vendre");
 }else{
 $rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations");
 }
-rubriques($rubrique);
+
+include_once 'models/requete.php';
+$article = mes_articles();
+rubriques($rubrique, $article);
 include 'views/home_page.php';
 
 ?>

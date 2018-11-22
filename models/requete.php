@@ -10,6 +10,61 @@ function connexion($id,$mdp) {
     }
     return $donnees;
 }
+
+function mes_articles() {
+    include('models/db_connect.php');
+    $req = $bdd->query("SELECT nom FROM categorie");
+    $i =0;
+    while($ligne = $req->fetch() ) {
+    
+        $donnees[$i] = $ligne['nom'];
+        $i++;
+    }
+
+    if(empty($donnees)) {
+        $donnees = NULL;
+    }
+    return $donnees;
+}
+
+function mes_articles_de_ma_cat () {
+    include('models/db_connect.php');
+
+    $req = $bdd->prepare("SELECT article.nom as nono, description, prix_journee FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE categorie.nom = :cat");
+    $req-> execute(array(":cat"=> $_GET['cat']));
+
+    $i =0;
+    while($ligne = $req->fetch() ) {
+    
+        $donnees[$i][0] = $ligne['nono'];
+        $donnees[$i][1] = $ligne['description'];
+        $donnees[$i][2] = $ligne['prix_journee'];
+        $i++;
+    }
+
+    if(empty($donnees)) {
+        $donnees = NULL;
+    }
+    return $donnees;
+}
+
+function afficher_art_toute_categorie() {
+    include('models/db_connect.php');
+    $req = $bdd->query("SELECT nom, description, prix_journee FROM article");
+    $i =0;
+    while($ligne = $req->fetch() ) {
+    
+        $donnees[$i][0] = $ligne['nom'];
+        $donnees[$i][1] = $ligne['description'];
+        $donnees[$i][2] = $ligne['prix_journee'];
+        $i++;
+    }
+
+    if(empty($donnees)) {
+        $donnees = NULL;
+    }
+    return $donnees;
+}
     
 function name() {
     include('models/db_connect.php');
