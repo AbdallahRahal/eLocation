@@ -1,37 +1,40 @@
-<h2>Mes Utilisateurs</h2>
-<div class="container">
-    <div class="table-responsive">
-        <thead>
+<div class="container" style="max-width: 85%;margin-top: 5%">
+<p><h2>Mes Utilisateurs</h2></p>
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
             <tr>
-                <th>ID</th>
-                <th>Pseudo</th>
-                <th>Mot de passe</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Adresse</th>
-                <th>Sexe</th>
-                <th>Mail</th>
-                <th>Code Postal</th>
-                <th>Ville</th>
-                <th>Statut</th>
-                <th>Etat</th>
+                <th scope="col">ID</th>
+                <th scope="col">Pseudo</th>
+                <th scope="col">Mot de passe</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Sexe</th>
+                <th scope="col">Mail</th>
+                <th scope="col">Code Postal</th>
+                <th scope="col">Ville</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Etat</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th>ID</th>
-                <th>Pseudo</th>
-                <th>Mot de passe</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Adresse</th>
-                <th>Sexe</th>
-                <th>Mail</th>
-                <th>Code Postal</th>
-                <th>Ville</th>
-                <th>Statut</th>
-                <th>Etat</th>
-            <tr>
+        <?php
+    while($donneesAffichage = $affichage_utilisateur->fetch()){
+        echo"<tr><th scope=\"row\">".$donneesAffichage['id']."</th>
+            <td> ".$donneesAffichage['pseudo']."</td>
+            <td> ".$donneesAffichage['mdp'] ."</td>
+            <td> ".$donneesAffichage['nom']."</td>
+            <td> ".$donneesAffichage['prenom']."</td>
+            <td> ".$donneesAffichage['adresse']."</td>
+            <td> ".$donneesAffichage['sexe']."</td>
+            <td> ".$donneesAffichage['mail']."</td>
+            <td> ".$donneesAffichage['cp']."</td>
+            <td> ".$donneesAffichage['ville']."</td>
+            <td> ".$donneesAffichage['statut']."</td>
+            <td> ".$donneesAffichage['etat']."</td>
+            </tr>";
+    }
+    ?>
         </tbody>
-    </div>
+    </table>
 </div>
