@@ -44,4 +44,14 @@ function inscription ($POST) {
 
 }
 
+function utilisateur() {
+    include('models/db_connect.php');
+    $req = $bdd->exec("SELECT  pseudo, mail FROM utilisateur ");
+    $donnees = $req->fetchALL;
+    if(empty($donnees)) {
+        $donnees = NULL;
+    }
+    return $donnees;
+}
+
 ?>

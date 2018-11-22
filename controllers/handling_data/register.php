@@ -1,23 +1,27 @@
 <?php
 function register () {
+    include 'models/requete.php';
+    $erreur = true;
+    $liste =  utilisateur();
+    var_dump($liste);
 
-foreach($_POST as $key => $value){
-	$test = true;
-    if(empty($value)){  
-
-        echo" <br> la ligne ".$key." est vide";
-        $test=false;
-
+    foreach($_POST as $key => $value){
+        if(empty($value)){  
+            $erreur=false;
+        }
     }
-}
+    
+    for($x=0;$x<count($liste);$x++){
+        if($_POST['mail'] == $liste[$x]['mail']){
+            $erreur= false;
+        }elseif($_POST['pseudo'] == $liste[$x]['pseudo']){
+            $erreur= false;
+        }
+    }
 
-if($test==false){
-
-    exit;
-}else{
-include 'models/requete.php';
-inscription($_POST['mail'],$_POST['pseudo'],$_POST['mdp'],$_POST['prenom'],$_POST['nom'],$_POST['adresse'],$_POST['sexe'],$_POST['cp'],$_POST['ville']);
-}
+    if($erreur==true){
+        inscription($_POST);
+    }
 
 }
 
