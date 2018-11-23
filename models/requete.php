@@ -2,7 +2,7 @@
 
 function connexion($id,$mdp) {
     include('models/db_connect.php');
-    $req = $bdd->prepare("SELECT  pseudo, mail, mdp, statut FROM utilisateur WHERE mail = :identifiant AND mdp = :mdp");
+    $req = $bdd->prepare("SELECT  id, pseudo, mail, mdp, statut FROM utilisateur WHERE mail = :identifiant AND mdp = :mdp");
     $req-> execute(array(":identifiant"=> $id, ":mdp" =>$mdp));
     $donnees = $req->fetch(PDO::FETCH_ASSOC);
     if(empty($donnees)) {
@@ -99,4 +99,18 @@ function inscription ($POST) {
 
 }
 
+function modification ($POST) {
+    include('models/db_connect.php');
+    $query= 'UPDATE utilisateur SET mdp = :newmdp WHERE utilisateur.id = :utilisateur and utilisateur.mdp = :mdp';
+    $req = $bdd->prepare($query);
+    try {
+     $req-> execute(array(":mdp" => $_POST['mdp'],
+                          ":newmdp" => $_POST['newmdp'],
+                          ":utilisateur" => $_SESSION['id']));
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        die("raterr");
+    }
+    
+}
 ?>

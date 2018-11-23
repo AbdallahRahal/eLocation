@@ -8,6 +8,10 @@ if(isset($_POST['connexion'])) {
 	
 	include('controllers/handling_data/register.php');
 	register();
+    
+} elseif(isset($_POST['modification'])) {
+
+    include('controllers/handling_data/modification.php');
 }
 
 if(isset($_SESSION['compte'])) {

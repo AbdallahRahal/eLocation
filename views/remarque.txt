@@ -1,2 +1,1 @@
 <script> $('#SettingsModal').modal('show');</script>
-
