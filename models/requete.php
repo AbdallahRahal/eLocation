@@ -117,7 +117,8 @@ function modification ($POST) {
         echo 'Exception reçue : ',  $e->getMessage(), "\n";
         die("raterr");
     }
-    
+}
+   
 function affichage_utilisateur() {
     include('models/db_connect.php');
     $affichage_utilisateur = $bdd->query("SELECT * FROM `utilisateur` WHERE statut LIKE 'utilisateur'");
