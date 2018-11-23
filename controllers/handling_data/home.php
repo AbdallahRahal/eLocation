@@ -27,7 +27,13 @@ include 'views/template/nav.php';
 include 'views/template/rubrique.php';
 
 if(isset($_SESSION['compte'])) {
-$rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations","vendre"=>"Vendre");
+	if ($_SESSION['compte'] == "admin") {
+	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs");
+	}else{
+
+	$rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations","vendre"=>"Vendre");
+	
+	}
 }else{
 $rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations");
 }
