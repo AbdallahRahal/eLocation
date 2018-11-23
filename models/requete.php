@@ -94,7 +94,6 @@ function inscription ($POST) {
 
 }
 
-<<<<<<< HEAD
 function utilisateur($mail,$pseudo) {
     include('models/db_connect.php');
     $req = $bdd->prepare("SELECT  pseudo, mail FROM utilisateur WHERE  mail = :mail or pseudo = :pseudo  ");
@@ -119,7 +118,6 @@ function modification ($POST) {
         die("raterr");
     }
     
-=======
 function affichage_utilisateur() {
     include('models/db_connect.php');
     $affichage_utilisateur = $bdd->query("SELECT * FROM `utilisateur` WHERE statut LIKE 'utilisateur'");
@@ -136,6 +134,5 @@ function name() {
     include('models/db_connect.php');
     $name = $bdd->query('');
     return($name);
->>>>>>> 422b7dd406f4ee82bda50e29ac0596ff38cb9e50
 }
 ?>
