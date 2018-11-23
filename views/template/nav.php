@@ -14,7 +14,6 @@
           <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#SettingsModal" href=""> Paramètres du compte</a>
 
           <a class="dropdown-item" class="btn btn-primary" href="controllers/deconnexion.php"> Deconnexion</a>
-
         <?php  }      ?>
         </div>
       </li>
