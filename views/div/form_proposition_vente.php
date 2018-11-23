@@ -1,13 +1,13 @@
         
-        <link rel="stylesheet" type="text/css" href="https://www.leboncoin.fr/css/beta_layout_71694.css">
-        <link rel="stylesheet" type="text/css" href="https://www.leboncoin.fr/css/beta_styles_71694.css">
-        
-        
-        <script type="text/javascript" src="http://www.leboncoin.fr/templates/common/arrays.js?71694"></script>
-        <script type="text/javascript" src="https://www.leboncoin.fr/js/beta_base_71694.js"></script>
+<link rel="stylesheet" type="text/css" href="https://www.leboncoin.fr/css/beta_layout_71694.css">
+<link rel="stylesheet" type="text/css" href="https://www.leboncoin.fr/css/beta_styles_71694.css">
 
-            <main id="main" role="main">
-                <section class="content-center">
+
+<script type="text/javascript" src="http://www.leboncoin.fr/templates/common/arrays.js?71694"></script>
+<script type="text/javascript" src="https://www.leboncoin.fr/js/beta_base_71694.js"></script>
+
+    <main id="main" role="main">
+        <section class="content-center">
                     
 <!-- { NEW INTEGRATION -->
 <section id="newad_form">

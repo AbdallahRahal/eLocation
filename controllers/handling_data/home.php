@@ -3,10 +3,13 @@ if(isset($_POST['connexion'])) {
 
 	include_once('controllers/handling_data/login.php');
 
-}elseif(isset($_POST['inscription']) && $_POST['inscription'] == "true" ) {
+}elseif(isset($_POST['inscription']) ) {
 	
 	include('controllers/handling_data/register.php');
 	register();
+} elseif(isset($_POST['modification'])) {
+
+    include('controllers/handling_data/modification.php');
 }
 
 if(isset($_SESSION['compte'])) {
@@ -28,7 +31,10 @@ $rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations","vendre"=>"Vendre");
 }else{
 $rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations");
 }
-rubriques($rubrique);
+
+include_once 'models/requete.php';
+$article = mes_articles();
+rubriques($rubrique, $article);
 include 'views/home_page.php';
 
 ?>

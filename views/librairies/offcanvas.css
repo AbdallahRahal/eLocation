@@ -32,8 +32,16 @@ body {
 .nav-scroller {
   position: relative;
   z-index: 2;
-  height: 2.75rem;
   overflow-y: hidden;
+}
+
+ul li ul li {
+  display: none;
+}
+ul li:hover ul li {
+  display: block;
+  transition: color .6s;
+
 }
 
 .nav-scroller .nav {
@@ -59,6 +67,9 @@ body {
 
 .nav-underline .nav-link:hover {
   color: #ff6200;
+}
+a.nav-link:hover .test456  {
+  background-color: : #ff6200;
 }
 
 .nav-underline .active {
