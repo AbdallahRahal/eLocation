@@ -154,7 +154,11 @@ CREATE TABLE `utilisateur` (
   `nom` varchar(45) NOT NULL,
   `prenom` varchar(45) NOT NULL,
   `adresse` varchar(45) NOT NULL,
+<<<<<<< HEAD
   `sexe` enum('H','F') NOT NULL DEFAULT 'H',
+=======
+  `sexe` enum('M','F') NOT NULL DEFAULT 'M',
+>>>>>>> 422b7dd406f4ee82bda50e29ac0596ff38cb9e50
   `mail` varchar(45) NOT NULL,
   `cp` char(5) NOT NULL,
   `ville` varchar(45) NOT NULL,
@@ -167,12 +171,21 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id`, `pseudo`, `mdp`, `nom`, `prenom`, `adresse`, `sexe`, `mail`, `cp`, `ville`, `statut`, `etat`) VALUES
+<<<<<<< HEAD
 (1, 'Fopodir', 'aaa', 'Abidi', 'Feras', '130 rue de pomme', 'H', 'abidi@intechinfo.fr', '92000', 'Colombes', 'admin', 'lambda'),
 (2, 'Laieon', 'bbb', 'Kerrad', 'Ryan', '136 rue de banane', 'H', 'kerrad@intechinfo.fr', '93410', 'Vaujours', 'admin', 'lambda'),
 (3, 'Fraxen', 'ccc', 'Rahal', 'Abdallah', '132 rue de poire', 'H', 'rahal@intechinfo.fr', '92000', 'Nanterre', 'admin', 'lambda'),
 (4, 'Isma', 'ddd', 'Nimzil', 'Ismael', '133 rue de kiwi', 'H', 'nimzil@intechinfo.fr', '00000', 'Paris', 'admin', 'lambda'),
 (5, 'Groominey', 'eee', 'Rosiek', 'Hugo', '134 rue de grenadine', 'H', 'rosiek@intechinfo.fr', '78230', 'Lepec', 'utilisateur', 'lambda'),
 (6, 'Athos', 'fff', 'Bennaceur', 'Sid', '135 rue de fraise', 'H', 'bennaceur@intechinfo.fr', '75000', 'Paris', 'utilisateur', 'lambda');
+=======
+(1, 'Fopodir', 'aaa', 'Abidi', 'Feras', '130 rue de pomme', 'M', 'abidi@intechinfo.fr', '92000', 'Colombes', 'admin', 'lambda'),
+(2, 'Laieon', 'bbb', 'Kerrad', 'Ryan', '136 rue de banane', 'M', 'kerrad@intechinfo.fr', '93410', 'Vaujours', 'admin', 'lambda'),
+(3, 'Fraxen', 'ccc', 'Rahal', 'Abdallah', '132 rue de poire', 'M', 'rahal@intechinfo.fr', '92000', 'Nanterre', 'admin', 'lambda'),
+(4, 'Isma', 'ddd', 'Nimzil', 'Ismael', '133 rue de kiwi', 'M', 'nimzil@intechinfo.fr', '00000', 'Paris', 'admin', 'lambda'),
+(5, 'Groominey', 'eee', 'Rosiek', 'Hugo', '134 rue de grenadine', 'M', 'rosiek@intechinfo.fr', '78230', 'Lepec', 'utilisateur', 'lambda'),
+(6, 'Athos', 'fff', 'Bennaceur', 'Sid', '135 rue de fraise', 'M', 'bennaceur@intechinfo.fr', '75000', 'Paris', 'utilisateur', 'lambda');
+>>>>>>> 422b7dd406f4ee82bda50e29ac0596ff38cb9e50
 
 -- --------------------------------------------------------
 

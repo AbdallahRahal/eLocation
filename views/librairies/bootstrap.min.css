@@ -1656,12 +1656,14 @@ pre code {
 .table td, .table th {
     padding: .75rem;
     vertical-align: top;
-    border-top: 1px solid #dee2e6
+    border-top: 1px solid #dee2e6;
+    vertical-align:middle
 }
 
 .table thead th {
     vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6
+    border-bottom: 2px solid #dee2e6;
+    text-align: center
 }
 
 .table tbody + tbody {
@@ -1811,8 +1813,8 @@ pre code {
 
 .table .thead-dark th {
     color: #fff;
-    background-color: #212529;
-    border-color: #32383e
+    background-color: #ef7f1b;
+    border-color: #ef7f1b
 }
 
 .table .thead-light th {
@@ -2595,14 +2597,14 @@ a.btn.disabled, fieldset:disabled a.btn {
 
 .btn-danger {
     color: #fff;
-    background-color: #dc3545;
-    border-color: #dc3545
+    background-color: #ef7f1b;
+    border-color: #ef7f1b
 }
 
 .btn-danger:hover {
     color: #fff;
-    background-color: #c82333;
-    border-color: #bd2130
+    background-color: #d76c0f;
+    border-color: #d76c0f
 }
 
 .btn-danger.focus, .btn-danger:focus {

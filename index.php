@@ -1,6 +1,6 @@
 <link rel='stylesheet' href='views/librairies/bootstrap.min.css'>
 <link rel='stylesheet' href='views/librairies/font_awesome.css'>
-<link rel='stylesheet' href="views/librairies/offcanvas.css" >
+<link rel='stylesheet' href="views/librairies/offcanvas.css">
 
 <script src='views/librairies/style.js'></script>
 <script src='views/librairies/jquery.js'></script>
