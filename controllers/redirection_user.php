@@ -77,9 +77,34 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 
 } else if($_SESSION['compte'] == 'admin') {
 	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs");
-	rubriques($rubrique);
+	$article = mes_articles();
+	rubriques($rubrique, $article);
 	if($_GET['rub'] == 'cat' ) {
-		echo "Ici, on affiche les catégories";
+		include 'views/div/affichage_article.php';
+		sidebar($article);
+		if (!isset($_GET['cat'])) {
+		
+		$affiche = afficher_art_toute_categorie();
+		affichage_article($affiche);
+		
+
+		}elseif($_GET['cat'] == 'foot') {
+		$affiche = mes_articles_de_ma_cat();
+		affichage_article($affiche);
+
+		}elseif($_GET['cat'] == 'handball') {
+		$affiche = mes_articles_de_ma_cat();
+		affichage_article($affiche);
+
+		}elseif($_GET['cat'] == 'basket') {
+		$affiche = mes_articles_de_ma_cat();
+		affichage_article($affiche);
+
+		}elseif($_GET['cat'] == 'autre') {
+		$affiche = mes_articles_de_ma_cat();
+		affichage_article($affiche);
+
+		}
 	}elseif ($_GET['rub'] == 'reprises') {
 		$affichage_reprise = affichage_reprise();
 		include('views/template/mes_reprises.php');
