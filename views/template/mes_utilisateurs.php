@@ -1,4 +1,4 @@
-<div class="container" style="max-width: 85%;margin-top: 5%">
+<div class="container" style="max-width: 98%;margin-top: 5%">
 <p><h2>Mes Utilisateurs</h2></p>
     <table class="table table-striped table-hover">
         <thead class="thead-dark">

@@ -1,6 +1,6 @@
-<div class="container" style="max-width: 85%;margin-top: 5%">
+<div class="container" style="max-width: 98%;margin-top: 5%">
 <p><h2>Mes Reprises</h2></p>
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover" style="align-center: auto;">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">ID</th>
@@ -18,17 +18,19 @@
         <tbody>
         <?php
     while($donneesAffichage = $affichage_reprise->fetch()){
-        echo"<tr><th scope=\"row\">".$donneesAffichage['ID']."</th>
-            <td> ".$donneesAffichage['Nom'] ."</td>
-            <td> ".$donneesAffichage['Prix']."</td>
-            <td> ".$donneesAffichage['Description']."</td>
-            <td><img src=\"".$donneesAffichage['Photo']."\"></td>
-            <td> ".$donneesAffichage['Stade']."</td>
-            <td> ".$donneesAffichage['Date']."</td>
-            <td><button type=\"button\" class=\"btn btn-danger btn-sm\">Traiter</button></td>
-            <td><button type=\"button\" class=\"btn btn-danger btn-sm\">Modifier</button></td>
-            <td><button type=\"button\" class=\"btn btn-danger btn-sm\">Supprimer</button></td>
-            </tr>";
+        ?>
+            <tr><th scope="row"><?php echo $donneesAffichage['ID']; ?></th>
+            <td><?php echo $donneesAffichage['Nom']; ?></td>
+            <td><?php echo $donneesAffichage['Prix']; ?></td>
+            <td><?php echo $donneesAffichage['Description']; ?></td>
+            <td><img src="views/template/vbtwin1.jpg" style="width: 150px;height: 150px;"></td>
+            <td><?php echo $donneesAffichage['Stade']; ?></td>
+            <td><?php echo $donneesAffichage['Date']; ?></td>
+            <td><button type="button" class="btn btn-danger btn-sm">Traiter</button></td>
+            <td><button type="button" class="btn btn-danger btn-sm">Modifier</button></td>
+            <td><button type="button" class="btn btn-danger btn-sm">Supprimer</button></td>
+            </tr>
+            <?php
     }
     ?>
         </tbody>
