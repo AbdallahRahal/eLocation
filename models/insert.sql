@@ -73,7 +73,7 @@ INSERT INTO `appartenir` (`id`, `categorie_id`, `article_id`) VALUES
 --
 
 INSERT INTO `avis` (`id`, `note`, `commentaire`, `id_utilisateur`, `id_article`) VALUES
-(1, 5, 'La teleportation est infinie, c\'est juste incroyable, 5/5.', 16, 3);
+(1, 5, 'La teleportation est infinie, cest juste incroyable, 5/5.', 16, 3);
 
 
 
