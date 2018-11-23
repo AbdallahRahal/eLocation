@@ -15,6 +15,8 @@
                 <th scope="col">Ville</th>
                 <th scope="col">Statut</th>
                 <th scope="col">Etat</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +34,8 @@
             <td> ".$donneesAffichage['ville']."</td>
             <td> ".$donneesAffichage['statut']."</td>
             <td> ".$donneesAffichage['etat']."</td>
+            <td><button type=\"button\" class=\"btn btn-danger btn-sm\">Supprimer</button></td>
+            <td><button type=\"button\" class=\"btn btn-danger btn-sm\">Modifier</button></td>
             </tr>";
     }
     ?>

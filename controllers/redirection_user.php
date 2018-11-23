@@ -50,7 +50,8 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 	if($_GET['rub'] == 'cat' ) {
 		echo "Ici, on affiche les catégories";
 	}elseif ($_GET['rub'] == 'reprises') {
-		echo "Ici, seront visible nos reprises";
+		$affichage_reprise = affichage_reprise();
+		include('views/template/mes_reprises.php');
 	}elseif ($_GET['rub'] == 'uti') {
 		$affichage_utilisateur = affichage_utilisateur();
 		include('views/template/mes_utilisateurs.php');
