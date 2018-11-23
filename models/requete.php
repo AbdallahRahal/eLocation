@@ -44,10 +44,11 @@ function inscription ($POST) {
 
 }
 
-function utilisateur() {
+function utilisateur($mail,$pseudo) {
     include('models/db_connect.php');
-    $req = $bdd->exec("SELECT  pseudo, mail FROM utilisateur ");
-    $donnees = $req->fetchALL;
+    $req = $bdd->prepare("SELECT  pseudo, mail FROM utilisateur WHERE  mail = :mail or pseudo = :pseudo  ");
+    $req-> execute(array(":mail"=> $mail, ":pseudo" =>$pseudo));
+    $donnees = $req->fetch(PDO::FETCH_ASSOC);
     if(empty($donnees)) {
         $donnees = NULL;
     }

@@ -1,25 +1,20 @@
 <?php
 function register () {
     include 'models/requete.php';
-    $erreur = true;
-    $liste =  utilisateur();
-    var_dump($liste);
+    $erreur = false;
+    $liste =  utilisateur($_POST['mail'],$_POST['pseudo']);
 
     foreach($_POST as $key => $value){
         if(empty($value)){  
-            $erreur=false;
+            $erreur=true;
         }
     }
     
-    for($x=0;$x<count($liste);$x++){
-        if($_POST['mail'] == $liste[$x]['mail']){
-            $erreur= false;
-        }elseif($_POST['pseudo'] == $liste[$x]['pseudo']){
-            $erreur= false;
-        }
+    if(!empty($liste)){
+        $erreur=true;
     }
 
-    if($erreur==true){
+    if($erreur==false){
         inscription($_POST);
     }
 

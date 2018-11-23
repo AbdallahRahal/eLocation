@@ -12,19 +12,19 @@
         <form action="popo" method="">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Mail:</label>
-            <input type="Mail" name="mail" class="form-control" id="recipient-name">
+            <input required type="Mail" name="mail" class="form-control" id="recipient-name">
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Pseudo:</label>
-            <input type="text" name="pseudo" class="form-control" id="message-text"></textarea>
+            <input required type="text" name="pseudo" class="form-control" id="message-text"></textarea>
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Mot de passe actuel:</label>
-            <input type="Password" name="mdp" class="form-control" id="message-text"></textarea>
+            <input required type="Password" name="mdp" class="form-control" id="message-text"></textarea>
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Nouveau mot de passe:</label>
-            <input type="Password" name="nouveau_mdp" class="form-control" id="message-text"></textarea>
+            <input required type="Password" name="nouveau_mdp" class="form-control" id="message-text"></textarea>
           </div>
         
            </div>
@@ -33,19 +33,19 @@
           </form>
              <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
 
-            <input type="Mail" class="form-control" id="recipient-change_mail">
+            <input required type="Mail" class="form-control" id="recipient-change_mail">
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Pseudo:</label>
-            <input type="text" class="form-control" id="recipient-change_pseudo"></textarea>
+            <input required type="text" class="form-control" id="recipient-change_pseudo"></textarea>
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Mot de passe actuel:</label>
-            <input type="Password" class="form-control" id="recipient-ancien_mdp"></textarea>
+            <input required type="Password" class="form-control" id="recipient-ancien_mdp"></textarea>
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Nouveau mot de passe:</label>
-            <input type="Password" class="form-control" id="recipient-nv_mdp"></textarea>
+            <input required type="Password" class="form-control" id="recipient-nv_mdp"></textarea>
           </div>
     </div>
   </div>
