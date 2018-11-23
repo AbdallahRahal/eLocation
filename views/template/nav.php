@@ -12,7 +12,9 @@
           <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#RegisterModal" href=""> S'inscrire</a>
           <?php  }else{   ?>
           <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#SettingsModal" href=""> Paramètres du compte</a>
-          <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#" href="controllers/deco.php"> Deconnexion</a>
+
+          <a class="dropdown-item" class="btn btn-primary" href="controllers/deconnexion.php"> Deconnexion</a>
+
         <?php  }      ?>
         </div>
       </li>
