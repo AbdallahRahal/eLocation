@@ -3,10 +3,13 @@ if(isset($_POST['connexion'])) {
 
 	include_once('controllers/handling_data/login.php');
 
-}elseif(isset($_POST['inscription']) && $_POST['inscription'] == "true" ) {
+}elseif(isset($_POST['inscription']) ) {
 	
 	include('controllers/handling_data/register.php');
 	register();
+} elseif(isset($_POST['modification'])) {
+
+    include('controllers/handling_data/modification.php');
 }
 
 if(isset($_SESSION['compte'])) {
