@@ -162,17 +162,6 @@ CREATE TABLE `utilisateur` (
   `etat` enum('fidele','lambda') NOT NULL DEFAULT 'lambda'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `utilisateur`
---
-
-INSERT INTO `utilisateur` (`id`, `pseudo`, `mdp`, `nom`, `prenom`, `adresse`, `sexe`, `mail`, `cp`, `ville`, `statut`, `etat`) VALUES
-(1, 'Fopodir', 'aaa', 'Abidi', 'Feras', '130 rue de pomme', 'H', 'abidi@intechinfo.fr', '92000', 'Colombes', 'admin', 'lambda'),
-(2, 'Laieon', 'bbb', 'Kerrad', 'Ryan', '136 rue de banane', 'H', 'kerrad@intechinfo.fr', '93410', 'Vaujours', 'admin', 'lambda'),
-(3, 'Fraxen', 'ccc', 'Rahal', 'Abdallah', '132 rue de poire', 'H', 'rahal@intechinfo.fr', '92000', 'Nanterre', 'admin', 'lambda'),
-(4, 'Isma', 'ddd', 'Nimzil', 'Ismael', '133 rue de kiwi', 'H', 'nimzil@intechinfo.fr', '00000', 'Paris', 'admin', 'lambda'),
-(5, 'Groominey', 'eee', 'Rosiek', 'Hugo', '134 rue de grenadine', 'H', 'rosiek@intechinfo.fr', '78230', 'Lepec', 'utilisateur', 'lambda'),
-(6, 'Athos', 'fff', 'Bennaceur', 'Sid', '135 rue de fraise', 'H', 'bennaceur@intechinfo.fr', '75000', 'Paris', 'utilisateur', 'lambda');
 
 -- --------------------------------------------------------
 
