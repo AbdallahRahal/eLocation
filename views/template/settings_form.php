@@ -7,46 +7,22 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+        <form action="" method="post">
       <div class="modal-body">
-        <h3>Modifier mes informations personelles :</h3>
-        <form action="popo" method="">
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Mail:</label>
-            <input required type="Mail" name="mail" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Pseudo:</label>
-            <input required type="text" name="pseudo" class="form-control" id="message-text"></textarea>
-          </div>
+        <h3>Modification du compte:</h3>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Mot de passe actuel:</label>
-            <input required type="Password" name="mdp" class="form-control" id="message-text"></textarea>
+            <input required type="Password" name="mdp" class="form-control" id="message-text">
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Nouveau mot de passe:</label>
-            <input required type="Password" name="nouveau_mdp" class="form-control" id="message-text"></textarea>
+            <input required type="Password" name="newmdp" class="form-control" id="message-text">
           </div>
-        
-           </div>
-            <div class="modal-footer">
-          <button type="button" name="modifier" value="true" class="btn btn-primary">Modifier</button>
-          </form>
-             <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
-
-            <input required type="Mail" class="form-control" id="recipient-change_mail">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Pseudo:</label>
-            <input required type="text" class="form-control" id="recipient-change_pseudo"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Mot de passe actuel:</label>
-            <input required type="Password" class="form-control" id="recipient-ancien_mdp"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Nouveau mot de passe:</label>
-            <input required type="Password" class="form-control" id="recipient-nv_mdp"></textarea>
-          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" name="modification" value="true" class="btn btn-primary">Modifier</button>
+        </div>
+        </form>
     </div>
   </div>
 </div>

@@ -4,17 +4,13 @@ function sidebar ($arg) { ?>
 
 <div style='margin-top: 30px;margin-left: 50px;' class='container-fluid'>
 	<div class='row'>
-    	<nav class='col-md-2 d-none d-md-block bg-light sidebar' style='margin-top: 109px;padding: 1px 0 0;'>
+    	<nav class='col-md-2 d-none d-md-block bg-light sidebar' style='margin-top: 159px;padding: 1px 0 0;z-index: 50;'>
         	<div class='sidebar-sticky'>
             <?php 
-            for ($i=0;$i<count($arg); $i++) { 
-                $affichage = $arg[$i][0]." ".$arg[$i][1];
-                $spec = $arg[$i][2];
-                $rub = $_GET['rub']; ?>
+                foreach ($arg as $key => $value) { ?>
                   <ul class='nav flex-column'>
                     <li class='nav-item'>
-                      <a class='nav-link' href='index.php?page=accueil&&rub=<?=$rub?>&&spec=<?=$spec?>'><?=$affichage?></a>
-
+                        <a class="nav-link active" href="index.php?page=accueil&&rub=<?=$_GET['rub']?>&&cat=<?=$value?>" > <?=$value?></a>
                     </li>
                  </ul>
 

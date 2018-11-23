@@ -9,7 +9,8 @@ if(empty($_POST['identifiant'])){
     $result =  connexion($_POST['identifiant'],$_POST['mdp']);
     if($result != NULL){
         $_SESSION['compte']= $result['statut'];
-        $_SESSION['pseudo'] = $result['pseudo'];         
+        $_SESSION['pseudo'] = $result['pseudo']; 
+        $_SESSION['id'] = $result['id'];
     }else{ 
 			require_once 'views/template/login_form.php'; ?>
 
