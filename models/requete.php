@@ -66,11 +66,6 @@ function afficher_art_toute_categorie() {
     return $donnees;
 }
     
-function name() {
-    include('models/db_connect.php');
-    $name = $bdd->query('');
-    return($name);
-}
 
 
 function inscription ($POST) {
@@ -122,6 +117,23 @@ function modification ($POST) {
         echo 'Exception reçue : ',  $e->getMessage(), "\n";
         die("raterr");
     }
-    
+}
+   
+function affichage_utilisateur() {
+    include('models/db_connect.php');
+    $affichage_utilisateur = $bdd->query("SELECT * FROM `utilisateur` WHERE statut LIKE 'utilisateur'");
+    return($affichage_utilisateur);
+}
+
+function affichage_reprise() {
+    include('models/db_connect.php');
+    $affichage_reprise = $bdd->query("SELECT ligne_proposition.id as ID,ligne_proposition.nom as Nom,ligne_proposition.prix as Prix,ligne_proposition.description as Description,ligne_proposition.photo as Photo,ligne_proposition.stade as Stade, num_proposition.date_propo as Date FROM `ligne_proposition` JOIN num_proposition ON ligne_proposition.num_proposition_id = num_proposition.id GROUP BY ligne_proposition.stade;");
+    return($affichage_reprise);
+}
+
+function name() {
+    include('models/db_connect.php');
+    $name = $bdd->query('');
+    return($name);
 }
 ?>
