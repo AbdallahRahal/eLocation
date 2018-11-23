@@ -47,7 +47,7 @@ CREATE TABLE `appartenir` (
 CREATE TABLE `article` (
   `id` int(11) NOT NULL,
   `nom` varchar(45) NOT NULL,
-  `description` varchar(45) NOT NULL,
+  `description` text NOT NULL,
   `prix_journee` int(11) NOT NULL,
   `lien_photo` varchar(45) NOT NULL,
   `statut` enum('dispo','loue','reserve') NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE `article` (
 CREATE TABLE `avis` (
   `id` int(11) NOT NULL,
   `note` int(11) NOT NULL,
-  `commentaire` varchar(45) NOT NULL,
+  `commentaire` text NOT NULL,
   `id_utilisateur` varchar(45) NOT NULL,
   `id_article` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -90,7 +90,7 @@ CREATE TABLE `ligne_proposition` (
   `id` int(11) NOT NULL,
   `nom` varchar(45) NOT NULL,
   `prix` int(11) NOT NULL,
-  `description` varchar(45) NOT NULL,
+  `description` text NOT NULL,
   `photo` blob NOT NULL,
   `stade` enum('proposition','offre','valide') NOT NULL DEFAULT 'proposition',
   `num_proposition_id` int(11) NOT NULL
@@ -108,7 +108,7 @@ CREATE TABLE `louer` (
   `date_butoire` date NOT NULL,
   `date_reelle` date NOT NULL,
   `note` int(11) NOT NULL,
-  `commentaire` varchar(45) NOT NULL,
+  `commentaire` text NOT NULL,
   `action_id` int(11) NOT NULL,
   `point_relais_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
