@@ -50,7 +50,7 @@ INSERT INTO `article` (`id`, `nom`, `description`, `prix_journee`, `lien_photo`,
 --
 
 INSERT INTO `action` (`id`, `article_id`, `utilisateur_id`) VALUES
-(1, 5, 5);
+(1, 5, 16);
 
 -- --------------------------------------------------------
 
@@ -73,7 +73,7 @@ INSERT INTO `appartenir` (`id`, `categorie_id`, `article_id`) VALUES
 --
 
 INSERT INTO `avis` (`id`, `note`, `commentaire`, `id_utilisateur`, `id_article`) VALUES
-(1, 5, 'La teleportation est infinie, c\'est juste incroyable, 5/5.', 5, 3);
+(1, 5, 'La teleportation est infinie, cest juste incroyable, 5/5.', 16, 3);
 
 
 
@@ -83,8 +83,8 @@ INSERT INTO `avis` (`id`, `note`, `commentaire`, `id_utilisateur`, `id_article`)
 -- Dumping data for table `ligne_proposition`
 --
 
-INSERT INTO `ligne_proposition` (`id`, `nom`, `prix`, `description`, `photo`, `stade`, `num_proposition_id`) VALUES
-(1, 'velo btwin', 100, 'Un velo pas cher, pas besoin de pedaler il roule tout seul, si vous roulez vous tombez.', NULL, 'proposition', 1);
+INSERT INTO `ligne_proposition` (`id`, `nom`, `prix`, `description`, `stade`, `num_proposition_id`) VALUES
+(1, 'velo btwin', 100, 'Un velo pas cher, pas besoin de pedaler il roule tout seul, si vous roulez vous tombez.', 'proposition', 1);
 
 -- --------------------------------------------------------
 
@@ -93,7 +93,7 @@ INSERT INTO `ligne_proposition` (`id`, `nom`, `prix`, `description`, `photo`, `s
 --
 
 INSERT INTO `louer` (`id`, `date_location`, `date_butoire`, `date_reelle`, `note`, `commentaire`, `action_id`, `point_relais_id`) VALUES
-(2, '2018-11-21', '2018-11-24', '2018-11-23', 4, 'Vraiment bien merci ', 1, 1);
+(1, '2018-11-21', '2018-11-24', '2018-11-23', 4, 'Vraiment bien merci ', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -102,8 +102,7 @@ INSERT INTO `louer` (`id`, `date_location`, `date_butoire`, `date_reelle`, `note
 --
 
 INSERT INTO `num_proposition` (`id`, `nom`, `date_propo`, `utilisateur_id`) VALUES
-(1, 'velo btwin', '2018-11-23', 5);
-
+(1, 'velo btwin', '2018-11-23', 16);
 
 
 
@@ -114,4 +113,4 @@ INSERT INTO `num_proposition` (`id`, `nom`, `date_propo`, `utilisateur_id`) VALU
 --
 
 INSERT INTO `vendre` (`id`, `date_vente`, `action_id`) VALUES
-(2, '2018-11-23', 2);
+(1, '2018-11-23', 1);
