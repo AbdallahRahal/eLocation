@@ -447,6 +447,16 @@ hr {
     content: "\2014 \00A0"
 }
 
+/* on personnalise le label comme on veut */
+.label-file {
+    cursor: pointer;
+}
+
+/* et on masque le input */
+.input-file {
+    display: none;
+}
+
 .img-fluid {
     max-width: 100%;
     height: auto

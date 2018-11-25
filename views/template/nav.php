@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" >
-  <a class="navbar-brand" href="index.php" style="width:90px;height: 80px">
-    <img src="views/template/eLocation.png" width="200%">
+  <a href="index.php">
+    <img src="views/template/eLocation.png" width="10%">
   </a> 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault"  >
     <ul class="navbar-nav mr-auto" style="position:absolute;right:0px">

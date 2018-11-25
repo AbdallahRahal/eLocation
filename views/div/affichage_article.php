@@ -1,6 +1,6 @@
  <?php
  function affichage_article ($affiche) { ?>
- <div class="album py-5 bg-light" style="margin-left: 224px;margin-top: 100px">
+ <div class="album py-5 bg-light" style="margin-left: 20%;margin-top: 100px">
       <div class="container">
 
         <div class="row">

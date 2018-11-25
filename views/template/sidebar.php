@@ -2,9 +2,9 @@
 function sidebar ($arg) { ?>
 <link href='https://getbootstrap.com/docs/4.1/examples/dashboard/dashboard.css' rel='stylesheet'>
 
-<div style='margin-top: 30px;margin-left: 50px;' class='container-fluid'>
+<div class='container-fluid'>
 	<div class='row'>
-    	<nav class='col-md-2 d-none d-md-block bg-light sidebar' style='margin-top: 159px;padding: 1px 0 0;z-index: 50;'>
+        <nav class='col-md-2 d-none d-md-block bg-light sidebar' style='margin-top: 7%;padding: 1px 0 0;z-index: 50;'>
         	<div class='sidebar-sticky'>
             <?php 
                 foreach ($arg as $key => $value) { ?>

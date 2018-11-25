@@ -1,6 +1,6 @@
 <main role="main" class="container">
 
-      <div class="home" style="margin-top: 100px;margin-left: 51px;text-align: center;">
+      <div class="home" style="margin-top:12%;text-align: center;">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0"></li>
