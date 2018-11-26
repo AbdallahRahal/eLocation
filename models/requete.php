@@ -1,14 +1,40 @@
 <?php
 
+/*
 function connexion($id,$mdp) {
     include('models/db_connect.php');
-    $req = $bdd->prepare("SELECT  id, pseudo, mail, mdp, statut FROM utilisateur WHERE mail = :identifiant AND mdp = :mdp");
-    $req-> execute(array(":identifiant"=> $id, ":mdp" =>$mdp));
+    $hashreq = $bdd->query("SELECT id, mdp, mail FROM utilisateur WHERE id = 26");
+    $hash = $hashreq->fetch();
+    $req = $bdd->prepare("SELECT id, pseudo, mail, mdp, statut FROM utilisateur WHERE mail = :identifiant AND mdp = :mdp");
+    echo var_dump(password_verify($mdp, $hash['mdp']));
+    $req->execute(array(":identifiant"=> $id, ":mdp" => password_verify($mdp, $hash['mdp'])));
     $donnees = $req->fetch(PDO::FETCH_ASSOC);
     if(empty($donnees)) {
         $donnees = NULL;
     }
     return $donnees;
+}
+*/
+
+function connexion($id, $mdp) {
+    include('models/db_connect.php');
+
+    $user = $bdd->prepare('select id, pseudo, mail, mdp, statut from utilisateur where mail = :mail or pseudo = :pseudo');
+    $user->execute([':mail' => $id, ':pseudo' => $id]);
+
+    $result = $user->fetch(PDO::FETCH_ASSOC);
+
+    if($result === null) {
+        return null;
+    } else {
+        
+        $validPassword = password_verify($mdp, $result['mdp']);
+        if($validPassword) {
+            return $result;
+        } else {
+            return null;
+        }
+    }
 }
 
 function info_article($GET) {
@@ -85,11 +111,11 @@ function afficher_art_toute_categorie() {
 function inscription ($POST) {
     include("models/db_connect.php");
     $query = "INSERT INTO utilisateur (`pseudo`, `mdp`, `nom`, `prenom`, `adresse`, `sexe`, `mail`, `cp`, `ville`, `statut`, `etat`) VALUES (:pseudo, :mdp, :nom, :prenom, :adresse, :sexe, :mail, :cp, :ville, :statut, :etat) ";
-    $req = $bdd->prepare($query);    
+    $req = $bdd->prepare($query);
     try {
 
     $req-> execute(array(":pseudo" => $_POST['pseudo'],
-                         ":mdp" => $_POST['mdp'],
+                         ":mdp" => password_hash($_POST['mdp'], PASSWORD_BCRYPT),
                          ":nom" => $_POST['nom'],
                          ":prenom" => $_POST['prenom'],
                          ":adresse" => $_POST['adresse'],

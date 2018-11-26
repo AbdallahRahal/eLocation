@@ -11,7 +11,7 @@ if(empty($_POST['identifiant'])){
         $_SESSION['compte']= $result['statut'];
         $_SESSION['pseudo'] = $result['pseudo']; 
         $_SESSION['id'] = $result['id'];
-    }else{ 
+    }else{
 			require_once 'views/template/login_form.php'; ?>
 
 		<script> 
