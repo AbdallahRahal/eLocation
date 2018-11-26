@@ -46,13 +46,21 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 		
 		include 'views/div/affichage_article.php';
 		sidebar($article);
-		if (!isset($_GET['cat'])) {
+		if (!isset($_GET['cat']) || empty($_GET['cat'])) {
 		
-		$affiche = afficher_art_toute_categorie();
-		affichage_article($affiche);
-		
+			if(!isset($_GET['art'])) {
 
-		}elseif($_GET['cat'] == 'foot') {
+				$affiche = afficher_art_toute_categorie();
+				affichage_article($affiche);
+			
+			}else{
+		
+				include 'views/div/affichage_page_vente.php';
+				$article = info_article($_GET['art']);
+				affichage_page_vente($article);
+			}
+
+		} elseif($_GET['cat'] == 'foot') {
 		$affiche = mes_articles_de_ma_cat();
 		affichage_article($affiche);
 

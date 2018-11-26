@@ -4,7 +4,7 @@ function register () {
     $erreur = false;
     $liste =  utilisateur($_POST['mail'],$_POST['pseudo']);
 
-    foreach($_POST as $key => $value){
+    foreach($_POST as $key => $value) {
         if(empty($value)){  
             $erreur=true;
         }
