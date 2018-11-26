@@ -93,10 +93,10 @@ CREATE TABLE `proposition` (
   `titre` varchar(45) DEFAULT NULL,
   `prix` int(11) DEFAULT NULL,
   `description` text DEFAULT NULL,
-  `photo1` blob NOT NULL,
-  `photo2` blob NOT NULL,
+  `photo1` varchar(200) NOT NULL,
+  `photo2` varchar(200) NOT NULL,
   `stade` enum('proposition','offre','valide') NOT NULL DEFAULT 'proposition',
-  `date_propo` date DEFAULT NOT NULL,
+  `date_propo` date NOT NULL,
   `utilisateur_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
