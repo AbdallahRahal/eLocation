@@ -39,7 +39,7 @@ $rubrique=array("cat"=>"Catégorie");
 }
 
 include_once 'models/requete.php';
-$article = mes_articles();
+$article = mes_categories();
 rubriques($rubrique, $article);
 include 'views/home_page.php';
 

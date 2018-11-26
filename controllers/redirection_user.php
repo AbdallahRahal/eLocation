@@ -39,7 +39,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 	}else{
 	$rubrique=array("cat"=>"Catégorie");
 	}
-	$article = mes_articles();
+	$article = mes_categories();
 	rubriques($rubrique, $article);
 
 	if($_GET['rub'] == 'cat' ) {
@@ -61,8 +61,18 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			}
 
 		}else{
-		$affiche = mes_articles_de_ma_cat();
-		affichage_article($affiche);
+
+		
+			
+			if(isset($_GET['art'])) {
+		
+				include 'views/div/affichage_page_vente.php';
+				$article = info_article($_GET['art']);
+				affichage_page_vente($article);
+			}else{
+				$affiche = mes_articles_de_ma_cat();
+				affichage_article($affiche);
+			}
 
 		}
 	} elseif ($_GET['rub'] == 'loc') {
@@ -77,20 +87,39 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 	$article = mes_articles();
 	rubriques($rubrique, $article);
 	if($_GET['rub'] == 'cat' ) {
+		
 		include 'views/div/affichage_article.php';
 		sidebar($article);
-		if (!isset($_GET['cat'])) {
+		if (!isset($_GET['cat']) || empty($_GET['cat'])) {
 		
-		$affiche = afficher_art_toute_categorie();
-		affichage_article($affiche);
+			if(!isset($_GET['art'])) {
+
+				$affiche = afficher_art_toute_categorie();
+				affichage_article($affiche);
+			
+			}else{
 		
+				include 'views/div/affichage_page_vente.php';
+				$article = info_article($_GET['art']);
+				affichage_page_vente($article);
+			}
 
 		}else{
-		$affiche = mes_articles_de_ma_cat();
-		affichage_article($affiche);
+
+		
+			
+			if(isset($_GET['art'])) {
+		
+				include 'views/div/affichage_page_vente.php';
+				$article = info_article($_GET['art']);
+				affichage_page_vente($article);
+			}else{
+				$affiche = mes_articles_de_ma_cat();
+				affichage_article($affiche);
+			}
 
 		}
-	}elseif ($_GET['rub'] == 'reprises') {
+	} elseif ($_GET['rub'] == 'reprises') {
 		$affichage_reprise = affichage_reprise();
 		include('views/template/mes_reprises.php');
 	}elseif ($_GET['rub'] == 'uti') {
