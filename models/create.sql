@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `action`
 --
+CREATE database projet;
+USE projet;
 
 CREATE TABLE `action` (
   `id` int(11) NOT NULL,

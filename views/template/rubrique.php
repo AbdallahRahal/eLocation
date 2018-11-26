@@ -15,7 +15,7 @@ function rubriques ($rubrique, $article) { ?>
 					foreach ($article as $cle => $valeur) { ?>
 						
 						<li >
-							<a class="nav-link active" href="index.php?page=accueil&&rub=cat&&cat=<?=$valeur?>" > <?=$valeur?></a>
+							<a class="nav-link active" href="index.php?page=accueil&&rub=cat&&cat=<?=$cle?>" > <?=$valeur?></a>
 						</li>
 					<?php
 					} ?>

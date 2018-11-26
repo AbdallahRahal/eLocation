@@ -60,19 +60,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 				affichage_page_vente($article);
 			}
 
-		} elseif($_GET['cat'] == 'foot') {
-		$affiche = mes_articles_de_ma_cat();
-		affichage_article($affiche);
-
-		}elseif($_GET['cat'] == 'hiver') {
-		$affiche = mes_articles_de_ma_cat();
-		affichage_article($affiche);
-
-		}elseif($_GET['cat'] == 'tennis') {
-		$affiche = mes_articles_de_ma_cat();
-		affichage_article($affiche);
-
-		}elseif($_GET['cat'] == 'ete') {
+		}else{
 		$affiche = mes_articles_de_ma_cat();
 		affichage_article($affiche);
 
@@ -97,19 +85,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 		affichage_article($affiche);
 		
 
-		}elseif($_GET['cat'] == 'foot') {
-		$affiche = mes_articles_de_ma_cat();
-		affichage_article($affiche);
-
-		}elseif($_GET['cat'] == 'handball') {
-		$affiche = mes_articles_de_ma_cat();
-		affichage_article($affiche);
-
-		}elseif($_GET['cat'] == 'basket') {
-		$affiche = mes_articles_de_ma_cat();
-		affichage_article($affiche);
-
-		}elseif($_GET['cat'] == 'autre') {
+		}else{
 		$affiche = mes_articles_de_ma_cat();
 		affichage_article($affiche);
 

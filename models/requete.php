@@ -24,25 +24,21 @@ function info_article($GET) {
 
 function mes_articles() {
     include('models/db_connect.php');
-    $req = $bdd->query("SELECT nom FROM categorie");
-    $i =0;
+    $req = $bdd->query("SELECT id,nom FROM categorie");
+
     while($ligne = $req->fetch() ) {
     
-        $donnees[$i] = $ligne['nom'];
-        $i++;
+        $donnees[$ligne['id']] = $ligne['nom'];
     }
 
-    if(empty($donnees)) {
-        $donnees = NULL;
-    }
     return $donnees;
 }
 
 function mes_articles_de_ma_cat () {
     include('models/db_connect.php');
 
-    $req = $bdd->prepare("SELECT article.nom as nono, description, prix_journee FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE categorie.nom = :cat");
-    $req-> execute(array(":cat"=> $_GET['cat']));
+    $req = $bdd->prepare("SELECT article.nom as nono, description, prix_journee FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE categorie.id = :cat_id");
+    $req-> execute(array(":cat_id"=> $_GET['cat']));
 
     $i =0;
     while($ligne = $req->fetch() ) {
