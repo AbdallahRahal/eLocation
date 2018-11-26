@@ -84,7 +84,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 
 } else if($_SESSION['compte'] == 'admin') {
 	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs");
-	$article = mes_articles();
+	$article = mes_categories();
 	rubriques($rubrique, $article);
 	if($_GET['rub'] == 'cat' ) {
 		
