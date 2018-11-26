@@ -14,7 +14,7 @@
         <?php
     while($donneesAffichage = $affichage_location->fetch()){
         ?>
-            <tr><th scope="row"><?php echo $donneesAffichage['Nom']; ?></th>
+            <tr><td><?php echo $donneesAffichage['Nom']; ?></td>
             <td><?php echo $donneesAffichage['Prix']; ?></td>
             <td><?php echo $donneesAffichage['Description']; ?></td>
             <td><img src="views/template/vbtwin1.jpg" style="width: 150px;height: 150px;"></td>
