@@ -83,7 +83,7 @@ INSERT INTO `avis` (`id`, `note`, `commentaire`, `id_utilisateur`, `id_article`)
 -- Dumping data for table `proposition`
 --
 
-INSERT INTO `proposition` (`id`, `nom`, `prix`, `description`, `stade`, `date_propo`, `utilisateur_id`) VALUES
+INSERT INTO `proposition` (`id`, `titre`, `prix`, `description`, `stade`, `date_propo`, `utilisateur_id`) VALUES
 (1, 'velo btwin', 100, 'Un velo pas cher, pas besoin de pedaler il roule tout seul, si vous roulez vous tombez.', 'proposition', '2018-11-23', 16);
 
 -- --------------------------------------------------------
