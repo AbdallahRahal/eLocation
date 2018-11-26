@@ -85,17 +85,19 @@ CREATE TABLE `categorie` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ligne_proposition`
+-- Table structure for table `proposition`
 --
 
-CREATE TABLE `ligne_proposition` (
+CREATE TABLE `proposition` (
   `id` int(11) NOT NULL,
   `nom` varchar(45) NOT NULL,
   `prix` int(11) NOT NULL,
   `description` text NOT NULL,
-  `photo` blob NOT NULL,
+  `photo1` blob NOT NULL,
+  `photo2` blob NOT NULL,
   `stade` enum('proposition','offre','valide') NOT NULL DEFAULT 'proposition',
-  `num_proposition_id` int(11) NOT NULL
+  `date_propo` date NOT NULL,
+  `utilisateur_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -113,19 +115,6 @@ CREATE TABLE `louer` (
   `commentaire` text NOT NULL,
   `action_id` int(11) NOT NULL,
   `point_relais_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `num_proposition`
---
-
-CREATE TABLE `num_proposition` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(45) NOT NULL,
-  `date_propo` date NOT NULL,
-  `utilisateur_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -216,10 +205,11 @@ ALTER TABLE `categorie`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ligne_proposition`
+-- Indexes for table `proposition`
 --
-ALTER TABLE `ligne_proposition`
+ALTER TABLE `proposition`
   ADD PRIMARY KEY (`id`);
+  ADD KEY `utilisateur_id` (`utilisateur_id`);
 
 --
 -- Indexes for table `louer`
@@ -228,13 +218,6 @@ ALTER TABLE `louer`
   ADD PRIMARY KEY (`id`),
   ADD KEY `action_id` (`action_id`),
   ADD KEY `point_relais_id` (`point_relais_id`);
-
---
--- Indexes for table `num_proposition`
---
-ALTER TABLE `num_proposition`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `utilisateur_id` (`utilisateur_id`);
 
 --
 -- Indexes for table `point_relais`
@@ -290,21 +273,15 @@ ALTER TABLE `categorie`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `ligne_proposition`
+-- AUTO_INCREMENT for table `proposition`
 --
-ALTER TABLE `ligne_proposition`
+ALTER TABLE `proposition`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `louer`
 --
 ALTER TABLE `louer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `num_proposition`
---
-ALTER TABLE `num_proposition`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -351,10 +328,10 @@ ALTER TABLE `louer`
   ADD CONSTRAINT `louer_ibfk_2` FOREIGN KEY (`point_relais_id`) REFERENCES `point_relais` (`id`);
 
 --
--- Constraints for table `num_proposition`
+-- Constraints for table `proposition`
 --
-ALTER TABLE `num_proposition`
-  ADD CONSTRAINT `num_proposition_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id`);
+ALTER TABLE `proposition`
+  ADD CONSTRAINT `proposition_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id`);
 
 --
 -- Constraints for table `vendre`

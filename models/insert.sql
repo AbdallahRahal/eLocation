@@ -80,11 +80,11 @@ INSERT INTO `avis` (`id`, `note`, `commentaire`, `id_utilisateur`, `id_article`)
 -- --------------------------------------------------------
 
 --
--- Dumping data for table `ligne_proposition`
+-- Dumping data for table `proposition`
 --
 
-INSERT INTO `ligne_proposition` (`id`, `nom`, `prix`, `description`, `stade`, `num_proposition_id`) VALUES
-(1, 'velo btwin', 100, 'Un velo pas cher, pas besoin de pedaler il roule tout seul, si vous roulez vous tombez.', 'proposition', 1);
+INSERT INTO `proposition` (`id`, `nom`, `prix`, `description`, `stade`, `date_propo`, `utilisateur_id`) VALUES
+(1, 'velo btwin', 100, 'Un velo pas cher, pas besoin de pedaler il roule tout seul, si vous roulez vous tombez.', 'proposition', '2018-11-23', 16);
 
 -- --------------------------------------------------------
 
@@ -94,16 +94,6 @@ INSERT INTO `ligne_proposition` (`id`, `nom`, `prix`, `description`, `stade`, `n
 
 INSERT INTO `louer` (`id`, `date_location`, `date_butoire`, `date_reelle`, `note`, `commentaire`, `action_id`, `point_relais_id`) VALUES
 (1, '2018-11-21', '2018-11-24', '2018-11-23', 4, 'Vraiment bien merci ', 1, 1);
-
--- --------------------------------------------------------
-
---
--- Dumping data for table `num_proposition`
---
-
-INSERT INTO `num_proposition` (`id`, `nom`, `date_propo`, `utilisateur_id`) VALUES
-(1, 'velo btwin', '2018-11-23', 16);
-
 
 
 -- --------------------------------------------------------
