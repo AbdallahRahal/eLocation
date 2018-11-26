@@ -208,7 +208,7 @@ ALTER TABLE `categorie`
 -- Indexes for table `proposition`
 --
 ALTER TABLE `proposition`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
   ADD KEY `utilisateur_id` (`utilisateur_id`);
 
 --
