@@ -10,13 +10,14 @@ function sidebar ($arg) { ?>
                 foreach ($arg as $key => $value) { ?>
                   <ul class='nav flex-column'>
                     <li class='nav-item'>
-                        <a class="nav-link active" href="index.php?page=accueil&&rub=<?=$_GET['rub']?>&&cat=<?=$value?>" > <?=$value?></a>
+                        <a class="nav-link active" href="index.php?page=accueil&&rub=<?=$_GET['rub']?>&&cat=<?=$key?>" > <?=$value?></a>
                     </li>
                  </ul>
 
             <?php 
             }
             ?>
+
             
            </div>
         </nav>
