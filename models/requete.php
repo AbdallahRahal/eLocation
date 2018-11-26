@@ -11,6 +11,17 @@ function connexion($id,$mdp) {
     return $donnees;
 }
 
+function info_article($GET) {
+    include('models/db_connect.php');
+    $req = $bdd->prepare("SELECT  * from article WHERE article.id = :art");
+    $req-> execute(array(":art" => $_GET['art']));
+    $donnees = $req->fetch(PDO::FETCH_ASSOC);
+    if(empty($donnees)) {
+        $donnees = NULL;
+    }
+    return $donnees;
+}
+
 function mes_articles() {
     include('models/db_connect.php');
     $req = $bdd->query("SELECT nom FROM categorie");
@@ -50,13 +61,15 @@ function mes_articles_de_ma_cat () {
 
 function afficher_art_toute_categorie() {
     include('models/db_connect.php');
-    $req = $bdd->query("SELECT nom, description, prix_journee FROM article");
+    $req = $bdd->query("SELECT nom, description, prix_journee, id FROM article");
     $i =0;
     while($ligne = $req->fetch() ) {
     
         $donnees[$i][0] = $ligne['nom'];
         $donnees[$i][1] = $ligne['description'];
         $donnees[$i][2] = $ligne['prix_journee'];
+        $donnees[$i][3] = $ligne['id'];
+
         $i++;
     }
 

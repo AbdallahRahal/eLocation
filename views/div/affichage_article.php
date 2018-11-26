@@ -12,7 +12,7 @@
                 <p class="card-text"><?= $affiche[$i][1] ?> .</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <a href="index.php?page=<?=$_GET['page']?>&&rub=<?=$_GET['rub']?>&&cat=<?php if(isset($_GET['cat'])) { echo $_GET['cat']; }else{ }?>&&art=<?=$affiche[$i][3]?>" class="btn btn-sm btn-outline-secondary">Details</a>
                     <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                   </div>
                   <a class="text-muted"><?= $affiche[$i][2]."€/jour" ?></a>
