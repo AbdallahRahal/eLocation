@@ -131,6 +131,12 @@ function affichage_reprise() {
     return($affichage_reprise);
 }
 
+function affichage_location() {
+    include('models/db_connect.php');
+    $affichage_location = $bdd->query('SELECT article.nom as Nom, article.prix_journee as Prix, article.lien_photo as Photo, article.description as Description, louer.date_location FROM article JOIN action ON article.id = action.article_id JOIN louer ON action.id = louer.action_id JOIN utilisateur ON action.utilisateur_id = utilisateur.id WHERE utilisateur.id = '.$_SESSION['id'].';');
+    return($affichage_location);
+}
+
 function name() {
     include('models/db_connect.php');
     $name = $bdd->query('');

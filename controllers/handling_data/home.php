@@ -29,7 +29,7 @@ include 'views/template/rubrique.php';
 if(isset($_SESSION['compte'])) {
 $rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations","vendre"=>"Vendre");
 }else{
-$rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations");
+$rubrique=array("cat"=>"Catégorie");
 }
 
 include_once 'models/requete.php';

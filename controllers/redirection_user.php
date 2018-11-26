@@ -37,7 +37,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 	if(isset($_SESSION['compte'])) {
 	$rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations","vendre"=>"Vendre");
 	}else{
-	$rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations");
+	$rubrique=array("cat"=>"Catégorie");
 	}
 	$article = mes_articles();
 	rubriques($rubrique, $article);
@@ -56,21 +56,22 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 		$affiche = mes_articles_de_ma_cat();
 		affichage_article($affiche);
 
-		}elseif($_GET['cat'] == 'handball') {
+		}elseif($_GET['cat'] == 'hiver') {
 		$affiche = mes_articles_de_ma_cat();
 		affichage_article($affiche);
 
-		}elseif($_GET['cat'] == 'basket') {
+		}elseif($_GET['cat'] == 'tennis') {
 		$affiche = mes_articles_de_ma_cat();
 		affichage_article($affiche);
 
-		}elseif($_GET['cat'] == 'autre') {
+		}elseif($_GET['cat'] == 'ete') {
 		$affiche = mes_articles_de_ma_cat();
 		affichage_article($affiche);
 
 		}
 	} elseif ($_GET['rub'] == 'loc') {
-		echo "ici, seront visible nos loc";
+		$affichage_location = affichage_location();
+		include 'views/template/mes_locations.php';
 	} elseif ($_GET['rub'] == 'vendre') { 
 		include 'views/div/form_proposition_vente.php';
 	}
