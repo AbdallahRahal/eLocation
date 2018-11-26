@@ -37,7 +37,7 @@ function mes_categories() {
 function mes_articles_de_ma_cat () {
     include('models/db_connect.php');
 
-    $req = $bdd->prepare("SELECT article.nom as nono, description, prix_journee, article.id as id  FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE categorie.id = :cat_id");
+    $req = $bdd->prepare("SELECT article.nom as nono, description, prix_journee, article.id as id, lien_photo  FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE categorie.id = :cat_id");
     $req-> execute(array(":cat_id"=> $_GET['cat']));
 
     $i =0;
@@ -47,6 +47,8 @@ function mes_articles_de_ma_cat () {
         $donnees[$i][1] = $ligne['description'];
         $donnees[$i][2] = $ligne['prix_journee'];
         $donnees[$i][3] = $ligne['id'];
+        $donnees[$i][4] = $ligne['lien_photo'];
+
         $i++;
     }
 
@@ -58,15 +60,15 @@ function mes_articles_de_ma_cat () {
 
 function afficher_art_toute_categorie() {
     include('models/db_connect.php');
-    $req = $bdd->query("SELECT nom, description, prix_journee, id FROM article");
+    $req = $bdd->query("SELECT nom, description, prix_journee, id, lien_photo FROM article");
     $i =0;
     while($ligne = $req->fetch() ) {
     
         $donnees[$i][0] = $ligne['nom'];
         $donnees[$i][1] = $ligne['description'];
         $donnees[$i][2] = $ligne['prix_journee'];
-
         $donnees[$i][3] = $ligne['id'];
+        $donnees[$i][4] = $ligne['lien_photo'];
         
 
         $i++;

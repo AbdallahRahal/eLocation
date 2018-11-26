@@ -23,7 +23,7 @@
             <td><?php echo $donneesAffichage['Nom']; ?></td>
             <td><?php echo $donneesAffichage['Prix']; ?></td>
             <td><?php echo $donneesAffichage['Description']; ?></td>
-            <td><img src="views/template/vbtwin1.jpg" style="width: 150px;height: 150px;"></td>
+            <td><img src="<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?php echo $donneesAffichage['Stade']; ?></td>
             <td><?php echo $donneesAffichage['Date']; ?></td>
             <td><button type="button" class="btn btn-danger btn-sm">Traiter</button></td>
