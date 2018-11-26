@@ -93,8 +93,8 @@ CREATE TABLE `proposition` (
   `titre` varchar(45) DEFAULT NULL,
   `prix` int(11) DEFAULT NULL,
   `description` text DEFAULT NULL,
-  `photo1` varchar(200) NOT NULL,
-  `photo2` varchar(200) NOT NULL,
+  `photo1` varchar(200) DEFAULT NULL,
+  `photo2` varchar(200) DEFAULT NULL,
   `stade` enum('proposition','offre','valide') NOT NULL DEFAULT 'proposition',
   `date_propo` date NOT NULL,
   `utilisateur_id` int(11) NOT NULL
