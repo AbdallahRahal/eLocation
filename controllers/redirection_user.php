@@ -26,6 +26,10 @@ if(isset($_SESSION['compte'])) {
 	include 'views/template/register_form.php';
 
 }
+if(isset($_GET['proposition'])) {
+	include_once('controllers/handling_data/proposition.php');
+    
+}
 
 include 'views/template/nav.php';
 include 'views/template/rubrique.php';
@@ -42,6 +46,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 	$article = mes_categories();
 	rubriques($rubrique, $article);
 
+	if(isset($_GET['rub'])) {
 	if($_GET['rub'] == 'cat' ) {
 		
 		include 'views/div/affichage_article.php';
@@ -81,11 +86,12 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 	} elseif ($_GET['rub'] == 'vendre') { 
 		include 'views/div/form_proposition_vente.php';
 	}
-
+	}
 } else if($_SESSION['compte'] == 'admin') {
 	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs");
 	$article = mes_categories();
 	rubriques($rubrique, $article);
+	if(isset($_GET['rub'])) {
 	if($_GET['rub'] == 'cat' ) {
 		
 		include 'views/div/affichage_article.php';
@@ -125,6 +131,6 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 	}elseif ($_GET['rub'] == 'uti') {
 		$affichage_utilisateur = affichage_utilisateur();
 		include('views/template/mes_utilisateurs.php');
-	}
+	}}
 }
 ?>
