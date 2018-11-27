@@ -1,0 +1,53 @@
+<div class="container" style="max-width: 60%;margin-top: 8%">
+<h3>Modifier un user:</h3>
+    <form action="" method="POST">
+        <div class="form-group">
+
+            <label for="recipient-name" class="col-form-label">Mail :</label>
+            <input required type="mail" class="form-control" name="mail" id="recipient-mail">
+
+          </div>
+          <div class="form-group">
+
+            <label for="recipient-name" class="col-form-label">Pseudo :</label>
+            <input required type="text" class="form-control" name="pseudo" id="recipient-pseudo">
+
+          </div>
+          <div class="form-group">
+
+            <label for="recipient-name" class="col-form-label">Mot de passe :</label>
+            <input required type="password" class="form-control" name="mdp" id="recipient-mail">
+
+          </div>
+          <div class="form-group">
+
+            <label for="recipient-name" class="col-form-label">Prenom :</label>
+            <input required type="text" class="form-control" name="prenom" id="recipient-prenom">
+
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Nom :</label>
+            <input required type="text" class="form-control" name="nom" id="message-nom">
+          </div>
+          <div class="form-group">
+             <label for="recipient-name" class="col-form-label">Adresse postale :</label>
+             <input required type="text" class="form-control" name="adresse" id="recipient-prenom">
+          </div>
+          <div class="form-group">
+          Sexe : </br>
+          <select name="sexe" >
+            <option value="H">Homme</option>
+            <option value="F">Femme</option>
+          </select>
+          </div>
+          <div class="form-group">
+             <label for="recipient-name" class="col-form-label">Code Postale :</label>
+             <input required type="number" max="99999" min="0" class="form-control" name="cp" id="recipient-prenom">
+          </div>
+          <div class="form-group">
+             <label for="recipient-name" class="col-form-label">Ville :</label>
+             <input required type="text" class="form-control" name="ville" id="recipient-prenom">
+          </div>
+        </div>
+    </form>
+</div>

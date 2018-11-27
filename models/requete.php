@@ -167,7 +167,7 @@ function affichage_utilisateur() {
 
 function affichage_reprise() {
     include('models/db_connect.php');
-    $affichage_reprise = $bdd->query("SELECT ligne_proposition.id as ID,ligne_proposition.nom as Nom,ligne_proposition.prix as Prix,ligne_proposition.description as Description,ligne_proposition.photo as Photo,ligne_proposition.stade as Stade, num_proposition.date_propo as Date FROM `ligne_proposition` JOIN num_proposition ON ligne_proposition.num_proposition_id = num_proposition.id GROUP BY ligne_proposition.stade;");
+    $affichage_reprise = $bdd->query("SELECT proposition.id as ID,proposition.titre as Nom,proposition.prix as Prix,proposition.description as Description,proposition.photo1 as Photo,proposition.stade as Stade, proposition.date_propo as Date FROM `proposition` GROUP BY proposition.stade;");
     return($affichage_reprise);
 }
 
