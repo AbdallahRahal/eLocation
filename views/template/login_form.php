@@ -24,7 +24,7 @@
             <div class="alert alert-danger" id="alerterror" role="alert" style="display:none;">
               <strong>Erreur!</strong> PTDR T KI?
             </div>
-            <label for="recipient-name" class="col-form-label">Mail:</label>
+            <label for="recipient-name" class="col-form-label">Identifiant ou Mail:</label>
             <input required type="text" class="form-control" name="identifiant" id="recipient-name">
 
           </div>
