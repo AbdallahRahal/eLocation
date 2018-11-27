@@ -37,6 +37,41 @@ function connexion($id, $mdp) {
     }
 }
 
+function modification ($POST) {
+    include('models/db_connect.php');
+
+   $user = $bdd->prepare('select id, mdp from utilisateur where id = :id');
+    $user->execute([':id' => $_SESSION['id']]);
+
+    $result = $user->fetch(PDO::FETCH_ASSOC);
+
+    $validPassword = password_verify($_POST['mdp'], $result['mdp']);
+    
+    if($validPassword) {
+    
+        $query= 'UPDATE utilisateur SET mdp = :newmdp WHERE utilisateur.id = :utilisateur';
+        $req = $bdd->prepare($query);
+        try {
+         $req-> execute(array(":newmdp" => password_hash($_POST['newmdp'], PASSWORD_BCRYPT),
+                              ":utilisateur" => $_SESSION['id']));
+        } catch (Exception $e) {
+            echo 'Exception reçue : ',  $e->getMessage(), "\n";
+            die("raterr");
+        }
+
+    } else { 
+        
+        require_once 'views/template/settings_form.php'; ?>
+        ?>
+    
+        <script> 
+            $('#SettingsModal').modal('show');
+            $('#alerterror').show();
+        </script>    <?php
+    }
+
+
+}
 function info_article($GET) {
     include('models/db_connect.php');
     $req = $bdd->prepare("SELECT  * from article WHERE article.id = :art");
@@ -145,19 +180,7 @@ function utilisateur($mail,$pseudo) {
     return $donnees;
 }
 
-function modification ($POST) {
-    include('models/db_connect.php');
-    $query= 'UPDATE utilisateur SET mdp = :newmdp WHERE utilisateur.id = :utilisateur and utilisateur.mdp = :mdp';
-    $req = $bdd->prepare($query);
-    try {
-     $req-> execute(array(":mdp" => $_POST['mdp'],
-                          ":newmdp" => $_POST['newmdp'],
-                          ":utilisateur" => $_SESSION['id']));
-    } catch (Exception $e) {
-        echo 'Exception reçue : ',  $e->getMessage(), "\n";
-        die("raterr");
-    }
-}
+
    
 function affichage_utilisateur() {
     include('models/db_connect.php');
