@@ -1,10 +1,10 @@
-<div class="container" style="max-width: 60%;margin-top: 8%">
+<div class="container" style="max-width: 50%;margin-top: 6%">
 <?php while($donneesAffichage = $info_user->fetch()){ ?>
-<h3>Modifier <?=$donneesAffichage['pseudo']?>:</h3>
+<h3>Modification de <?=$donneesAffichage['pseudo']?>:</h3>
     <form action="index.php" method="GET">
     <input type='hidden' name='page' value='accueil'>
           <input type='hidden' name='rub' value='uti'>
-          <input type='hidden' name='modif' value='<?=$donneesAffichage['id']?>'>
+          <input type='hidden' name='id' value='<?=$donneesAffichage['id']?>'>
         <div class="form-group">
 
             <label for="recipient-name" class="col-form-label">Mail :</label>
@@ -19,9 +19,13 @@
           </div>
           <div class="form-group">
 
-            <label for="recipient-name" class="col-form-label">Mot de passe :</label>
-            <input required type="password" class="form-control" name="mdp" id="recipient-mail" value="<?=$donneesAffichage['mdp']?>">
 
+            <label for="recipient-name" class="col-form-label">Mot de passe :</label>
+            <input type="text" class="form-control" name="mdp" id="recipient-mail" placeholder="Nouveau mot de passe">
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+              <input type="checkbox" class="custom-control-input" id="customControlInline" name="modif_mdp" value="true">
+              <label class="custom-control-label" for="customControlInline">Cochez si le mot de passe est modifié</label>
+             </div>
           </div>
           <div class="form-group">
 

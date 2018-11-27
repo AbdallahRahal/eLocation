@@ -224,10 +224,22 @@ function info_user() {
     return($info_user);
 }
 
+function update_user_mdp() {
+    include('models/db_connect.php');
+    $update_user_mdp = $bdd->query("UPDATE `utilisateur` SET `pseudo`='".$_GET['pseudo']."',`mdp`='".password_hash($_GET['mdp'], PASSWORD_BCRYPT)."',`nom`='".$_GET['nom']."',`prenom`='".$_GET['prenom']."',`adresse`='".$_GET['adresse']."',`mail`='".$_GET['mail']."',`cp`='".$_GET['cp']."',`ville`='".$_GET['ville']."' WHERE utilisateur.id = ".$_GET['id'].";");
+    return($update_user_mdp);
+}
+
 function update_user() {
     include('models/db_connect.php');
-    $update_user = $bdd->query("UPDATE `utilisateur` SET `pseudo`='".$_GET['pseudo']."',`mdp`='".$_GET['mdp']."',`nom`='".$_GET['nom']."',`prenom`='".$_GET['prenom']."',`adresse`='".$_GET['adresse']."',`mail`='".$_GET['mail']."',`cp`='".$_GET['cp']."',`ville`='".$_GET['ville']."' WHERE utilisateur.id = ".$_GET['modif'].";");
+    $update_user = $bdd->query("UPDATE `utilisateur` SET `pseudo`='".$_GET['pseudo']."',`nom`='".$_GET['nom']."',`prenom`='".$_GET['prenom']."',`adresse`='".$_GET['adresse']."',`mail`='".$_GET['mail']."',`cp`='".$_GET['cp']."',`ville`='".$_GET['ville']."' WHERE utilisateur.id = ".$_GET['id'].";");
     return($update_user);
+}
+
+function delete_user() {
+    include('models/db_connect.php');
+    $delete_user = $bdd->query("DELETE FROM `utilisateur` WHERE utilisateur.id = ".$_GET['supp']." ");
+    return($delete_user);
 }
 
 //------------------Template Fonction------------------//

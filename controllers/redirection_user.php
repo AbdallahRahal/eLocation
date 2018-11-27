@@ -129,14 +129,18 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 		$affichage_reprise = affichage_reprise();
 		include('views/template/mes_reprises.php');
 	}elseif ($_GET['rub'] == 'uti') {
+		if(isset($_GET['modif_user']) && !isset($_GET['modif_mdp'])) {
+			$update_user = update_user();
+		}elseif (isset($_GET['modif_mdp'])){
+			$update_user_mdp = update_user_mdp();
+		}
 		if(isset($_GET['modif'])) {
 			$info_user = info_user();
 			include('views/template/modifier_user.php');
-			if(isset($_GET['modif_user'])) {
-				$update_user = update_user();
-			}
-		} elseif(isset($_GET['supp'])) {
-			/*include('views/template/modifier_user.php');*/
+		}elseif(isset($_GET['supp'])) {
+			$delete_user = delete_user();
+			$affichage_utilisateur = affichage_utilisateur();
+			include('views/template/mes_utilisateurs.php');
 		}else{
 			$affichage_utilisateur = affichage_utilisateur();
 			include('views/template/mes_utilisateurs.php');
