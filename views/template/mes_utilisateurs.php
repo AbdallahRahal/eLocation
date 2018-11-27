@@ -24,7 +24,7 @@
     while($donneesAffichage = $affichage_utilisateur->fetch()){
         echo"<tr><th scope=\"row\">".$donneesAffichage['id']."</th>
             <td> ".$donneesAffichage['pseudo']."</td>
-            <td> ".$donneesAffichage['mdp'] ."</td>
+            <td>*********</td>
             <td> ".$donneesAffichage['nom']."</td>
             <td> ".$donneesAffichage['prenom']."</td>
             <td> ".$donneesAffichage['adresse']."</td>

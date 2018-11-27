@@ -200,13 +200,6 @@ function affichage_location() {
     return($affichage_location);
 }
 
-function name() {
-    include('models/db_connect.php');
-    $name = $bdd->query('');
-    return($name);
-}
-
-
 function proposition($titre,$description) {
     include("models/db_connect.php");
     $query = "INSERT INTO proposition (`titre`, `description`, `stade`, `date_propo`, `utilisateur_id`) VALUES (:titre, :descri, 'proposition', :dat, :id) ";
@@ -224,5 +217,25 @@ function proposition($titre,$description) {
         die("raterr");
     }
 }
+
+function info_user() {
+    include('models/db_connect.php');
+    $info_user = $bdd->query("SELECT * FROM `utilisateur` WHERE utilisateur.id = ".$_GET['modif']." ");
+    return($info_user);
+}
+
+function update_user() {
+    include('models/db_connect.php');
+    $update_user = $bdd->query("UPDATE `utilisateur` SET `pseudo`='".$_GET['pseudo']."',`mdp`='".$_GET['mdp']."',`nom`='".$_GET['nom']."',`prenom`='".$_GET['prenom']."',`adresse`='".$_GET['adresse']."',`mail`='".$_GET['mail']."',`cp`='".$_GET['cp']."',`ville`='".$_GET['ville']."' WHERE utilisateur.id = ".$_GET['modif'].";");
+    return($update_user);
+}
+
+//------------------Template Fonction------------------//
+function name() {
+    include('models/db_connect.php');
+    $name = $bdd->query('');
+    return($name);
+}
+//-----------------------------------------------------//
 
 ?>
