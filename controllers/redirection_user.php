@@ -129,8 +129,18 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 		$affichage_reprise = affichage_reprise();
 		include('views/template/mes_reprises.php');
 	}elseif ($_GET['rub'] == 'uti') {
-		$affichage_utilisateur = affichage_utilisateur();
-		include('views/template/mes_utilisateurs.php');
+		if(isset($_GET['modif'])) {
+			$info_user = info_user();
+			include('views/template/modifier_user.php');
+			if(isset($_GET['modif_user'])) {
+				$update_user = update_user();
+			}
+		} elseif(isset($_GET['supp'])) {
+			/*include('views/template/modifier_user.php');*/
+		}else{
+			$affichage_utilisateur = affichage_utilisateur();
+			include('views/template/mes_utilisateurs.php');
+		}
 	}}
 }
 ?>
