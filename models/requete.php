@@ -154,4 +154,24 @@ function name() {
     $name = $bdd->query('');
     return($name);
 }
+
+
+function proposition($titre,$description) {
+    include("models/db_connect.php");
+    $query = "INSERT INTO proposition (`titre`, `description`, `stade`, `date_propo`, `utilisateur_id`) VALUES (:titre, :descri, 'proposition', :dat, :id) ";
+    $req = $bdd->prepare($query);    
+    try {
+
+    $req-> execute(array(":titre" => $titre,
+                         ":descri" => $description,
+                         ":dat" => date("Y\/m\/d"),
+                         ":id" => $_SESSION['id']
+                        ));
+    
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        die("raterr");
+    }
+}
+
 ?>
