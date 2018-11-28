@@ -227,6 +227,8 @@ function info_user() {
 function update_user_mdp() {
     include('models/db_connect.php');
     $update_user_mdp = $bdd->query("UPDATE `utilisateur` SET `pseudo`='".$_GET['pseudo']."',`mdp`='".password_hash($_GET['mdp'], PASSWORD_BCRYPT)."',`nom`='".$_GET['nom']."',`prenom`='".$_GET['prenom']."',`adresse`='".$_GET['adresse']."',`mail`='".$_GET['mail']."',`cp`='".$_GET['cp']."',`ville`='".$_GET['ville']."' WHERE utilisateur.id = ".$_GET['id'].";");
+
+    include('controllers/handling_data/mailer.php');
     return($update_user_mdp);
 }
 
