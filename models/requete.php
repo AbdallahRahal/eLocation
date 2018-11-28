@@ -192,7 +192,7 @@ function proposition($titre,$description) {
 
     $req-> execute(array(":titre" => $titre,
                          ":descri" => $description,
-                         ":dat" => date("Y\/m\/d"),
+                         ":dat" => date("d\/m\/Y"),
                          ":id" => $_SESSION['id']
                         ));
     
