@@ -30,3 +30,45 @@ $('#RegisterModal').on('show.bs.modal', function (event) {
   modal.find('.modal-body input').val(recipient)
 })
 };
+
+function recherche(amount) {
+  amount = Number(amount);
+  for(let i = 0; i < amount; i++) {
+    
+    var titre = document.getElementById("titre"+ i).textContent;
+    var text = document.getElementById("text"+ i).textContent;
+    let item = document.getElementById('card'+ i);
+    var ecriture = document.getElementById('test1').value;
+    
+    if(titre[titre.search(ecriture)] != undefined || text[text.search(ecriture)] != undefined  ) {
+    //if(text.search(ecriture)) {
+      $(item).show();
+    
+    } else {
+
+      $(item).hide();
+
+    }
+  }
+
+};
+
+function tri(amount) {
+  amount = Number(amount);
+  for(let i = 0; i < amount; i++) {
+    
+    var price = document.getAttribute("data-price");
+
+    
+    if(titre[titre.search(ecriture)] != undefined || text[text.search(ecriture)] != undefined  ) {
+    //if(text.search(ecriture)) {
+      $(item).show();
+    
+    } else {
+
+      $(item).hide();
+
+    }
+  }
+
+};
