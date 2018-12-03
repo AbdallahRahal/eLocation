@@ -79,10 +79,20 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			}else{
 				
 				if(isset($_GET['art'])) {
-			
-					include 'views/div/affichage_page_vente.php';
-					$article = info_article($_GET['art']);
-					affichage_page_vente($article);
+
+					if(isset($_GET['louer_article'])) {
+						if(verif_article_dispo($_GET['louer_article'])==false){
+							include 'views/template/louer_article.php';
+						
+							if(isset($_GET['valider'])){
+								//$louer_article_valide = louer_article_valide();
+							}
+						}
+					}else{
+						include 'views/div/affichage_page_vente.php';
+						$article = info_article($_GET['art']);
+						affichage_page_vente($article);
+					}
 				
 				}else{
 					
@@ -105,7 +115,6 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 		}
 	
 	}
-
 }else if($_SESSION['compte'] == 'admin') {
 	
 	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs");

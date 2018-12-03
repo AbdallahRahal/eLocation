@@ -251,5 +251,16 @@ function name() {
     return($name);
 }
 //-----------------------------------------------------//
+function verif_article_dispo($id) {
+    include('models/db_connect.php');
+    $statut = $bdd->prepare('Select statut from article where id=:id');
+    $statut-> execute(array(":id" => $id));
+    $donnees = $statut->fetch(PDO::FETCH_ASSOC);
+    if($donnees == "dispo"){
+        return true;
+    }else{
+        return false;
+    }
+}
 
 ?>
