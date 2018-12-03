@@ -8,7 +8,7 @@
         <div class="form-group">
 
             <label for="recipient-name" class="col-form-label">Mail :</label>
-            <input required type="mail" class="form-control" name="mail" id="recipient-mail" value="<?=$donneesAffichage['mail']?>">
+            <input required type="email" class="form-control" name="mail" id="recipient-mail" value="<?=$donneesAffichage['mail']?>">
 
           </div>
           <div class="form-group">

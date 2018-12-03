@@ -13,7 +13,7 @@
           <div class="form-group">
 
             <label for="recipient-name" class="col-form-label">Mail :</label>
-            <input required type="mail" class="form-control" name="mail" id="recipient-mail">
+            <input required type="email" class="form-control" name="mail" id="recipient-mail">
 
           </div>
           <div class="form-group">
@@ -51,7 +51,7 @@
           </div>
           <div class="form-group">
              <label for="recipient-name" class="col-form-label">Code Postal :</label>
-             <input required type="number" max="99999" min="0" class="form-control" name="cp" id="recipient-prenom">
+             <input required type="number"  max="99999" minlength="10"  class="form-control" name="cp" id="recipient-prenom">
           </div>
           <div class="form-group">
              <label for="recipient-name" class="col-form-label">Ville :</label>

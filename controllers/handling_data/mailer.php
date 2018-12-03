@@ -11,12 +11,12 @@ $transport = (new Swift_SmtpTransport('smtp.mailtrap.io', 25))
 $mailer = new Swift_Mailer($transport);
 
 // Create a message
-$message = (new Swift_Message('Modification mdp'.$_GET['pseudo']))
-  ->setFrom(['isma@yahoo.com' => $_SESSION['pseudo']])
-  ->setTo(['torres@intechinfo.fr', 'torres@intechinfo.fr' => $_GET['pseudo']])
+$message = (new Swift_Message('Modification mdp '.$_GET['pseudo']))
+  ->setFrom(['eLocation@loc.com' => $_SESSION['pseudo']])
+  ->setTo([$_GET['mail'], $_GET['mail'] => $_GET['pseudo']])
   ->setBody('Votre mdp a bien été modifié, le nouveau mot de passe est '.$_GET['mdp']);
 
 // Send the message
 $result = $mailer->send($message);
-var_dump($result);
+
 ?>
