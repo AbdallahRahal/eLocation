@@ -73,6 +73,8 @@ var $sorted_items,
 $sorted_items = getSorted("#lists .col-md-4", "data-price").clone();
 
 $('#lists').html( $sorted_items );
+$('#lists').hide();
+$('#lists').show(1500);
 
   /*amount = Number(amount);
   var liste = document.getElementsByClassName('col-md-4');
@@ -89,7 +91,7 @@ $('#lists').html( $sorted_items );
         $(selector).toArray().reverse(function(a, b){
             var aVal = parseInt(a.getAttribute(attrName)),
                 bVal = parseInt(b.getAttribute(attrName));
-            return aVal - bVal;
+            return number(aVal) - number(bVal);
         })
       );
   };
@@ -97,6 +99,10 @@ $('#lists').html( $sorted_items );
 $sorted_items = getSorted("#lists .col-md-4", "data-price").clone();
 
 $('#lists').html( $sorted_items );
+$('#lists').hide();
+$('#lists').show(1500);
+
+
 
 }
 

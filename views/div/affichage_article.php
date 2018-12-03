@@ -2,13 +2,15 @@
  function affichage_article ($affiche) { /*var_dump($affiche); die('isma');*/ ?>
  <div class="album py-5 bg-light" style="margin-left: 20%;margin-top: 100px">
       <div class="container">
-        <input style="margin-left: 85%;margin-top: 10px;" id="test1" type="text" placeholder="Search..." name=""><br><br>
+        <div style="margin-left: 85%;margin-top: 10px;">
+        <input id="test1" type="text" placeholder="Search..." name=""><br><br>
 
-        <select style="margin-left: 85%;margin-top: 10px;" id="testJs" name="trier">
+        <select id="testJs" name="trier">
           <option>Trier par</option>
           <option id="test2" value="Croissant" > Prix Croissant</option>
           <option id="test3" value="Décroissant" >Prix Décroissant</option>
         </select>
+      </div>
         <div class="row" id="lists">
           <?php for($i=0; $i<count($affiche);$i++ ) { ?>
           <div id="card<?=$i?>" data-price="<?= $affiche[$i][2] ?>" class="col-md-4">
@@ -40,10 +42,6 @@
             </div>
           </div>
         <?php } ?>
-          </div>
-          <div id="after">
-            after
-            
           </div>
       </div> 
 </div>

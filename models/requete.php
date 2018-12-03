@@ -102,7 +102,7 @@ function mes_categories() {
 function mes_articles_de_ma_cat () {
     include('models/db_connect.php');
 
-    $req = $bdd->prepare("SELECT article.nom as nono, description, prix_journee, article.id as id, lien_photo  FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE categorie.id = :cat_id");
+    $req = $bdd->prepare("SELECT article.nom as nono, description, prix_journee, article.statut, article.id as id, lien_photo  FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE categorie.id = :cat_id");
     $req-> execute(array(":cat_id"=> htmlspecialchars($_GET['cat'])));
 
     $i =0;
@@ -113,6 +113,7 @@ function mes_articles_de_ma_cat () {
         $donnees[$i][2] = $ligne['prix_journee'];
         $donnees[$i][3] = $ligne['id'];
         $donnees[$i][4] = $ligne['lien_photo'];
+        $donnees[$i][5] = $ligne['statut'];
 
         $i++;
     }
