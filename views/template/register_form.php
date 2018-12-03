@@ -50,7 +50,7 @@
           </select>
           </div>
           <div class="form-group">
-             <label for="recipient-name" class="col-form-label">Code Postale :</label>
+             <label for="recipient-name" class="col-form-label">Code Postal :</label>
              <input required type="number" max="99999" min="0" class="form-control" name="cp" id="recipient-prenom">
           </div>
           <div class="form-group">

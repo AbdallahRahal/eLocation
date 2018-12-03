@@ -24,7 +24,7 @@
     while($donneesAffichage = $affichage_utilisateur->fetch()){
         echo"<tr><th scope=\"row\">".$donneesAffichage['id']."</th>
             <td> ".$donneesAffichage['pseudo']."</td>
-            <td> ".$donneesAffichage['mdp'] ."</td>
+            <td>*********</td>
             <td> ".$donneesAffichage['nom']."</td>
             <td> ".$donneesAffichage['prenom']."</td>
             <td> ".$donneesAffichage['adresse']."</td>
@@ -34,9 +34,12 @@
             <td> ".$donneesAffichage['ville']."</td>
             <td> ".$donneesAffichage['statut']."</td>
             <td> ".$donneesAffichage['etat']."</td>
-            <td><button type=\"button\" class=\"btn btn-danger btn-sm\">Supprimer</button></td>
-            <td><button type=\"button\" class=\"btn btn-danger btn-sm\">Modifier</button></td>
-            </tr>";
+            <form action=\"index.php\" method=\"get\">
+            <input type='hidden' name='page' value='accueil'>
+            <input type='hidden' name='rub' value='uti'>
+            <td><button type=\"submit\" name=\"supp\" value=\"".$donneesAffichage['id']."\" class=\"btn btn-danger btn-sm\">Supprimer</button></td>
+            <td><button type=\"submit\" name=\"modif\" value=\"".$donneesAffichage['id']."\" class=\"btn btn-danger btn-sm\">Modifier</button></td>
+            </tr></form>";
     }
     ?>
         </tbody>

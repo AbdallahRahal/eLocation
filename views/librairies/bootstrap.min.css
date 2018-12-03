@@ -1058,7 +1058,7 @@ pre code {
     .col-md-4 {
         -ms-flex: 0 0 33.333333%;
         flex: 0 0 33.333333%;
-        max-width: 33.333333%
+        max-width: 100%
     }
 
     .col-md-5 {
@@ -6258,7 +6258,7 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
 }
 
 .border-danger {
-    border-color: #dc3545 !important
+    border-color: #ef7f1b !important
 }
 
 .border-light {
@@ -9112,7 +9112,7 @@ a.text-warning:focus, a.text-warning:hover {
 }
 
 .text-danger {
-    color: #dc3545 !important
+    color: #ef7f1b !important
 }
 
 a.text-danger:focus, a.text-danger:hover {

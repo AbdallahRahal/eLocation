@@ -1,0 +1,12 @@
+{
+    "name": "anissabadji/e-location",
+    "authors": [
+        {
+            "name": "Isma49",
+            "email": "amazigh_trz@yahoo.fr"
+        }
+    ],
+    "require": {
+        "swiftmailer/swiftmailer": "^6.1"
+    }
+}

@@ -37,6 +37,41 @@ function connexion($id, $mdp) {
     }
 }
 
+function modification ($POST) {
+    include('models/db_connect.php');
+
+   $user = $bdd->prepare('select id, mdp from utilisateur where id = :id');
+    $user->execute([':id' => $_SESSION['id']]);
+
+    $result = $user->fetch(PDO::FETCH_ASSOC);
+
+    $validPassword = password_verify($_POST['mdp'], $result['mdp']);
+    
+    if($validPassword) {
+    
+        $query= 'UPDATE utilisateur SET mdp = :newmdp WHERE utilisateur.id = :utilisateur';
+        $req = $bdd->prepare($query);
+        try {
+         $req-> execute(array(":newmdp" => password_hash($_POST['newmdp'], PASSWORD_BCRYPT),
+                              ":utilisateur" => $_SESSION['id']));
+        } catch (Exception $e) {
+            echo 'Exception reçue : ',  $e->getMessage(), "\n";
+            die("raterr");
+        }
+
+    } else { 
+        
+        require_once 'views/template/settings_form.php'; ?>
+        ?>
+    
+        <script> 
+            $('#SettingsModal').modal('show');
+            $('#alerterror').show();
+        </script>    <?php
+    }
+
+
+}
 function info_article($GET) {
     include('models/db_connect.php');
     $req = $bdd->prepare("SELECT  * from article WHERE article.id = :art");
@@ -145,19 +180,7 @@ function utilisateur($mail,$pseudo) {
     return $donnees;
 }
 
-function modification ($POST) {
-    include('models/db_connect.php');
-    $query= 'UPDATE utilisateur SET mdp = :newmdp WHERE utilisateur.id = :utilisateur and utilisateur.mdp = :mdp';
-    $req = $bdd->prepare($query);
-    try {
-     $req-> execute(array(":mdp" => $_POST['mdp'],
-                          ":newmdp" => $_POST['newmdp'],
-                          ":utilisateur" => $_SESSION['id']));
-    } catch (Exception $e) {
-        echo 'Exception reçue : ',  $e->getMessage(), "\n";
-        die("raterr");
-    }
-}
+
    
 function affichage_utilisateur() {
     include('models/db_connect.php');
@@ -167,7 +190,7 @@ function affichage_utilisateur() {
 
 function affichage_reprise() {
     include('models/db_connect.php');
-    $affichage_reprise = $bdd->query("SELECT ligne_proposition.id as ID,ligne_proposition.nom as Nom,ligne_proposition.prix as Prix,ligne_proposition.description as Description,ligne_proposition.photo as Photo,ligne_proposition.stade as Stade, num_proposition.date_propo as Date FROM `ligne_proposition` JOIN num_proposition ON ligne_proposition.num_proposition_id = num_proposition.id GROUP BY ligne_proposition.stade;");
+    $affichage_reprise = $bdd->query("SELECT proposition.id as ID,proposition.titre as Nom,proposition.prix as Prix,proposition.description as Description,proposition.photo1 as Photo,proposition.stade as Stade, proposition.date_propo as Date FROM `proposition` ");
     return($affichage_reprise);
 }
 
@@ -176,13 +199,6 @@ function affichage_location() {
     $affichage_location = $bdd->query("SELECT article.nom as Nom, article.prix_journee as Prix, article.lien_photo as Photo, article.description as Description, louer.date_location as Date FROM article JOIN action ON article.id = action.article_id JOIN louer ON action.id = louer.action_id JOIN utilisateur ON action.utilisateur_id = utilisateur.id WHERE utilisateur.id = ".$_SESSION['id'].";");
     return($affichage_location);
 }
-
-function name() {
-    include('models/db_connect.php');
-    $name = $bdd->query('');
-    return($name);
-}
-
 
 function proposition($titre,$description) {
     include("models/db_connect.php");
@@ -201,5 +217,39 @@ function proposition($titre,$description) {
         die("raterr");
     }
 }
+
+function info_user() {
+    include('models/db_connect.php');
+    $info_user = $bdd->query("SELECT * FROM `utilisateur` WHERE utilisateur.id = ".$_GET['modif']." ");
+    return($info_user);
+}
+
+function update_user_mdp() {
+    include('models/db_connect.php');
+    $update_user_mdp = $bdd->query("UPDATE `utilisateur` SET `pseudo`='".$_GET['pseudo']."',`mdp`='".password_hash($_GET['mdp'], PASSWORD_BCRYPT)."',`nom`='".$_GET['nom']."',`prenom`='".$_GET['prenom']."',`adresse`='".$_GET['adresse']."',`mail`='".$_GET['mail']."',`cp`='".$_GET['cp']."',`ville`='".$_GET['ville']."' WHERE utilisateur.id = ".$_GET['id'].";");
+
+    include('controllers/handling_data/mailer.php');
+    return($update_user_mdp);
+}
+
+function update_user() {
+    include('models/db_connect.php');
+    $update_user = $bdd->query("UPDATE `utilisateur` SET `pseudo`='".$_GET['pseudo']."',`nom`='".$_GET['nom']."',`prenom`='".$_GET['prenom']."',`adresse`='".$_GET['adresse']."',`mail`='".$_GET['mail']."',`cp`='".$_GET['cp']."',`ville`='".$_GET['ville']."' WHERE utilisateur.id = ".$_GET['id'].";");
+    return($update_user);
+}
+
+function delete_user() {
+    include('models/db_connect.php');
+    $delete_user = $bdd->query("DELETE FROM `utilisateur` WHERE utilisateur.id = ".$_GET['supp']." ");
+    return($delete_user);
+}
+
+//------------------Template Fonction------------------//
+function name() {
+    include('models/db_connect.php');
+    $name = $bdd->query('');
+    return($name);
+}
+//-----------------------------------------------------//
 
 ?>

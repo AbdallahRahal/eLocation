@@ -51,7 +51,7 @@ CREATE TABLE `article` (
   `nom` varchar(45) NOT NULL,
   `description` text NOT NULL,
   `prix_journee` int(11) NOT NULL,
-  `lien_photo` varchar(45) NOT NULL,
+  `lien_photo` varchar(200) NOT NULL,
   `statut` enum('dispo','loue','reserve') NOT NULL,
   `etat` enum('neuf','abime') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -141,7 +141,7 @@ CREATE TABLE `point_relais` (
 CREATE TABLE `utilisateur` (
   `id` int(11) NOT NULL,
   `pseudo` varchar(45) NOT NULL,
-  `mdp` varchar(45) NOT NULL,
+  `mdp` varchar(200) NOT NULL,
   `nom` varchar(45) NOT NULL,
   `prenom` varchar(45) NOT NULL,
   `adresse` varchar(45) NOT NULL,
