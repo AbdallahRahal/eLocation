@@ -3,8 +3,8 @@ require_once('vendor/autoload.php');
 
 // Create the Transport
 $transport = (new Swift_SmtpTransport('smtp.mailtrap.io', 25))
-  ->setUsername('2d55accaed592c')
-  ->setPassword('8f937707d7ea51')
+  ->setUsername('021f46c8621e59')
+  ->setPassword('a56ed0c67c699f')
 ;
 
 // Create the Mailer using your created Transport
@@ -14,7 +14,20 @@ $mailer = new Swift_Mailer($transport);
 $message = (new Swift_Message('Modification mdp '.$_GET['pseudo']))
   ->setFrom(['eLocation@loc.com' => $_SESSION['pseudo']])
   ->setTo([$_GET['mail'], $_GET['mail'] => $_GET['pseudo']])
-  ->setBody('Votre mdp a bien été modifié, le nouveau mot de passe est '.$_GET['mdp']);
+  ->setBody('
+  Bonjour '.$_GET['pseudo'].',
+
+  Ce message est envoyé automatiquement.
+  
+  Une réinitialisation du mot de passe de votre compte User a été effectué sur le site eLocation.
+  
+  ATTENTION !
+  Ne répondez pas à ce mail et ne partagez jamais vos informations personnelles.
+  Voici votre nouveau mot de passe : "'.$_GET['mdp'].'".
+  
+  Cordialement,
+  L’équipe eLocation
+  ');
 
 // Send the message
 $result = $mailer->send($message);
