@@ -108,7 +108,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 
 }else if($_SESSION['compte'] == 'admin') {
 	
-	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs");
+	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs","mes_cat"=>"Mes Catégories");
 	$article = mes_categories();
 	rubriques($rubrique, $article);
 	
@@ -184,6 +184,11 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 				include('views/template/mes_utilisateurs.php');
 			
 			}
+		} else if($_GET['rub'] == 'mes_cat') {
+
+			$mes_categories = mes_categories();
+			include('views/template/mes_categories.php');
+
 		}
 	}
 }

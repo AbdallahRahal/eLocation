@@ -85,14 +85,8 @@ function info_article($GET) {
 
 function mes_categories() {
     include('models/db_connect.php');
-    $req = $bdd->query("SELECT id,nom FROM categorie");
-
-    while($ligne = $req->fetch() ) {
-    
-        $donnees[$ligne['id']] = $ligne['nom'];
-    }
-
-    return $donnees;
+    $mes_categories = $bdd->query('SELECT `id` as ID, `nom` as Nom FROM `categorie`');
+    return($mes_categories);
 }
 
 function mes_articles_de_ma_cat () {
