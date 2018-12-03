@@ -25,9 +25,12 @@
                 <center><h4 id="titre<?=$i?>"><?= $affiche[$i][0] ?></h4></center>
 
               </div>
-              <div class="card-body" style="max-height: 365px;">
+              <div class="card-body" style="max-height: 325px;min-height: 325px;">
               <center><img style="width: 230px" src="<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap"></center>
                 <p id="text<?=$i?>" class="card-text"><?= $affiche[$i][1] ?> </p>
+              </div>
+              <div class="card-footer" >
+
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <a href="index.php?page=<?=$_GET['page']?>&&rub=<?=$_GET['rub']?>&&cat=<?php if(isset($_GET['cat'])) { echo $_GET['cat']; }else{ }?>&&art=<?=$affiche[$i][3]?>" class="btn btn-sm btn-outline-secondary">Details</a>

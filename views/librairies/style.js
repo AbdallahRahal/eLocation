@@ -88,10 +88,10 @@ $('#lists').show(1500);
   var $sorted_items,
   getSorted = function(selector, attrName) {
       return $(
-        $(selector).toArray().reverse(function(a, b){
+        $(selector).toArray().sort(function(a, b){
             var aVal = parseInt(a.getAttribute(attrName)),
                 bVal = parseInt(b.getAttribute(attrName));
-            return number(aVal) - number(bVal);
+            return bVal - aVal;
         })
       );
   };
