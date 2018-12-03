@@ -28,7 +28,7 @@ include 'views/template/rubrique.php';
 
 if(isset($_SESSION['compte'])) {
 	if ($_SESSION['compte'] == "admin") {
-	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs");
+	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs","mes_cat"=>"Mes Catégories");
 	}else{
 
 	$rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations","vendre"=>"Vendre");
