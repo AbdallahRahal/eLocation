@@ -25,7 +25,7 @@
                 <center><h4 id="titre<?=$i?>"><?= $affiche[$i][0] ?></h4></center>
 
               </div>
-              <div class="card-body">
+              <div class="card-body" style="max-height: 365px;">
               <center><img style="width: 230px" src="<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap"></center>
                 <p id="text<?=$i?>" class="card-text"><?= $affiche[$i][1] ?> </p>
                 <div class="d-flex justify-content-between align-items-center">
