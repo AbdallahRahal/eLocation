@@ -4,7 +4,6 @@
       <div class="container">
         <div style="margin-left: 85%;margin-top: 10px;">
         <input id="test1" type="text" placeholder="Search..." name=""><br><br>
-
         <select id="testJs" name="trier">
           <option>Trier par</option>
           <option id="test2" value="Croissant" > Prix Croissant</option>
@@ -20,9 +19,14 @@
                echo "style='background: linear-gradient(45deg, white 25%, #E8E8E8  25%, #E8E8E8  50%, white 50%, white 75%,#E8E8E8  75%); background-size: 100px 100px;' ";          
               }
               ?>
-              <h4 id="titre<?=$i?>"><?= $affiche[$i][0] ?></h4>
-              <img style="width: 230px" src="<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap">
+              >
+              <div class="card-header" >
+      
+                <center><h4 id="titre<?=$i?>"><?= $affiche[$i][0] ?></h4></center>
+
+              </div>
               <div class="card-body">
+              <center><img style="width: 230px" src="<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap"></center>
                 <p id="text<?=$i?>" class="card-text"><?= $affiche[$i][1] ?> </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
