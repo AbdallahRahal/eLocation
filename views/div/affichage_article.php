@@ -12,15 +12,27 @@
         <div class="row" id="lists">
           <?php for($i=0; $i<count($affiche);$i++ ) { ?>
           <div id="card<?=$i?>" data-price="<?= $affiche[$i][2] ?>" class="col-md-4">
-            <div class="card mb-4 shadow-sm" style="">
-              <h5 id="titre<?=$i?>"><?= $affiche[$i][0] ?></h5>
+            <div class="card mb-4 shadow-sm" 
+            <?php 
+              if($affiche[$i][5] != "dispo") { 
+               echo "style='background: linear-gradient(45deg, white 25%, #E8E8E8  25%, #E8E8E8  50%, white 50%, white 75%,#E8E8E8  75%); background-size: 100px 100px;' ";          
+              }
+              ?>
+              <h4 id="titre<?=$i?>"><?= $affiche[$i][0] ?></h4>
               <img style="width: 230px" src="<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap">
               <div class="card-body">
                 <p id="text<?=$i?>" class="card-text"><?= $affiche[$i][1] ?> </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <a href="index.php?page=<?=$_GET['page']?>&&rub=<?=$_GET['rub']?>&&cat=<?php if(isset($_GET['cat'])) { echo $_GET['cat']; }else{ }?>&&art=<?=$affiche[$i][3]?>" class="btn btn-sm btn-outline-secondary">Details</a>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">dispo</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" 
+              <?php 
+                if($affiche[$i][5] != "dispo") { 
+               echo "style='background-color : red;'";        
+            
+              }
+              ?>
+                    ><?= $affiche[$i][5] ?></button>
                   </div>
                   <a class="text-muted"><?= $affiche[$i][2]."€/jour" ?></a>
                 </div>
