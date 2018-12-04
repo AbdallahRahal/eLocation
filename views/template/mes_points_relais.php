@@ -1,7 +1,10 @@
 <div class="container" style="max-width: 35%;margin-top: 5%">
-<p><h2>Mes Catégories</h2><p><p>
+<p><h2>Mes Points Relais</h2><p>
     <form action="" method="POST">
-        Nom : <input required type="text" class="form-control" name="nom"><p>
+        Nom : <input required type="text" class="form-control" name="nom">
+        Adresse : <input required type="text" class="form-control" name="adresse">
+        Code Postal : <input required type="text" class="form-control" name="cp">
+        Ville : <input required type="text" class="form-control" name="ville">
         <button type="submit" name="ajouter" value="true" class="btn btn-primary">Ajouter</button>
     </form>
     <table class="table table-striped table-hover" style="align-center: auto;">
