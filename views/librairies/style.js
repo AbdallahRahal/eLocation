@@ -53,22 +53,57 @@ function recherche(amount) {
 
 };
 
-function tri(amount) {
-  amount = Number(amount);
-  for(let i = 0; i < amount; i++) {
-    
-    var price = document.getAttribute("data-price");
+function tri (amount) {
 
-    
-    if(titre[titre.search(ecriture)] != undefined || text[text.search(ecriture)] != undefined  ) {
-    //if(text.search(ecriture)) {
-      $(item).show();
-    
-    } else {
+var e = document.getElementById('testJs');
 
-      $(item).hide();
+if( e.options[e.selectedIndex].value == 'Croissant') {
 
-    }
-  }
+var $sorted_items,
+  getSorted = function(selector, attrName) {
+      return $(
+        $(selector).toArray().sort(function(a, b) {
+            var aVal = parseInt(a.getAttribute(attrName)),
+                bVal = parseInt(b.getAttribute(attrName));
+            return aVal - bVal;
+        })
+      );
+  };
+
+$sorted_items = getSorted("#lists .col-md-4", "data-price").clone();
+
+$('#lists').html( $sorted_items );
+$('#lists').hide();
+$('#lists').show(1500);
+
+  /*amount = Number(amount);
+  var liste = document.getElementsByClassName('col-md-4');
+  for(i = 0; i < liste.length;i++)
+  {
+    console.log(liste[i].dataset.price);
+  }*/
+
+}else if(e.options[e.selectedIndex].value == 'Décroissant' ) {
+
+  var $sorted_items,
+  getSorted = function(selector, attrName) {
+      return $(
+        $(selector).toArray().sort(function(a, b){
+            var aVal = parseInt(a.getAttribute(attrName)),
+                bVal = parseInt(b.getAttribute(attrName));
+            return bVal - aVal;
+        })
+      );
+  };
+
+$sorted_items = getSorted("#lists .col-md-4", "data-price").clone();
+
+$('#lists').html( $sorted_items );
+$('#lists').hide();
+$('#lists').show(1500);
+
+
+
+}
 
 };
