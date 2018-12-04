@@ -99,14 +99,116 @@ function mes_categories() {
     return $donnees;
 }
 
+function ajouter_cat($POST) {
+    include('models/db_connect.php');
+    $ajouter_cat = $bdd->query("INSERT INTO categories (`nom`, `promo`) VALUES (:nom, :promo)");
+    $req = $bdd->prepare($query);
+    try {
+        
+        $req-> execute(array(":nom" => htmlspecialchars($_POST['nom']),
+                             ":promo" => htmlspecialchars($_POST['promo'])));
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        die("erreur");
+    }
+}
+
+function modif_cat($POST) {
+    include('models/db_connect.php');
+    $modif_cat = $bdd->query("");
+    $req = $bdd->prepare($query);
+    try {
+        
+        $req-> execute(array(":nom" => htmlspecialchars($_POST['nom']),
+                             ":adresse" => htmlspecialchars($_POST['adresse']),
+                             ":horaire_ouvert" => htmlspecialchars($_POST['horaire_ouvert']),
+                             ":horaire_ferme" => htmlspecialchars($_POST['horaire_ferme']),
+                             ":cp" => htmlspecialchars($_POST['cp']),
+                             ":ville" => htmlspecialchars($_POST['ville'])));
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        die("erreur");
+    }
+}
+
+function suppr_cat($POST) {
+    include('models/db_connect.php');
+    $suppr_cat = $bdd->query("");
+    $req = $bdd->prepare($query);
+    try {
+        
+        $req-> execute(array(":nom" => htmlspecialchars($_POST['nom']),
+                             ":adresse" => htmlspecialchars($_POST['adresse']),
+                             ":horaire_ouvert" => htmlspecialchars($_POST['horaire_ouvert']),
+                             ":horaire_ferme" => htmlspecialchars($_POST['horaire_ferme']),
+                             ":cp" => htmlspecialchars($_POST['cp']),
+                             ":ville" => htmlspecialchars($_POST['ville'])));
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        die("erreur");
+    }
+}
 
 function point_relais() {
     include('models/db_connect.php');
-    $req = $bdd->query("SELECT * FROM point_relais");
+    $point_relais = $bdd->query("SELECT * FROM point_relais");
+    return($point_relais);
+}
 
-    $donnees = $req -> fetchAll();
+function ajouter_relais($POST) {
+    include('models/db_connect.php');
+    $ajouter_relais = $bdd->query("INSERT INTO point_relais (`nom`, `adresse`, `horaire_ouvert`, `horaire_ferme`, `cp`, `ville`) VALUES (:nom, :adresse, :horaire_ouvert, :horaire_ferme, :cp, :ville)");
+    $req = $bdd->prepare($query);
+    try {
+        
+        $req-> execute(array(":nom" => htmlspecialchars($_POST['nom']),
+                             ":adresse" => htmlspecialchars($_POST['adresse']),
+                             ":horaire_ouvert" => htmlspecialchars($_POST['horaire_ouvert']),
+                             ":horaire_ferme" => htmlspecialchars($_POST['horaire_ferme']),
+                             ":cp" => htmlspecialchars($_POST['cp']),
+                             ":ville" => htmlspecialchars($_POST['ville'])));
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        die("erreur");
+    }
+}
 
-    return $donnees;
+
+function modif_relais($POST) {
+    include('models/db_connect.php');
+    $modif_relais = $bdd->query("INSERT INTO point_relais (`nom`, `adresse`, `horaire_ouvert`, `horaire_ferme`, `cp`, `ville`) VALUES (:nom, :adresse, :horaire_ouvert, :horaire_ferme, :cp, :ville)");
+    $req = $bdd->prepare($query);
+    try {
+        
+        $req-> execute(array(":nom" => htmlspecialchars($_POST['nom']),
+                             ":adresse" => htmlspecialchars($_POST['adresse']),
+                             ":horaire_ouvert" => htmlspecialchars($_POST['horaire_ouvert']),
+                             ":horaire_ferme" => htmlspecialchars($_POST['horaire_ferme']),
+                             ":cp" => htmlspecialchars($_POST['cp']),
+                             ":ville" => htmlspecialchars($_POST['ville'])));
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        die("erreur");
+    }
+}
+
+
+function suppr_relais($POST) {
+    include('models/db_connect.php');
+    $suppr_relais = $bdd->query("INSERT INTO point_relais (`nom`, `adresse`, `horaire_ouvert`, `horaire_ferme`, `cp`, `ville`) VALUES (:nom, :adresse, :horaire_ouvert, :horaire_ferme, :cp, :ville)");
+    $req = $bdd->prepare($query);
+    try {
+        
+        $req-> execute(array(":nom" => htmlspecialchars($_POST['nom']),
+                             ":adresse" => htmlspecialchars($_POST['adresse']),
+                             ":horaire_ouvert" => htmlspecialchars($_POST['horaire_ouvert']),
+                             ":horaire_ferme" => htmlspecialchars($_POST['horaire_ferme']),
+                             ":cp" => htmlspecialchars($_POST['cp']),
+                             ":ville" => htmlspecialchars($_POST['ville'])));
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        die("erreur");
+    }
 }
 
 

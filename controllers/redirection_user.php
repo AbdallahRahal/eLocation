@@ -121,7 +121,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 	}
 }else if($_SESSION['compte'] == 'admin') {
 	
-	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs","mes_cat"=>"Mes Catégories");
+	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs","mes_cat"=>"Mes Catégories","relais"=>"Mes Points Relais");
 	$article = mes_categories();
 	rubriques($rubrique, $article);
 	
@@ -202,7 +202,11 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			$mes_categories = mes_categories();
 			include('views/template/mes_categories.php');
 
-		}
-	}
+		} else if($_GET['rub'] == 'relais') {
+
+			$point_relais = point_relais();
+			include('views/template/mes_points_relais.php');
+	    }
+    }
 }
 ?>
