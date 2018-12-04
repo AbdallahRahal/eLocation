@@ -9,7 +9,7 @@ function affichage_page_vente ($art) { ?>
     <form action="" method="GET">
     <input type='hidden' value=<?=$_GET['page']?> name='page'>
     <input type='hidden' value=<?=$_GET['rub']?> name='rub'>
-    <input type='hidden' value=<?=$_GET['cat']?> name='cat'>
+    <input type='hidden' value=   <?php if(empty($_GET['cat'])){echo" ";}else{echo"".$_GET['cat'];}?> name='cat'>
     <input type='hidden' value=<?=$_GET['art']?> name='art'>
     <input type='hidden' value=<?=$art['id']?> name='louer_article'>
     <button type="submit" class="btn btn-danger btn-sm">Louer</button>
