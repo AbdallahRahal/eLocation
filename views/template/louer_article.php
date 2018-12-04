@@ -2,13 +2,31 @@
 <p><h2>Location d'article</h2></p>
 
 Informations:
-Paragraphe d'information :
-<form action="index.php?page=<?=$_GET['page']?>&&rub=<?=$_GET['rub']?>&&cat=<?=$_GET['cat']?>&&art=<?=$_GET['art']?>" method="GET">
-<input type='hidden' value=<?=$_GET['louer_article']?> name='louer_article_valide'>
-Point relais :<select name="point_relais"> 
+
+<form action="" method="GET">
+<input type='hidden' value=<?=$_GET['page']?> name='page'>
+<input type='hidden' value=<?=$_GET['rub']?> name='rub'>
+<input type='hidden' value=<?=$_GET['cat']?> name='cat'>
+<input type='hidden' value=<?=$_GET['art']?> name='art'>
+<input type='hidden' value=<?=$_GET['louer_article']?> name='louer_article'>
+
+
+Point relais :
+<select name="point_relais"> 
     <?php
-    foreach()
-        echo"<option></option>"
+    
+    
+    for($x=0;$x<count($point_relais);$x++){
+        $ouverture = substr($point_relais[$x]['ouverture'], 0, 5);
+        $fermeture = substr($point_relais[$x]['fermeture'], 0, 5);
+        echo"<option> ".$point_relais[$x]['nom']."   ".$ouverture."-".$fermeture."</option>";
+    }
     ?>
+    </select>
+
+    
+    
+    <br><br><button type="submit" name="valider" value="true" class="btn btn-danger btn-sm">Louer</button>
+
 </form>
 </div>

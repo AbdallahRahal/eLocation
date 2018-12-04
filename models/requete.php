@@ -95,6 +95,17 @@ function mes_categories() {
     return $donnees;
 }
 
+
+function point_relais() {
+    include('models/db_connect.php');
+    $req = $bdd->query("SELECT * FROM point_relais");
+
+    $donnees = $req -> fetchAll();
+
+    return $donnees;
+}
+
+
 function mes_articles_de_ma_cat () {
     include('models/db_connect.php');
 
