@@ -165,9 +165,30 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			}
 
 		}else if($_GET['rub'] == 'reprises') {
+
+			include('views/template/traiter_rep.php');
+
+			if(isset($_GET['prix_proposer'])){
+
+				$update_prix = update_prix();
+
+			}
+			
+			if(isset($_GET['modif_rep'])) {
+				
+				
+		
+			}if(isset($_GET['supp_rep'])) {
+			
+
+			
+			}else{
 			
 			$affichage_reprise = affichage_reprise();
 			include('views/template/mes_reprises.php');
+
+			}
+
 	
 		}else if($_GET['rub'] == 'uti') {
 		
@@ -198,7 +219,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			
 			}
 		} else if($_GET['rub'] == 'mes_cat') {
-
+				
 			$mes_categories = mes_categories();
 			include('views/template/mes_categories.php');
 

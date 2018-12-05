@@ -219,13 +219,12 @@ function affichage_location() {
 
 function proposition($titre,$description) {
     include("models/db_connect.php");
-    $query = "INSERT INTO proposition (`titre`, `description`, `stade`, `date_propo`, `utilisateur_id`) VALUES (:titre, :descri, 'proposition', :dat, :id) ";
+    $query = "INSERT INTO proposition (`titre`, `description`, `stade`, `date_propo`, `utilisateur_id`) VALUES (:titre, :descri, 'proposition', CURRENT_TIMESTAMP(), :id) ";
     $req = $bdd->prepare($query);    
     try {
 
     $req-> execute(array(":titre" => htmlspecialchars($titre),
                          ":descri" => htmlspecialchars($description),
-                         ":dat" => date("d\/m\/Y"),
                          ":id" => $_SESSION['id']
                         ));
     
@@ -243,7 +242,7 @@ function info_user() {
 
 function update_user_mdp() {
     include('models/db_connect.php');
-    $update_user_mdp = $bdd->query("UPDATE `utilisateur` SET `pseudo`='".htmlspecialchars($_GET['pseudo'])."',`mdp`='".htmlspecialchars(password_hash($_GET['mdp'], PASSWORD_BCRYPT))."',`nom`='".htmlspecialchars($_GET['nom'])."',`prenom`='".htmlspecialchars($_GET['prenom'])."',`adresse`='".htmlspecialchars($_GET['adresse'])."',`mail`='".htmlspecialchars($_GET['mail'])."',`cp`='".htmlspecialchars($_GET['cp'])."',`ville`='".htmlspecialchars($_GET['ville'])."' WHERE utilisateur.id = ".htmlspecialchars($_GET['id']).";");
+    $update_user_mdp = $bdd->query("UPDATE `utilisateur` SET `pseudo`=".htmlspecialchars($_GET['pseudo']).",`mdp`=".htmlspecialchars(password_hash($_GET['mdp'], PASSWORD_BCRYPT)).",`nom`=".htmlspecialchars($_GET['nom']).",`prenom`=".htmlspecialchars($_GET['prenom']).",`adresse`=".htmlspecialchars($_GET['adresse']).",`mail`=".htmlspecialchars($_GET['mail']).",`cp`=".htmlspecialchars($_GET['cp']).",`ville`=".htmlspecialchars($_GET['ville'])." WHERE utilisateur.id = ".htmlspecialchars($_GET['id']).";");
 
     include('controllers/handling_data/mailer.php');
     return($update_user_mdp);
@@ -251,8 +250,15 @@ function update_user_mdp() {
 
 function update_user() {
     include('models/db_connect.php');
-    $update_user = $bdd->query("UPDATE `utilisateur` SET `pseudo`='".htmlspecialchars($_GET['pseudo'])."',`nom`='".htmlspecialchars($_GET['nom'])."',`prenom`='".htmlspecialchars($_GET['prenom'])."',`adresse`='".htmlspecialchars($_GET['adresse'])."',`mail`='".htmlspecialchars($_GET['mail'])."',`cp`='".htmlspecialchars($_GET['cp'])."',`ville`='".htmlspecialchars($_GET['ville'])."' WHERE utilisateur.id = ".htmlspecialchars($_GET['id']).";");
+    $update_user = $bdd->query("UPDATE `utilisateur` SET `pseudo`=".htmlspecialchars($_GET['pseudo']).",`nom`=".htmlspecialchars($_GET['nom']).",`prenom`=".htmlspecialchars($_GET['prenom']).",`adresse`=".htmlspecialchars($_GET['adresse']).",`mail`=".htmlspecialchars($_GET['mail']).",`cp`=".htmlspecialchars($_GET['cp']).",`ville`=".htmlspecialchars($_GET['ville'])." WHERE utilisateur.id = ".htmlspecialchars($_GET['id']).";");
     return($update_user);
+}
+
+function update_prix() {
+    include('models/db_connect.php');
+    $update_prix = $bdd->query("UPDATE `proposition` SET `prix`= ".htmlspecialchars($_GET['prix_proposer']).",`stade`= 'offre' WHERE id= ".htmlspecialchars($_GET['produit']).";");
+    unset($_SESSION["id_reprise"]);
+    return($update_prix);
 }
 
 function delete_user() {
