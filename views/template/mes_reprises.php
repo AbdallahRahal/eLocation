@@ -12,7 +12,6 @@
                 <th scope="col">Date</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
-                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -27,12 +26,11 @@
             <td><img src="<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?php echo $donneesAffichage['Stade']; ?></td>
             <td><?php echo $donneesAffichage['Date']; ?></td>
-            <td><button  onclick="document.getElementById('tonModal').value = <?php echo $donneesAffichage['ID']; ?>" type="submit" data-toggle="modal" data-target="#RepriseModal" class="btn btn-danger btn-sm" href="">Traiter</button></td>
+            <td style="text-align: center;"><button  onclick="document.getElementById('tonModal').value = <?php echo $donneesAffichage['ID']; ?>" type="submit" data-toggle="modal" data-target="#RepriseModal" class="btn btn-danger btn-sm" href="">Traiter</button></td>
             <form action="index.php" method="get">
             <input type='hidden' name='page' value='accueil'>
             <input type='hidden' name='rub' value='reprises'>
-            <td><button type="submit" name ="modif_rep" value="true" class="btn btn-danger btn-sm">Modifier</button></td>
-            <td><button type="submit" name ="supp_rep" value="true" class="btn btn-danger btn-sm">Supprimer</button></td>
+            <td style="text-align: center;"><button type="submit" name ="supp_rep" value="true" class="btn btn-danger btn-sm">Supprimer</button></td>
             </form>
             </tr>
             <?php
@@ -44,9 +42,8 @@
             <td><img src="<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?php echo $donneesAffichage['Stade']; ?></td>
             <td><?php echo $donneesAffichage['Date']; ?></td>
-            <td></td>
-            <td></td>
-            <td>Proposition envoyé</td>
+            <td style="text-align: center;color: green;font-style: italic;">Proposition Envoyée</td>
+            <td style="text-align: center;"></td>
             </tr>
     <?php
         }if($donneesAffichage['Stade'] == "valide"){?>
@@ -57,12 +54,11 @@
             <td><img src="<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?php echo $donneesAffichage['Stade']; ?></td>
             <td><?php echo $donneesAffichage['Date']; ?></td>
-            <td></td>
-            <td>Proposition Validé</td>
+            <td style="text-align: center;color: green;font-style: italic;">Proposition Validée</td>
             <form action="index.php" method="get">
             <input type='hidden' name='page' value='accueil'>
             <input type='hidden' name='rub' value='reprises'>
-            <td><button type="submit" name ="supp_rep" value="true" class="btn btn-danger btn-sm">Supprimer</button></td>
+            <td style="text-align: center;"><button type="submit" name ="ajout_rep" value="true" class="btn btn-danger btn-sm">Ajouter l'article</button></td>
             </form>
             </tr>
 <?php
