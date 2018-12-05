@@ -1,5 +1,5 @@
 <div class="container" style="max-width: 98%;margin-top: 5%">
-<p><h2>Mes Locations</h2></p>
+  <br><h2>Mes Locations</h2><br>
     <table class="table table-striped table-hover" style="align-center: auto;">
         <thead class="thead-dark">
             <tr>

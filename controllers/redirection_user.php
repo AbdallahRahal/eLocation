@@ -121,7 +121,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 	}
 }else if($_SESSION['compte'] == 'admin') {
 	
-	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs","mes_cat"=>"Mes Catégories","relais"=>"Mes Points Relais");
+	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs","mes_cat"=>"Mes Catégories","mes_relais"=>"Mes Points Relais");
 	$article = mes_categories();
 	rubriques($rubrique, $article);
 	
@@ -197,16 +197,40 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 				include('views/template/mes_utilisateurs.php');
 			
 			}
-		} else if($_GET['rub'] == 'mes_cat') {
+		} else if(isset($_POST['ajout_cat'])) {
+            
+            ajout_cat($_POST['nom']);
+            $mes_categories = mes_categories();
+            include('views/template/mes_categories.php');
+            
+        } else if(isset($_POST['suppr_cat'])) {
+            
+            suppr_cat($_POST['suppr_cat']);
+            $mes_categories = mes_categories();
+            include('views/template/mes_categories.php');
+        }
+          else if($_GET['rub'] == 'mes_cat') {
+                
+            $mes_categories = mes_categories();
+            include('views/template/mes_categories.php');
 
-			$mes_categories = mes_categories();
-			include('views/template/mes_categories.php');
-
-		} else if($_GET['rub'] == 'relais') {
-
-			$point_relais = point_relais();
+		} else if(isset($_POST['ajout_relais'])) {
+            
+            ajout_relais($_POST);
+			$donnees_relais = donnees_relais();
+			include('views/template/mes_points_relais.php');
+          
+	    } else if(isset($_POST['suppr_relais'])) {
+            
+            suppr_relais($_POST['suppr_relais']);
+			$donnees_relais = donnees_relais();
+			include('views/template/mes_points_relais.php');
+              
+	    } else if($_GET['rub'] == 'mes_relais') {
+            $donnees_relais = donnees_relais();   
+			
 			include('views/template/mes_points_relais.php');
 	    }
-    }
+     }   
 }
 ?>
