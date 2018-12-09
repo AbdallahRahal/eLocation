@@ -207,7 +207,7 @@ function affichage_utilisateur() {
 
 function affichage_reprise() {
     include('models/db_connect.php');
-    $affichage_reprise = $bdd->query("SELECT proposition.id as ID,proposition.titre as Nom,proposition.prix as Prix,proposition.description as Description,proposition.photo1 as Photo,proposition.stade as Stade, proposition.date_propo as Date FROM `proposition` ");
+    $affichage_reprise = $bdd->query("SELECT proposition.id as ID,proposition.titre as Nom,proposition.prix as Prix,proposition.description as Description,proposition.photo1 as Photo,proposition.stade as Stade, proposition.date_propo as Date FROM `proposition` ORDER BY Stade");
     return($affichage_reprise);
 }
 
@@ -266,6 +266,13 @@ function delete_user() {
     $delete_user = $bdd->query("DELETE FROM `utilisateur` WHERE utilisateur.id = ".htmlspecialchars($_GET['supp'])." ");
     return($delete_user);
 }
+
+function delete_rep() {
+    include('models/db_connect.php');
+    $delete_rep = $bdd->query("DELETE FROM `proposition` WHERE id= ".htmlspecialchars($_GET['supp_rep'])."");
+    return($delete_rep);
+}
+
 
 //------------------Template Fonction------------------//
 function name() {

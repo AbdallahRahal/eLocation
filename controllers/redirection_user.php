@@ -43,7 +43,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 
 	if(isset($_SESSION['compte'])) {
 		
-		$rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations","vendre"=>"Vendre");
+		$rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations","vendre"=>"Vendre","proposition"=>"Mes Propositions");
 	
 	}else{
 	
@@ -116,6 +116,11 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 		
 			include 'views/div/form_proposition_vente.php';
 			
+		}else if($_GET['rub'] == 'proposition' ) {
+
+			$affichage_reprise = affichage_reprise();
+			include 'views/template/mes_propositions.php';
+
 		}
 	
 	}
@@ -167,25 +172,24 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 		}else if($_GET['rub'] == 'reprises') {
 
 			include('views/template/traiter_rep.php');
+			include('views/template/supp_rep.php');
 
 			if(isset($_GET['prix_proposer'])){
 
 				$update_prix = update_prix();
 
-			}
-			
-			if(isset($_GET['modif_rep'])) {
-				
-				
-		
 			}if(isset($_GET['supp_rep'])) {
 			
-
+				$delete_rep = delete_rep();
 			
+			}if(isset($_GET['modif_rep'])) {
+
+
+
 			}else{
 			
-			$affichage_reprise = affichage_reprise();
-			include('views/template/mes_reprises.php');
+				$affichage_reprise = affichage_reprise();
+				include('views/template/mes_reprises.php');
 
 			}
 
