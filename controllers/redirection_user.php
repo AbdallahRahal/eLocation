@@ -72,41 +72,38 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 					include 'views/div/affichage_page_vente.php';
 					$article = info_article($_GET['art']);
 					affichage_page_vente($article);
-				
+
 				}
 
 			}else{
-				
+
 				if(isset($_GET['art'])) {
 
 					if(isset($_GET['louer_article'])) {
-						if(verif_article_dispo($_GET['louer_article'])==false){
-							include 'views/template/louer_article.php';
-						
-							if(isset($_GET['valider'])){
-								//$louer_article_valide = louer_article_valide();
-							}
+						if(isset($_GET['valider'])) {
+							louer($_GET);
+							include 'views/template/confirmation_location.php';
+						}else{
+						$point_relais = point_relais();
+						include 'views/template/louer_article.php';
 						}
+						 
 					}else{
 						include 'views/div/affichage_page_vente.php';
 						$article = info_article($_GET['art']);
 						affichage_page_vente($article);
 					}
-				
+
 				}else{
-					
 					$affiche = mes_articles_de_ma_cat();
 					affichage_article($affiche);
-				
 				}
-
 			}
-		
 		}else if ($_GET['rub'] == 'loc') {
-		
+
 			$affichage_location = affichage_location();
 			include 'views/template/mes_locations.php';
-	
+
 		}else if ($_GET['rub'] == 'vendre') { 
 		
 			include 'views/div/form_proposition_vente.php';
@@ -116,7 +113,8 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 	}
 }else if($_SESSION['compte'] == 'admin') {
 	
-	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs","mes_cat"=>"Mes Catégories", "rendre " => "rendre un article");
+	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs","mes_cat"=>"Mes Catégories", "rendre " => "rendre un article","relais"=>"Mes Points Relais");
+
 	$article = mes_categories();
 	rubriques($rubrique, $article);
 	
@@ -197,6 +195,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			$mes_categories = mes_categories();
 			include('views/template/mes_categories.php');
 
+
 		} else if($_GET['rub'] == 'rendre') {
 
 			if(isset($_POST['action'] )) {
@@ -207,7 +206,12 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			include 'views/template/rendre_article_modal.php';
 			include('views/template/locations.php');
 			aff_loc($locations);
-		}
-	}
+		} else if($_GET['rub'] == 'relais') {
+
+			$point_relais = point_relais();
+			include('views/template/mes_points_relais.php');
+	    }
+    }
+
 }
 ?>

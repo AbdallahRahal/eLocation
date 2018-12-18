@@ -33,15 +33,16 @@
 
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <a href="index.php?page=<?=$_GET['page']?>&&rub=<?=$_GET['rub']?>&&cat=<?php if(isset($_GET['cat'])) { echo $_GET['cat']; }else{ }?>&&art=<?=$affiche[$i][3]?>" class="btn btn-sm btn-outline-secondary">Details</a>
-                    <button type="button" class="btn btn-sm btn-outline-secondary" 
-              <?php 
-                if($affiche[$i][5] != "dispo") { 
-               echo "style='background-color : red;'";        
-            
-              }
-              ?>
-                    ><?= $affiche[$i][5] ?></button>
+                    <a href="index.php?page=<?=$_GET['page']?>&rub=<?=$_GET['rub']?>&cat=<?=$affiche[$i][6] ?>&art=<?=$affiche[$i][3]?>" class="btn btn-sm btn-outline-secondary">Louer</a>
+              <p class="text-muted" 
+                    <?php 
+                    if($affiche[$i][5] != "dispo") { 
+                      echo "style='background-color : red;'>Non diponible";        
+                    }else{
+                      echo">Diponible";
+                    }
+                    
+               ?></p>
                   </div>
                   <a class="text-muted"><?= $affiche[$i][2]."€/jour" ?></a>
                 </div>
