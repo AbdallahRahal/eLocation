@@ -149,10 +149,14 @@ function suppr_cat($POST) {
     }
 }
 
+
 function point_relais() {
     include('models/db_connect.php');
-    $point_relais = $bdd->query("SELECT * FROM point_relais");
-    return($point_relais);
+    $req = $bdd->query("SELECT * FROM point_relais");
+
+    $donnees = $req -> fetchAll();
+
+    return $donnees;
 }
 
 function ajouter_relais($POST) {
