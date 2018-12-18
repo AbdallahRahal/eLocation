@@ -83,6 +83,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 					if(isset($_GET['louer_article'])) {
 						if(isset($_GET['valider'])) {
 							louer($_GET);
+							include 'views/template/confirmation_location.php';
 						}else{
 						$point_relais = point_relais();
 						include 'views/template/louer_article.php';
