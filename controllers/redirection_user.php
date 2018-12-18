@@ -31,7 +31,6 @@ if(isset($_SESSION['compte'])) {
 if(isset($_GET['proposition'])) {
 	
 	include_once('controllers/handling_data/proposition.php');
-    
 }
 
 include 'views/template/nav.php';
@@ -117,7 +116,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 	}
 }else if($_SESSION['compte'] == 'admin') {
 	
-	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs","mes_cat"=>"Mes Catégories");
+	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs","mes_cat"=>"Mes Catégories", "rendre " => "rendre un article");
 	$article = mes_categories();
 	rubriques($rubrique, $article);
 	
@@ -198,6 +197,16 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			$mes_categories = mes_categories();
 			include('views/template/mes_categories.php');
 
+		} else if($_GET['rub'] == 'rendre') {
+
+			if(isset($_POST['action'] )) {
+				rendre_article($_POST['action'], $_POST['art_id']);
+			}
+
+			$locations = locations();
+			include 'views/template/rendre_article_modal.php';
+			include('views/template/locations.php');
+			aff_loc($locations);
 		}
 	}
 }

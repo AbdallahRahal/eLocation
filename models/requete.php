@@ -16,6 +16,23 @@ function connexion($id,$mdp) {
 }
 */
 
+function locations() {
+    include('models/db_connect.php');
+
+    $loc = $bdd->query('SELECT utilisateur.nom as utilisateur, article.nom as article, louer.action_id as action, article.id as idd FROM utilisateur JOIN action on utilisateur.id = action.utilisateur_id JOIN article ON action.article_id = article.id JOIN louer on action.id = louer.action_id WHERE louer.date_reelle IS NULL');
+   $i =1;
+    while($ligne = $loc->fetch() ) {
+
+        $result[$i][0] = $ligne['utilisateur'];
+        $result[$i][1] = $ligne['article'];
+        $result[$i][2] = $ligne['action'];
+        $result[$i][3] = $ligne['idd'];
+        $i++;
+    }
+
+    return $result;
+}
+
 function connexion($id, $mdp) {
     include('models/db_connect.php');
 
@@ -70,7 +87,9 @@ function modification ($POST) {
     }
 
 }
+
 function info_article($GET) {
+
     include('models/db_connect.php');
     $req = $bdd->prepare("SELECT  * from article WHERE article.id = :art");
     $req-> execute(array(":art" => htmlspecialchars($_GET['art'])));
@@ -79,13 +98,22 @@ function info_article($GET) {
         $donnees = NULL;
     }
     return $donnees;
+
 }
-/*
-function mes_categories() {
+
+
+function rendre_article($POST) {
+
     include('models/db_connect.php');
-    $mes_categories = $bdd->query('SELECT `id` as ID, `nom` as Nom FROM `categorie`');
-    return($mes_categories);
-}*/
+    echo "<br><br><br><br><br><br>".date("Y-m-d")."<br>";
+    echo " et   =".$_POST['action']." et   =".$_POST['art_id'];
+    //die('isma');
+    $req = $bdd->prepare("UPDATE louer SET date_reelle = :daten WHERE action_id = :id");
+    $req-> execute(array(":daten" => date("Y-m-d"), ":id" => $_POST['action']));
+    $request = $bdd->prepare("UPDATE article SET statut = :dispo WHERE id = :id");
+    $request-> execute(array(":dispo" => "dispo", ":id" => $_POST['art_id']));
+
+}
 
 function mes_categories() {
     include('models/db_connect.php');

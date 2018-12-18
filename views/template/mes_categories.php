@@ -10,15 +10,15 @@
             </tr>
         </thead>
         <tbody>
-        <?php
-    while($donneesAffichage = $mes_categories->fetch()){
+        <?php var_dump($mes_categories); $i =1;
+    while($i<=count($mes_categories)) { 
         ?>
-            <tr><th scope="row"><?php echo $donneesAffichage['ID']; ?></th>
-            <td><?php echo $donneesAffichage['Nom']; ?></td>
+            <tr><th scope="row"><?php echo $i; ?></th>
+            <td><?php echo $mes_categories[$i]; ?></td>
             <td><button type="button" class="btn btn-danger btn-sm" style="margin-left: 110%;">Modifier</button></td>
             <td><button type="button" class="btn btn-danger btn-sm" style="margin-left: 50%;">Supprimer</button></td>
             </tr>
-            <?php
+            <?php $i++;
     }
     ?>
         </tbody>
