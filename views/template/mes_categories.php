@@ -33,7 +33,7 @@
                 <input type=text <?=$nom?> name='nom' value='<?=$nom?>' class="form-control">
             </td>   
             <td>
-            <button type="submit" name="valid_modif_cat" value ="<?=$id?>" class="btn btn-danger btn-sm" style="margin-left: 95%">Valider</button>
+                <button type="submit" name="valid_modif_cat" value ="<?=$id?>" class="btn btn-danger btn-sm" style="margin-left: 95%">Valider</button>
             </td>
             <td>
                 <a href="" ><button type="submit" name="retour_cat" class="btn btn-danger btn-sm" style="margin-left: 40%">Retour</button> </a>
@@ -52,9 +52,10 @@
             </td>
                 
                 
-            <td><button type="submit" name="modif_cat" value ="<?=$id?>" class="btn btn-danger btn-sm" style="margin-left: 95%">Modifier</button></td>
             <td>
-            <button type="submit" name="suppr_cat" value ="<?=$id?>" class="btn btn-danger btn-sm" style="margin-left: 40%">Supprimer</button></td>
+                <button type="submit" name="modif_cat" value ="<?=$id?>" class="btn btn-danger btn-sm" style="margin-left: 95%">Modifier</button></td>
+            <td>
+                <button type="submit" name="suppr_cat" value ="<?=$id?>" class="btn btn-danger btn-sm" style="margin-left: 40%">Supprimer</button></td>
             </tr>
             
             

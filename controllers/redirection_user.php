@@ -197,40 +197,56 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 				include('views/template/mes_utilisateurs.php');
 			
 			}
-		} else if(isset($_POST['ajout_cat'])) {
+} else if($_GET['rub'] == 'mes_cat') {
+                
+            
+
+		 if(isset($_POST['ajout_cat'])) {
             
             ajout_cat($_POST['nom']);
-            $mes_categories = mes_categories();
-            include('views/template/mes_categories.php');
+            
             
         } else if(isset($_POST['suppr_cat'])) {
             
             suppr_cat($_POST['suppr_cat']);
-            $mes_categories = mes_categories();
-            include('views/template/mes_categories.php');
+            
+             
+        } 
+          else if(isset($_POST['valid_modif_cat'])) {
+              
+              valid_modif_cat($_POST['valid_modif_cat']);
+              
         }
-          else if($_GET['rub'] == 'mes_cat') {
-                
-            $mes_categories = mes_categories();
-            include('views/template/mes_categories.php');
-
-		} else if(isset($_POST['ajout_relais'])) {
+            
+        $mes_categories = mes_categories();
+        include('views/template/mes_categories.php');
+            
+} else if($_GET['rub'] == 'mes_relais') {
+             
+             
+             
+             
+             
+        if(isset($_POST['ajout_relais'])) {
             
             ajout_relais($_POST);
-			$donnees_relais = donnees_relais();
-			include('views/template/mes_points_relais.php');
+			
           
 	    } else if(isset($_POST['suppr_relais'])) {
             
             suppr_relais($_POST['suppr_relais']);
-			$donnees_relais = donnees_relais();
-			include('views/template/mes_points_relais.php');
+            
+        }else if(isset($_POST['valid_modif_relais'])) {
               
-	    } else if($_GET['rub'] == 'mes_relais') {
-            $donnees_relais = donnees_relais();   
-			
+              valid_modif_relais($_POST);
+            
+              
+        }
+              
+            
+           $donnees_relais = donnees_relais();   
 			include('views/template/mes_points_relais.php');
 	    }
-     }   
-}
+       
+}}
 ?>

@@ -82,7 +82,6 @@ function info_article($GET) {
 }
 
 function mes_categories() {
-    
     include('models/db_connect.php');
     $req = $bdd->query("SELECT id,nom FROM categorie");
 
@@ -113,9 +112,17 @@ function suppr_cat($x) {
     $req-> execute(array(":id" => htmlspecialchars($x)));
 }
 
+function valid_modif_cat($POST) {
+    include('models/db_connect.php');
+    $query= 'UPDATE categorie SET nom = :nom WHERE categorie.id = :id';
+    $req = $bdd->prepare($query);
+    $req-> execute(array(":id" => $_POST['valid_modif_cat'],
+                         ":nom" => $_POST['nom']));
+
+}
+
 
 function donnees_relais() {
-    
     include('models/db_connect.php');
     $donnees_relais = $bdd->query("SELECT * FROM point_relais");
     return($donnees_relais);
@@ -150,6 +157,23 @@ function suppr_relais($x) {
     $query= "DELETE FROM point_relais WHERE point_relais.id = :id";
     $req = $bdd->prepare($query);
     $req-> execute(array(":id" => htmlspecialchars($x)));
+    
+}
+
+function valid_modif_relais($POST) {
+    
+    include('models/db_connect.php');
+    
+    $query= 'UPDATE point_relais SET nom = :nom, adresse = :adresse, ouverture = :ouverture, fermeture = :fermeture, cp = :cp, ville = :ville WHERE point_relais.id = :id';
+    $req = $bdd->prepare($query);
+    $req-> execute(array(":id" => $_POST['valid_modif_relais'],
+                         ":nom" => $_POST['nom'],
+                         ":adresse" => $_POST['adresse'],
+                         ":ouverture" => $_POST['ouverture'].":00",
+                         ":fermeture" => $_POST['fermeture'].":00",
+                         ":cp" => $_POST['cp'],
+                         ":ville" => $_POST['ville']));
+
 }
 
 function mes_articles_de_ma_cat () {
