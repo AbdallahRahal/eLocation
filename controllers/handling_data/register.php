@@ -1,6 +1,6 @@
 <?php
 function register () {
-    include 'models/requete.php';
+    include_once 'models/requete.php';
     $erreur = false;
     $liste =  utilisateur($_POST['mail'],$_POST['pseudo']);
 

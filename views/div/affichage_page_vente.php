@@ -9,10 +9,20 @@ function affichage_page_vente ($art) { ?>
     <form action="" method="GET">
     <input type='hidden' value=<?=$_GET['page']?> name='page'>
     <input type='hidden' value=<?=$_GET['rub']?> name='rub'>
-    <input type='hidden' value=   <?php if(empty($_GET['cat'])){echo" ";}else{echo"".$_GET['cat'];}?> name='cat'>
+    <input type='hidden' value=<?=$_GET['cat']?> name='cat'>
     <input type='hidden' value=<?=$_GET['art']?> name='art'>
     <input type='hidden' value=<?=$art['id']?> name='louer_article'>
-    <button type="submit" class="btn btn-danger btn-sm">Louer</button>
+
+    
+
+    <br><br>
+    <?php
+if(verif_article_dispo($_GET['art'])==false){
+  echo' <p class="btn btn-danger btn-sm">Non disponible</p>'; 
+}else{
+    echo'<button type="submit" class="btn btn-danger btn-sm">Louer</button>';
+}
+?>
     </form>
   </div>
 <?php

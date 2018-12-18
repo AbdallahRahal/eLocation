@@ -73,45 +73,37 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 					include 'views/div/affichage_page_vente.php';
 					$article = info_article($_GET['art']);
 					affichage_page_vente($article);
-				
+
 				}
 
 			}else{
-				
+
 				if(isset($_GET['art'])) {
 
 					if(isset($_GET['louer_article'])) {
+						if(isset($_GET['valider'])) {
+							louer($_GET);
+						}else{
 						$point_relais = point_relais();
 						include 'views/template/louer_article.php';
-						if(isset($_GET['valide'])) {
-							
-
-
 						}
-						
-						/*
-						if(verif_article_dispo($_GET['louer_article'])==false){
-							include 'views/template/louer_article.php';
-							if(isset($_GET['valider'])){
-								//$louer_article_valide = louer_article_valide();
-							}
-						}*/
+						 
 					}else{
 						include 'views/div/affichage_page_vente.php';
 						$article = info_article($_GET['art']);
 						affichage_page_vente($article);
 					}
-				
+
 				}else{
 					$affiche = mes_articles_de_ma_cat();
 					affichage_article($affiche);
 				}
 			}
 		}else if ($_GET['rub'] == 'loc') {
-		
+
 			$affichage_location = affichage_location();
 			include 'views/template/mes_locations.php';
-	
+
 		}else if ($_GET['rub'] == 'vendre') { 
 		
 			include 'views/div/form_proposition_vente.php';

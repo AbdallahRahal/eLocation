@@ -113,7 +113,7 @@ function point_relais() {
 function mes_articles_de_ma_cat () {
     include('models/db_connect.php');
 
-    $req = $bdd->prepare("SELECT article.nom as nono, description, prix_journee, article.statut, article.id as id, lien_photo  FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE categorie.id = :cat_id");
+    $req = $bdd->prepare("SELECT article.nom as nono, description, prix_journee, article.statut, article.id as id, lien_photo, categorie.id AS categorie  FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE categorie.id = :cat_id");
     $req-> execute(array(":cat_id"=> htmlspecialchars($_GET['cat'])));
 
     $i =0;
@@ -125,6 +125,7 @@ function mes_articles_de_ma_cat () {
         $donnees[$i][3] = $ligne['id'];
         $donnees[$i][4] = $ligne['lien_photo'];
         $donnees[$i][5] = $ligne['statut'];
+        $donnees[$i][6] = $ligne['categorie'];
 
         $i++;
     }
@@ -137,7 +138,7 @@ function mes_articles_de_ma_cat () {
 
 function afficher_art_toute_categorie() {
     include('models/db_connect.php');
-    $req = $bdd->query("SELECT nom, description, prix_journee, id, lien_photo, statut FROM article");
+    $req = $bdd->query("SELECT article.nom AS nom, description, prix_journee, article.id as id, lien_photo, statut, categorie.id AS categorie FROM article  join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id ");
     $i =0;
     while($ligne = $req->fetch() ) {
     
@@ -147,6 +148,7 @@ function afficher_art_toute_categorie() {
         $donnees[$i][3] = $ligne['id'];
         $donnees[$i][4] = $ligne['lien_photo'];
         $donnees[$i][5] = $ligne['statut'];
+        $donnees[$i][6] = $ligne['categorie'];
         
 
         $i++;
@@ -157,7 +159,31 @@ function afficher_art_toute_categorie() {
     }
     return $donnees;
 }
+
+
+function louer ($GET) {
+    include("models/db_connect.php");
+
+    $query = "INSERT INTO action (`article_id`, `utilisateur_id`) VALUES (:article, :utilisateur) ";
+    $req = $bdd->prepare($query);
+    $req-> execute(array(":article" => $_GET['louer_article'],
+                         ":utilisateur" => $_SESSION['id'] ));
     
+    $last_id = $bdd->lastInsertId();
+    
+        $query = "INSERT INTO louer (`date_location`,`date_butoire`,`action_id`, `point_relais_id`) VALUES (:date_actu, :date_butoire , :action , :point_relais_id) ";
+    $req = $bdd->prepare($query);
+    $req-> execute(array(":date_actu" => date("Y\/m\/d"),
+                            ":date_butoire" => $_GET['date_butoire'],
+                            ":action" => $last_id,
+                            ":point_relais_id" => $_GET['point_relais'] ));
+
+    
+        $query = "UPDATE article SET statut = 'reserve' WHERE id = :id  "  ;        
+        $req = $bdd->prepare($query);
+        $req-> execute(array(":id" => $_GET['louer_article']));
+       
+}
 
 
 function inscription ($POST) {
@@ -273,7 +299,7 @@ function verif_article_dispo($id) {
     $statut = $bdd->prepare('Select statut from article where id=:id');
     $statut-> execute(array(":id" => htmlspecialchars($id)));
     $donnees = $statut->fetch(PDO::FETCH_ASSOC);
-    if($donnees == "dispo"){
+    if($donnees["statut"] == "dispo"){
         return true;
     }else{
         return false;
