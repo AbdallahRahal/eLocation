@@ -54,7 +54,7 @@
             <form action="index.php" method="get">
             <input type='hidden' name='page' value='accueil'>
             <input type='hidden' name='rub' value='reprises'>
-            <td style="text-align: center;"><button type="submit" name ="ajout_rep" value="true" class="btn btn-danger btn-sm">Ajouter l'article</button></td>
+            <td style="text-align: center;"><button type="submit" name ="ajout_rep" value="<?php echo $donneesAffichage['ID']; ?>" class="btn btn-danger btn-sm">Ajouter l'article</button></td>
             </form>
             </tr>
 <?php

@@ -81,11 +81,11 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 				if(isset($_GET['art'])) {
 
 					if(isset($_GET['louer_article'])) {
+						
 						$point_relais = point_relais();
 						include 'views/template/louer_article.php';
+						
 						if(isset($_GET['valide'])) {
-							
-
 
 						}
 						
@@ -96,6 +96,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 								//$louer_article_valide = louer_article_valide();
 							}
 						}*/
+					
 					}else{
 						include 'views/div/affichage_page_vente.php';
 						$article = info_article($_GET['art']);
@@ -117,7 +118,18 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			include 'views/div/form_proposition_vente.php';
 			
 		}else if($_GET['rub'] == 'proposition' ) {
+		
+			if(isset($_GET['accepter'])){
 
+				update_rep();
+
+			}if(isset($_GET['refuser'])) {
+				
+				$_GET['supp_rep'] = $_GET['refuser'];
+				delete_rep();
+
+			}
+				
 			$affichage_reprise = affichage_reprise();
 			include 'views/template/mes_propositions.php';
 
@@ -176,15 +188,22 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 
 			if(isset($_GET['prix_proposer'])){
 
-				$update_prix = update_prix();
+				update_prix();
 
 			}if(isset($_GET['supp_rep'])) {
 			
-				$delete_rep = delete_rep();
+				delete_rep();
 			
-			}if(isset($_GET['modif_rep'])) {
+			}if(isset($_GET['ajout_rep'])) {
 
+				$mes_categories = mes_categories();
+				$affichage_ajout = affichage_ajout();
+				include('views/template/ajout_article.php');
 
+			//}if(isset($_GET['ajout_article'])) {
+
+				//$ajout_article = ajout_article();
+				//
 
 			}else{
 			
@@ -198,11 +217,11 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 		
 			if(isset($_GET['modif_user']) && !isset($_GET['modif_mdp'])) {
 				
-				$update_user = update_user();
+				update_user();
 			
 			}else if(isset($_GET['modif_mdp'])){
 			
-				$update_user_mdp = update_user_mdp();
+				update_user_mdp();
 
 			}
 			if(isset($_GET['modif'])) {
@@ -212,7 +231,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 		
 			}else if(isset($_GET['supp'])) {
 				
-				$delete_user = delete_user();
+				delete_user();
 				$affichage_utilisateur = affichage_utilisateur();
 				include('views/template/mes_utilisateurs.php');
 			

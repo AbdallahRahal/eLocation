@@ -11,6 +11,7 @@
                 <th scope="col">Prix</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +25,7 @@
             <td><?php echo $donneesAffichage['Stade']; ?></td>
             <td><?php echo $donneesAffichage['Date']; ?></td>
             <td></td>
+            <td></td>
             <td style="text-align: center;color: green;font-style: italic;">Proposition envoyée à un Administrateur</td>
             <td></td>
             </tr>
@@ -34,9 +36,26 @@
             <td><img src="<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?php echo $donneesAffichage['Stade']; ?></td>
             <td><?php echo $donneesAffichage['Date']; ?></td>
+            <th scope="row"  style="color: green;"><?php echo $donneesAffichage['Prix']; ?> €</th>
+            <form action="index.php" method="get">
+            <input type='hidden' name='page' value='accueil'>
+            <input type='hidden' name='rub' value='proposition'>
+            <td style="text-align: center;"><button name = "accepter" value ="<?php echo $donneesAffichage['ID']; ?>" type="submit" href="" class="btn btn-danger btn-sm">Accepter</button></td>
+            <td style="text-align: center;"><button name = "reprop" value ="<?php echo $donneesAffichage['ID']; ?>" type="submit" href="" class="btn btn-danger btn-sm">Refaire une offre</td>
+            <td style="text-align: center;"><button name = "refuser" value ="<?php echo $donneesAffichage['ID']; ?>" type="submit" href="" class="btn btn-danger btn-sm">Refuser</button></td>
+            </form>
+            </tr>
+            <?php
+        }if($donneesAffichage['Stade'] == "valide"){?>
+            <th scope="row"><?php echo $donneesAffichage['Nom']; ?></th>
+            <td><?php echo $donneesAffichage['Description']; ?></td>
+            <td><img src="<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
+            <td><?php echo $donneesAffichage['Stade']; ?></td>
+            <td><?php echo $donneesAffichage['Date']; ?></td>
             <th scope="row"><?php echo $donneesAffichage['Prix']; ?> €</th>
-            <td style="text-align: center;"><button onclick="document.getElementById('tonModal').value = <?php echo $donneesAffichage['ID']; ?>" type="submit" data-toggle="modal" data-target="#RepriseModal" class="btn btn-danger btn-sm" href="">Accepter</button></td>
-            <td style="text-align: center;"><button onclick="document.getElementById('suppModal').value = <?php echo $donneesAffichage['ID']; ?>" type="submit" data-toggle="modal" data-target="#SuppModal" class="btn btn-danger btn-sm" href="">Refuser</button></td>
+            <td></td>
+            <td style="text-align: center;color: green;font-style: italic;width: 20%;">Votre article a été acheté, il sera bientôt disponible à la location</td>
+            <td></td>
             </tr>
     <?php
         }

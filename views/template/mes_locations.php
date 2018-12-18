@@ -7,7 +7,8 @@
                 <th scope="col">Prix</th>
                 <th scope="col">Description</th>
                 <th scope="col">Photo</th>
-                <th scope="col">Date</th>
+                <th scope="col">Date de location</th>
+                <th scope="col">Date butoire</th>
             </tr>
         </thead>
         <tbody>
@@ -18,7 +19,8 @@
             <td><?php echo $donneesAffichage['Prix']; ?></td>
             <td><?php echo $donneesAffichage['Description']; ?></td>
             <td><img src="views/template/vbtwin1.jpg" style="width: 150px;height: 150px;"></td>
-            <td><?php echo $donneesAffichage['Date']; ?></td>
+            <td><?php echo $donneesAffichage['Date_de_location']; ?></td>
+            <td><?php echo $donneesAffichage['Date_butoire']; ?></td>
             </tr>
             <?php
     }

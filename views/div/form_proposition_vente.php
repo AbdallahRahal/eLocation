@@ -1,7 +1,7 @@
 <div class="container" style="max-width: 60%;margin-top: 8%">
 <form action="" method="GET">
 <input  type='hidden' name='page' value='accueil' >
-<input  type='hidden' name='rub' value='vendre' >
+<input  type='hidden' name='rub' value='proposition' >
 <div class="form-group">
 
 <label for="exampleFormControlTextarea1">Titre de l'annonce :</label>

@@ -211,9 +211,15 @@ function affichage_reprise() {
     return($affichage_reprise);
 }
 
+function affichage_ajout() {
+    include('models/db_connect.php');
+    $affichage_ajout = $bdd->query("SELECT proposition.id as ID,proposition.titre as Nom,proposition.prix as Prix,proposition.description as Description,proposition.photo1 as Photo,proposition.stade as Stade, proposition.date_propo as Date FROM `proposition` WHERE proposition.id = ".$_GET['ajout_rep']."");
+    return($affichage_ajout);
+}
+
 function affichage_location() {
     include('models/db_connect.php');
-    $affichage_location = $bdd->query("SELECT article.nom as Nom, article.prix_journee as Prix, article.lien_photo as Photo, article.description as Description, louer.date_location as Date FROM article JOIN action ON article.id = action.article_id JOIN louer ON action.id = louer.action_id JOIN utilisateur ON action.utilisateur_id = utilisateur.id WHERE utilisateur.id = ".$_SESSION['id'].";");
+    $affichage_location = $bdd->query("SELECT article.nom as Nom, article.prix_journee as Prix, article.lien_photo as Photo, article.description as Description, louer.date_location as Date_de_location, louer.date_butoire as Date_butoire FROM article JOIN action ON article.id = action.article_id JOIN louer ON action.id = louer.action_id JOIN utilisateur ON action.utilisateur_id = utilisateur.id WHERE utilisateur.id = ".$_SESSION['id'].";");
     return($affichage_location);
 }
 
@@ -243,36 +249,34 @@ function info_user() {
 function update_user_mdp() {
     include('models/db_connect.php');
     $update_user_mdp = $bdd->query("UPDATE `utilisateur` SET `pseudo`=".htmlspecialchars($_GET['pseudo']).",`mdp`=".htmlspecialchars(password_hash($_GET['mdp'], PASSWORD_BCRYPT)).",`nom`=".htmlspecialchars($_GET['nom']).",`prenom`=".htmlspecialchars($_GET['prenom']).",`adresse`=".htmlspecialchars($_GET['adresse']).",`mail`=".htmlspecialchars($_GET['mail']).",`cp`=".htmlspecialchars($_GET['cp']).",`ville`=".htmlspecialchars($_GET['ville'])." WHERE utilisateur.id = ".htmlspecialchars($_GET['id']).";");
-
     include('controllers/handling_data/mailer.php');
-    return($update_user_mdp);
 }
 
 function update_user() {
     include('models/db_connect.php');
     $update_user = $bdd->query("UPDATE `utilisateur` SET `pseudo`=".htmlspecialchars($_GET['pseudo']).",`nom`=".htmlspecialchars($_GET['nom']).",`prenom`=".htmlspecialchars($_GET['prenom']).",`adresse`=".htmlspecialchars($_GET['adresse']).",`mail`=".htmlspecialchars($_GET['mail']).",`cp`=".htmlspecialchars($_GET['cp']).",`ville`=".htmlspecialchars($_GET['ville'])." WHERE utilisateur.id = ".htmlspecialchars($_GET['id']).";");
-    return($update_user);
 }
 
 function update_prix() {
     include('models/db_connect.php');
     $update_prix = $bdd->query("UPDATE `proposition` SET `prix`= ".htmlspecialchars($_GET['prix_proposer']).",`stade`= 'offre' WHERE id= ".htmlspecialchars($_GET['produit']).";");
     unset($_SESSION["id_reprise"]);
-    return($update_prix);
 }
 
 function delete_user() {
     include('models/db_connect.php');
     $delete_user = $bdd->query("DELETE FROM `utilisateur` WHERE utilisateur.id = ".htmlspecialchars($_GET['supp'])." ");
-    return($delete_user);
 }
 
 function delete_rep() {
     include('models/db_connect.php');
     $delete_rep = $bdd->query("DELETE FROM `proposition` WHERE id= ".htmlspecialchars($_GET['supp_rep'])."");
-    return($delete_rep);
 }
 
+function update_rep() {
+    include('models/db_connect.php');
+    $update_rep = $bdd->query("UPDATE `proposition` SET `stade`='valide' WHERE id= ".htmlspecialchars($_GET['accepter']).";");
+}
 
 //------------------Template Fonction------------------//
 function name() {
