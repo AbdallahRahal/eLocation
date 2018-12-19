@@ -31,7 +31,7 @@ if(isset($_SESSION['compte'])) {
 	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs","mes_cat"=>"Mes Catégories","rendre " => "Rendre un article","mes_relais"=>"Mes Points Relais");
 	}else{
 
-	$rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations","vendre"=>"Vendre");
+	$rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations","vendre"=>"Vendre","proposition"=>"Mes Propositions");
 	
 	}
 }else{
