@@ -219,7 +219,7 @@ function affichage_ajout() {
 
 function affichage_location() {
     include('models/db_connect.php');
-    $affichage_location = $bdd->query("SELECT article.nom as Nom, article.prix_journee as Prix, article.lien_photo as Photo, article.description as Description, louer.date_location as Date_de_location, louer.date_butoire as Date_butoire FROM article JOIN action ON article.id = action.article_id JOIN louer ON action.id = louer.action_id JOIN utilisateur ON action.utilisateur_id = utilisateur.id WHERE utilisateur.id = ".$_SESSION['id'].";");
+    $affichage_location = $bdd->query("SELECT article.nom as Nom, article.prix_journee as Prix, article.lien_photo as Photo, article.description as Description, louer.date_location as Date_de_location, louer.date_butoire as Date_butoire FROM article JOIN action ON article.id = action.article_id JOIN louer ON action.id = louer.action_id JOIN utilisateur ON action.utilisateur_id = utilisateur.id WHERE utilisateur.id = ".$_SESSION['id']." AND louer.date_reelle IS NULL ");
     return($affichage_location);
 }
 
@@ -259,7 +259,7 @@ function update_user() {
 
 function update_prix() {
     include('models/db_connect.php');
-    $update_prix = $bdd->query("UPDATE `proposition` SET `prix`= ".htmlspecialchars($_GET['prix_proposer']).",`stade`= 'offre' WHERE id= ".htmlspecialchars($_GET['produit']).";");
+    $update_prix = $bdd->query("UPDATE `proposition` SET `prix`=".htmlspecialchars($_GET['prix_proposer']).",`stade`='offre' WHERE id=".htmlspecialchars($_GET['produit']).";");
     unset($_SESSION["id_reprise"]);
 }
 
@@ -273,9 +273,14 @@ function delete_rep() {
     $delete_rep = $bdd->query("DELETE FROM `proposition` WHERE id= ".htmlspecialchars($_GET['supp_rep'])."");
 }
 
+function update_rep_valide() {
+    include('models/db_connect.php');
+    $update_rep_valide = $bdd->query("UPDATE `proposition` SET `stade`='valide' WHERE id= ".htmlspecialchars($_GET['accepter']).";");
+}
+
 function update_rep() {
     include('models/db_connect.php');
-    $update_rep = $bdd->query("UPDATE `proposition` SET `stade`='valide' WHERE id= ".htmlspecialchars($_GET['accepter']).";");
+    $update_rep = $bdd->query("UPDATE `proposition` SET `stade`='proposition' WHERE id= ".htmlspecialchars($_GET['reprop']).";");
 }
 
 //------------------Template Fonction------------------//

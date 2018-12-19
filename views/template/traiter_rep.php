@@ -14,7 +14,7 @@
         <h3>Traitement de la reprise</h3><br>
           <div class="form-check">
             Proposer un prix :<br>
-            <input required type="number" min ="0" max="9999" name="prix_proposer" class="form-control form-check-inline" id="message-text" style="width: 25%;"><span style="font-size:30px">€<span>
+            <input required type="number" id="prix" value ="" min ="0" max="9999" name="prix_proposer" class="form-control form-check-inline" id="message-text" style="width: 25%;"><span style="font-size:30px">€<span>
           </div>
         </div>
         <div class="modal-footer">

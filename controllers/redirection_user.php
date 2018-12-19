@@ -121,6 +121,10 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 		
 			if(isset($_GET['accepter'])){
 
+				update_rep_valide();
+
+			}if(isset($_GET['reprop'])) {
+				
 				update_rep();
 
 			}if(isset($_GET['refuser'])) {
