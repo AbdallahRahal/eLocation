@@ -9,13 +9,13 @@ function rubriques ($rubrique, $article) { ?>
       	foreach ($rubrique as $key => $value) {
       		if ($value == "Catégorie") { ?>
 
-	      		<li style="float: left;text-align: center;" ><a class="nav-link active" href="index.php?page=accueil&&rub=cat" > <?=$value?></a>
+	      		<li style="float: left;text-align: center;" ><a class="nav-link active" href="index.php?page=accueil&rub=cat" > <?=$value?></a>
 					<ul> <?php 
 
 					foreach ($article as $cle => $valeur) { ?>
 						
 						<li >
-							<a class="nav-link active" href="index.php?page=accueil&&rub=cat&&cat=<?=$cle?>" > <?=$valeur?></a>
+							<a class="nav-link active" href="index.php?page=accueil&rub=cat&cat=<?=$cle?>" > <?=$valeur?></a>
 						</li>
 					<?php
 					} ?>
@@ -23,7 +23,7 @@ function rubriques ($rubrique, $article) { ?>
 				</li>
       		<?php
       		 }else{ ?>
-      		<li style="float: left;text-align: center;"><a class="nav-link active" href="index.php?page=accueil&&rub=<?= $key?>" > <?=$value?></a></li>
+      		<li style="float: left;text-align: center;"><a class="nav-link active" href="index.php?page=accueil&rub=<?= $key?>" > <?=$value?></a></li>
       	<?php
       		 }
       	}
