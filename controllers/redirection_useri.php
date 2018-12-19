@@ -167,7 +167,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 				
 				$update_user = update_user();
 			
-			}else if(isset($_GET['modif_mdp'])){
+			}else if(isset($_GET['modif_mdp'])) {
 			
 				$update_user_mdp = update_user_mdp();
 
@@ -190,57 +190,45 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			
 			}
 
-} else if($_GET['rub'] == 'mes_cat') {
-                
-            
+		} else if($_GET['rub'] == 'mes_cat') {
 
-		 if(isset($_POST['ajout_cat'])) {
+			if(isset($_POST['ajout_cat'])) {
             
-            ajout_cat($_POST['nom']);
+            	ajout_cat($_POST['nom']);
             
+        	} else if(isset($_POST['suppr_cat'])) {
             
-        } else if(isset($_POST['suppr_cat'])) {
+            	suppr_cat($_POST['suppr_cat']);
             
-            suppr_cat($_POST['suppr_cat']);
-            
-             
-        } 
-          else if(isset($_POST['valid_modif_cat'])) {
+        	} else if(isset($_POST['valid_modif_cat'])) {
               
               valid_modif_cat($_POST['valid_modif_cat']);
               
-        }
+        	}
             
-        $mes_categories = mes_categories();
-        include('views/template/mes_categories.php');
+        	$mes_categories = mes_categories();
+        	include('views/template/mes_categories.php');
             
-} else if($_GET['rub'] == 'mes_relais') {
+		} else if($_GET['rub'] == 'mes_relais') {
              
-             
-             
-             
-             
-        if(isset($_POST['ajout_relais'])) {
+            if(isset($_POST['ajout_relais'])) {
             
-            ajout_relais($_POST);
-			
+            	ajout_relais($_POST);			
           
-	    } else if(isset($_POST['suppr_relais'])) {
+	    	} else if(isset($_POST['suppr_relais'])) {
             
-            suppr_relais($_POST['suppr_relais']);
+            	suppr_relais($_POST['suppr_relais']);
             
-        }else if(isset($_POST['valid_modif_relais'])) {
+        	}else if(isset($_POST['valid_modif_relais'])) {
               
-              valid_modif_relais($_POST);
-            
+            	valid_modif_relais($_POST);
               
-        }
+        	}
               
-            
-           $donnees_relais = donnees_relais();   
+            $donnees_relais = donnees_relais();   
 			include('views/template/mes_points_relais.php');
 	    
-} else if($_GET['rub'] == 'rendre') {
+		} else if($_GET['rub'] == 'rendre') {
 
 			if(isset($_POST['action'] )) {
 				rendre_article($_POST['action'], $_POST['art_id']);
@@ -252,5 +240,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			aff_loc($locations);
 		}
        
-}}
+	}
+
+}
 ?>
