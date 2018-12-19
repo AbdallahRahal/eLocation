@@ -113,7 +113,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 	}
 }else if($_SESSION['compte'] == 'admin') {
 	
-	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs","mes_cat"=>"Mes Catégories", "rendre " => "Rendre un article","mes_relais"=>"Mes Points Relais");
+	$rubrique=array("cat"=>"Catégorie", "uti"=>"Mes Utilisateurs", "reprises"=>"Mes Reprises", "rendre " => "Mes Locations", "mes_cat"=>"Mes Catégories", "mes_relais"=>"Mes Points Relais");
 	$article = mes_categories();
 	rubriques($rubrique, $article);
 	

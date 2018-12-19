@@ -1,4 +1,4 @@
-<div class="modal fade" id="Rendre_Art" tabindex="-1" role="dialog" aria-labelledby="Rendre_ArtLabel" aria-hidden="true">
+ <div class="modal fade" id="Rendre_Art" tabindex="-1" role="dialog" aria-labelledby="Rendre_ArtLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -9,14 +9,15 @@
       </div>
         <form action="" method="post">
       <div class="modal-body">
-        <h3>Rendre article :</h3>
+        <h3>Rendre un article :</h3>
           <div class="form-group">
-            <label for="message-text" class="col-form-label">etes vous sur de vouloir rendre l'article ?</label>
+            <label for="message-text" class="col-form-label">Êtes-vous sur de vouloir rendre l'article ?</label>
           </div>
         </div>
         <div class="modal-footer">
           <input type="hidden" id="var2" name="art_id" value="">
           <button type="submit" id="var1" name="action" value="" class="btn btn-primary">Oui</button>
+          <a href="" ><button type="submit" name="retour_rendre_article" class="btn btn-primary">Non</button> </a>
         </div>
         </form>
     </div>
