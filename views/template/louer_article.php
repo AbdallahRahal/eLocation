@@ -24,7 +24,7 @@ Point relais :
     ?>
 </select> <br><br>
 Date de rendu:
-<input type='date' name='date_butoire' min='<?=date("Y-m-d")?>' max='<?=date("Y-m-d", mktime(0, 0, 0, date("m")+1, date("d"), date("Y")));?>' > 
+<input required type='date' name='date_butoire' min='<?=date("Y-m-d")?>' max='<?=date("Y-m-d", mktime(0, 0, 0, date("m")+1, date("d"), date("Y")));?>' > 
     
     
     <br><br>
