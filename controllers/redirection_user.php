@@ -42,7 +42,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 
 	if(isset($_SESSION['compte'])) {
 		
-		$rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations","vendre"=>"Vendre","proposition"=>"Mes Propositions");
+		$rubrique=array("cat"=>"Catégorie", "loc"=>"Mes Locations", "proposition"=>"Mes Propositions", "vendre"=>"Vendre");
 	
 	}else{
 	
