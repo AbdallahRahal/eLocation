@@ -59,7 +59,7 @@ $message = (new Swift_Message('Avis après location '))
   Ce message est envoyé automatiquement.
   
   Votre article a bien été rendu, cliquez sur le lien ci desssous pour laisser un avis et une note, 
-  lien_du_poisson
+  '.$_SERVER[HTTP_HOST].' lien
   ATTENTION !
   Ne répondez pas à ce mail et ne partagez jamais vos informations personnelles.
   

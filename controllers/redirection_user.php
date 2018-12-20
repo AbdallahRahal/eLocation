@@ -195,7 +195,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 				$affichage_ajout = affichage_ajout();
 				include('views/template/ajout_article.php');
 
-			}if(isset($_GET['ajout_article'])) {
+			}else if(isset($_GET['ajout_article'])) {
 
 				ajout_article($_GET);
 				

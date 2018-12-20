@@ -23,7 +23,7 @@
             <td><?=$donneesAffichage['Description']?></td>
             <td><img src="<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?=$donneesAffichage['Stade']?></td>
-            <td><?=$donneesAffichage['Date']?></td>
+            <td><?=strftime('%d-%m-%Y',strtotime($donneesAffichage['Date']))?></td>
             <td></td>
             <td></td>
             <td style="text-align: center;color: green;font-style: italic;">Proposition envoyée à un Administrateur</td>
@@ -35,7 +35,7 @@
             <td><?=$donneesAffichage['Description']?></td>
             <td><img src="<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?=$donneesAffichage['Stade']?></td>
-            <td><?=$donneesAffichage['Date']?></td>
+            <td><?=strftime('%d-%m-%Y',strtotime($donneesAffichage['Date']))?></td>
             <th scope="row"  style="color: green;"><?=$donneesAffichage['Prix']?> €</th>
             <form action="index.php" method="get">
             <input type='hidden' name='page' value='accueil'>
@@ -51,7 +51,7 @@
             <td><?=$donneesAffichage['Description']?></td>
             <td><img src="<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?=$donneesAffichage['Stade']?></td>
-            <td><?=$donneesAffichage['Date']?></td>
+            <td><?=strftime('%d-%m-%Y',strtotime($donneesAffichage['Date']))?></td>
             <th scope="row"><?=$donneesAffichage['Prix']?> €</th>
             <td></td>
             <td style="text-align: center;color: green;font-style: italic;width: 20%;">Votre article a été acheté, il sera bientôt disponible à la location</td>
