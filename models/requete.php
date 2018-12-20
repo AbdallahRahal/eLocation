@@ -19,7 +19,7 @@ function connexion($id,$mdp) {
 function locations() {
     include('models/db_connect.php');
 
-    $loc = $bdd->query('SELECT utilisateur.nom as utilisateur, article.nom as article, louer.action_id as action, article.id as idd FROM utilisateur JOIN action on utilisateur.id = action.utilisateur_id JOIN article ON action.article_id = article.id JOIN louer on action.id = louer.action_id WHERE louer.date_reelle IS NULL');
+    $loc = $bdd->query('SELECT utilisateur.nom as utilisateur, utilisateur.mail as mail, utilisateur.id as uti_id, article.nom as article, louer.action_id as action, article.id as idd FROM utilisateur JOIN action on utilisateur.id = action.utilisateur_id JOIN article ON action.article_id = article.id JOIN louer on action.id = louer.action_id WHERE louer.date_reelle IS NULL');
    $i =1;
     while($ligne = $loc->fetch() ) {
 
@@ -27,6 +27,9 @@ function locations() {
         $result[$i][1] = $ligne['article'];
         $result[$i][2] = $ligne['action'];
         $result[$i][3] = $ligne['idd'];
+        $result[$i][4] = $ligne['uti_id'];
+        $result[$i][5] = $ligne['mail'];
+
         $i++;
     }
 
@@ -104,13 +107,21 @@ function info_article($GET) {
 function rendre_article($POST) {
 
     include('models/db_connect.php');
-    echo "<br><br><br><br><br><br>".date("Y-m-d")."<br>";
-    echo " et   =".$_POST['action']." et   =".$_POST['art_id'];
-    //die('isma');
+
     $req = $bdd->prepare("UPDATE louer SET date_reelle = :daten WHERE action_id = :id");
     $req-> execute(array(":daten" => date("Y-m-d"), ":id" => $_POST['action']));
     $request = $bdd->prepare("UPDATE article SET statut = :dispo WHERE id = :id");
     $request-> execute(array(":dispo" => "dispo", ":id" => $_POST['art_id']));
+    $requete = $bdd->prepare("SELECT FROM utilisateur where id =");
+    include('controllers/handling_data/mailer.php');
+    confirmation_rendu();
+
+    unset($_SESSION['nom_uti']);
+    unset($_SESSION['mail_uti']);
+    unset($_SESSION['uti_mail']);
+    unset($_SESSION['mail']);
+   
+    var_dump($_SESSION);
 
 }
 
@@ -245,7 +256,7 @@ function mes_articles_de_ma_cat () {
 
 function afficher_art_toute_categorie() {
     include('models/db_connect.php');
-    $req = $bdd->query("SELECT article.nom AS nom, description, prix_journee, article.id as id, lien_photo, statut, categorie.id AS categorie FROM article  join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id ");
+    $req = $bdd->query("SELECT article.nom AS nom, description, prix_journee, article.id as id, lien_photo, statut, categorie.id AS categorie FROM article  join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id GROUP BY article.id");
     $i =0;
     while($ligne = $req->fetch() ) {
     
@@ -380,7 +391,9 @@ function info_user() {
 function update_user_mdp() {
     include('models/db_connect.php');
     $update_user_mdp = $bdd->query("UPDATE `utilisateur` SET `pseudo`=".htmlspecialchars($_GET['pseudo']).",`mdp`=".htmlspecialchars(password_hash($_GET['mdp'], PASSWORD_BCRYPT)).",`nom`=".htmlspecialchars($_GET['nom']).",`prenom`=".htmlspecialchars($_GET['prenom']).",`adresse`=".htmlspecialchars($_GET['adresse']).",`mail`=".htmlspecialchars($_GET['mail']).",`cp`=".htmlspecialchars($_GET['cp']).",`ville`=".htmlspecialchars($_GET['ville'])." WHERE utilisateur.id = ".htmlspecialchars($_GET['id']).";");
-    include('controllers/handling_data/mailer.php');
+        include('controllers/handling_data/mailer.php');
+        mail_user_mdp();
+        return($update_user_mdp);
 }
 
 function update_user() {
@@ -413,7 +426,33 @@ function update_rep() {
     include('models/db_connect.php');
     $update_rep = $bdd->query("UPDATE `proposition` SET `stade`='proposition' WHERE id= ".htmlspecialchars($_GET['reprop']).";");
 }
+function ajout_article($GET) {
+    include('models/db_connect.php');
+    $query = "INSERT INTO article (`nom`, `description`, `prix_journee`, `lien_photo`, `statut`, `etat`) VALUES (:nom, :description, :prix_journee,'lienphotoafaire', 'dispo', 'neuf') ";
+    $req = $bdd->prepare($query);    
+    try {
 
+    $req-> execute(array(":nom" => htmlspecialchars($_GET['titre']),
+                         ":description" => htmlspecialchars($_GET['description']),
+                         ":prix_journee" => htmlspecialchars($_GET['prix']),
+                        ));
+    
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        die("raterr");
+    }
+
+    $query = "DELETE FROM proposition WHERE `proposition`.`id` = :id";
+    $req = $bdd->prepare($query);    
+    try {
+
+    $req-> execute(array(":id" => htmlspecialchars($_GET['ajout_article'])));
+    
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        die("raterr");
+    }
+}
 //------------------Template Fonction------------------//
 function name() {
     include('models/db_connect.php');

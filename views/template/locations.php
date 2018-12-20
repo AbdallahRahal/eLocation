@@ -15,13 +15,15 @@ function aff_loc ($locations) { ?>
         <tbody> 
 
  <?php $i =1; //var_dump($locations); 
-    while($i<=count($locations)) {
-        //$envoi = "";
-        //$envoi = $locations[$i][2]."papa".$locations[$i][3];
-        $envoi[0] = $locations[$i][2];
-        $envoi[1] = $locations[$i][3];
+    while($i<=count($locations)) { //var_dump($locations);
+        $envoi[0] = $locations[$i][2]; //action
+        $envoi[1] = $locations[$i][3]; //article
+        $envoi[2] = $locations[$i][4]; //utilisateur
+        $envoi[3] = $locations[$i][5]; // mail
+        $envoi[4] = $locations[$i][0]; //nom utilisateur
+        $t1 = strval($envoi[3]);
+        $t2 = strval($envoi[4]);
         //var_dump($envoi);
-        //echo $envoi;
         ?>
             <tr>
                 <th scope="row">
@@ -34,7 +36,10 @@ function aff_loc ($locations) { ?>
                 <?php echo $locations[$i][1]; ?>
             </td>
             <td>
-                <button type="submit" onclick="document.getElementById('var1').value = <?= $envoi[0]?>;document.getElementById('var2').value = <?= $envoi[1]?>" class="btn btn-primary" data-toggle="modal" data-target="#Rendre_Art" class="btn btn-danger btn-sm" href="" style="margin-left: 50%;">Rendre</button>
+                <button type="submit" onclick="document.getElementById('var0').value = <?= $envoi[0]?>;document.getElementById('var1').value = <?= $envoi[1]?>;document.getElementById('var2').value = <?= $envoi[2]?>;<?php $_SESSION['uti_mail'] = $envoi[3]; $_SESSION['nom_uti'] = $envoi[4]; ?>" class="btn btn-primary" data-toggle="modal" data-target="#Rendre_Art" class="btn btn-danger btn-sm" href="" style="margin-left: 50%;">Rendre</button>
+            </td>
+            <td>
+                <input class="test" type="text" name="">
             </td>
             </tr>
             <?php $i++;
