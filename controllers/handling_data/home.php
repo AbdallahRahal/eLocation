@@ -28,10 +28,10 @@ include 'views/template/rubrique.php';
 
 if(isset($_SESSION['compte'])) {
 	if ($_SESSION['compte'] == "admin") {
-	$rubrique=array("cat"=>"Catégorie","reprises"=>"Mes Reprises","uti"=>"Mes Utilisateurs","mes_cat"=>"Mes Catégories","rendre " => "Rendre un article","mes_relais"=>"Mes Points Relais");
+	$rubrique=array("cat"=>"Catégorie", "uti"=>"Mes Utilisateurs", "reprises"=>"Mes Reprises", "rendre " => "Mes Locations", "mes_cat"=>"Mes Catégories", "mes_relais"=>"Mes Points Relais");
 	}else{
 
-	$rubrique=array("cat"=>"Catégorie","loc"=>"Mes Locations","vendre"=>"Vendre","proposition"=>"Mes Propositions");
+	$rubrique=array("cat"=>"Catégorie", "loc"=>"Mes Locations", "proposition"=>"Mes Propositions", "vendre"=>"Vendre");
 	
 	}
 }else{

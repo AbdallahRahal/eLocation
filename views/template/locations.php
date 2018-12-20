@@ -38,9 +38,6 @@ function aff_loc ($locations) { ?>
             <td>
                 <button type="submit" onclick="document.getElementById('var0').value = <?= $envoi[0]?>;document.getElementById('var1').value = <?= $envoi[1]?>;document.getElementById('var2').value = <?= $envoi[2]?>;<?php $_SESSION['uti_mail'] = $envoi[3]; $_SESSION['nom_uti'] = $envoi[4]; ?>" class="btn btn-primary" data-toggle="modal" data-target="#Rendre_Art" class="btn btn-danger btn-sm" href="" style="margin-left: 50%;">Rendre</button>
             </td>
-            <td>
-                <input class="test" type="text" name="">
-            </td>
             </tr>
             <?php $i++;
     }
