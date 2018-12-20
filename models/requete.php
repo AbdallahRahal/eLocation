@@ -427,6 +427,7 @@ function update_rep() {
     $update_rep = $bdd->query("UPDATE `proposition` SET `stade`='proposition' WHERE id= ".htmlspecialchars($_GET['reprop']).";");
 }
 function ajout_article($GET) {
+    $cat = $_GET['cat'];
     include('models/db_connect.php');
     $query = "INSERT INTO article (`nom`, `description`, `prix_journee`, `lien_photo`, `statut`, `etat`) VALUES (:nom, :description, :prix_journee,'lienphotoafaire', 'dispo', 'neuf') ";
     $req = $bdd->prepare($query);    
@@ -441,6 +442,25 @@ function ajout_article($GET) {
         echo 'Exception reçue : ',  $e->getMessage(), "\n";
         die("raterr");
     }
+
+    $last_id = $bdd->lastInsertId();
+
+    foreach($cat as $key => $value){
+        
+        $query = "INSERT INTO appartenir (`categorie_id`,`article_id`) VALUES (:cat, :art) ";
+        $req = $bdd->prepare($query);    
+        try {
+
+        $req-> execute(array(":cat" => $value,
+                            ":art" => $last_id
+                            ));
+        
+        } catch (Exception $e) {
+            echo 'Exception reçue : ',  $e->getMessage(), "\n";
+            die("raterr");
+        }
+    }
+
 
     $query = "DELETE FROM proposition WHERE `proposition`.`id` = :id";
     $req = $bdd->prepare($query);    

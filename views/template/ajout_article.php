@@ -33,15 +33,13 @@
           <label for="recipient-name" class="col-form-label">Catégorie :</label>
           <?php 
           $i = 1;
-          while($i<= count($mes_categories)){ ?>
+         foreach($mes_categories as $key => $value){ ?>
           
 
           <div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck<?=$i?>" name="propo_cat" value="<?=$i?>">
-  <label class="custom-control-label" for="customCheck<?=$i?>"><?=$mes_categories[$i]?></label>
-</div><?php $i++;
-};?>
-            
+  <input type="checkbox" class="custom-control-input" id="customCheck<?=$key?>" name="cat[]" value="<?=$key?>">
+  <label class="custom-control-label" for="customCheck<?=$key?>"><?=$value?></label>
+</div><?php }?>            
 
           </div>
           <div class="form-group">
