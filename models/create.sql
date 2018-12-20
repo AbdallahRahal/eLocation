@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 20, 2018 at 04:14 PM
+-- Generation Time: Dec 20, 2018 at 09:08 AM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.8
 
@@ -11,16 +11,16 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `mydb`
+-- Database: `projet`
 --
+CREATE DATABASE IF NOT EXISTS `projet` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `projet`;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `action`
 --
-CREATE database projet;
-USE projet;
 
 CREATE TABLE `action` (
   `id` int(11) NOT NULL,
@@ -52,8 +52,8 @@ CREATE TABLE `article` (
   `description` text NOT NULL,
   `prix_journee` int(11) NOT NULL,
   `lien_photo` varchar(200) NOT NULL,
-  `statut` enum('dispo','loue','reserve') NOT NULL,
-  `etat` enum('neuf','abime') NOT NULL
+  `statut` enum('dispo','loue','reserve') NOT NULL DEFAULT 'dispo',
+  `etat` enum('neuf','abime') NOT NULL DEFAULT 'neuf'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -79,25 +79,7 @@ CREATE TABLE `avis` (
 CREATE TABLE `categorie` (
   `id` int(11) NOT NULL,
   `nom` varchar(45) NOT NULL,
-  `promo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `proposition`
---
-
-CREATE TABLE `proposition` (
-  `id` int(11) NOT NULL,
-  `titre` varchar(45) DEFAULT NULL,
-  `prix` int(11) DEFAULT NULL,
-  `description` text DEFAULT NULL,
-  `photo1` varchar(200) DEFAULT NULL,
-  `photo2` varchar(200) DEFAULT NULL,
-  `stade` enum('proposition','offre','valide') NOT NULL DEFAULT 'proposition',
-  `date_propo` date NOT NULL,
-  `utilisateur_id` int(11) NOT NULL
+  `promo` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -110,9 +92,9 @@ CREATE TABLE `louer` (
   `id` int(11) NOT NULL,
   `date_location` date NOT NULL,
   `date_butoire` date NOT NULL,
-  `date_reelle` date NOT NULL,
-  `note` int(11) NOT NULL,
-  `commentaire` text NOT NULL,
+  `date_reelle` date DEFAULT NULL,
+  `note` int(11) DEFAULT NULL,
+  `commentaire` text,
   `action_id` int(11) NOT NULL,
   `point_relais_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -127,9 +109,28 @@ CREATE TABLE `point_relais` (
   `id` int(11) NOT NULL,
   `nom` varchar(45) NOT NULL,
   `adresse` varchar(45) NOT NULL,
-  `horaire` varchar(45) NOT NULL,
+  `ouverture` time NOT NULL,
+  `fermeture` time NOT NULL,
   `cp` char(5) NOT NULL,
   `ville` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `proposition`
+--
+
+CREATE TABLE `proposition` (
+  `id` int(11) NOT NULL,
+  `titre` varchar(45) DEFAULT NULL,
+  `prix` int(11) DEFAULT NULL,
+  `description` text,
+  `photo1` varchar(200) DEFAULT NULL,
+  `photo2` varchar(200) DEFAULT NULL,
+  `stade` enum('proposition','offre','valide') NOT NULL DEFAULT 'proposition',
+  `date_propo` date DEFAULT NULL,
+  `utilisateur_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -152,7 +153,6 @@ CREATE TABLE `utilisateur` (
   `statut` enum('utilisateur','admin') NOT NULL DEFAULT 'utilisateur',
   `etat` enum('fidele','lambda') NOT NULL DEFAULT 'lambda'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 
 -- --------------------------------------------------------
 
@@ -205,13 +205,6 @@ ALTER TABLE `categorie`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `proposition`
---
-ALTER TABLE `proposition`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `utilisateur_id` (`utilisateur_id`);
-
---
 -- Indexes for table `louer`
 --
 ALTER TABLE `louer`
@@ -224,6 +217,13 @@ ALTER TABLE `louer`
 --
 ALTER TABLE `point_relais`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `proposition`
+--
+ALTER TABLE `proposition`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `utilisateur_id` (`utilisateur_id`);
 
 --
 -- Indexes for table `utilisateur`
@@ -273,12 +273,6 @@ ALTER TABLE `categorie`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `proposition`
---
-ALTER TABLE `proposition`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `louer`
 --
 ALTER TABLE `louer`
@@ -291,10 +285,16 @@ ALTER TABLE `point_relais`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `proposition`
+--
+ALTER TABLE `proposition`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `vendre`
@@ -331,7 +331,7 @@ ALTER TABLE `louer`
 -- Constraints for table `proposition`
 --
 ALTER TABLE `proposition`
-  ADD CONSTRAINT `proposition_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id`);
+  ADD CONSTRAINT `proposition_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `vendre`
