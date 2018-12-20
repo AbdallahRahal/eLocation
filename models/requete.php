@@ -106,7 +106,7 @@ function rendre_article($POST) {
     include('models/db_connect.php');
     echo "<br><br><br><br><br><br>".date("Y-m-d")."<br>";
     echo " et   =".$_POST['action']." et   =".$_POST['art_id'];
-    //die('isma');
+    
     $req = $bdd->prepare("UPDATE louer SET date_reelle = :daten WHERE action_id = :id");
     $req-> execute(array(":daten" => date("Y-m-d"), ":id" => $_POST['action']));
     $request = $bdd->prepare("UPDATE article SET statut = :dispo WHERE id = :id");
@@ -413,7 +413,33 @@ function update_rep() {
     include('models/db_connect.php');
     $update_rep = $bdd->query("UPDATE `proposition` SET `stade`='proposition' WHERE id= ".htmlspecialchars($_GET['reprop']).";");
 }
+function ajout_article($GET) {
+    include('models/db_connect.php');
+    $query = "INSERT INTO article (`nom`, `description`, `prix_journee`, `lien_photo`, `statut`, `etat`) VALUES (:nom, :description, :prix_journee,'lienphotoafaire', 'dispo', 'neuf') ";
+    $req = $bdd->prepare($query);    
+    try {
 
+    $req-> execute(array(":nom" => htmlspecialchars($_GET['titre']),
+                         ":description" => htmlspecialchars($_GET['description']),
+                         ":prix_journee" => htmlspecialchars($_GET['prix']),
+                        ));
+    
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        die("raterr");
+    }
+
+    $query = "DELETE FROM proposition WHERE `proposition`.`id` = :id";
+    $req = $bdd->prepare($query);    
+    try {
+
+    $req-> execute(array(":id" => htmlspecialchars($_GET['ajout_article'])));
+    
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        die("raterr");
+    }
+}
 //------------------Template Fonction------------------//
 function name() {
     include('models/db_connect.php');

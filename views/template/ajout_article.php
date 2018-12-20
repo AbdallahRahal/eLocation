@@ -13,8 +13,8 @@
           </div>
           <div class="form-group">
 
-            <label for="recipient-name" class="col-form-label">Prix : <input required type='number' value=<?=$donneesAffichage['Prix']?>></label>
-
+            <label for="recipient-name" class="col-form-label">Prix/j :</label>
+            <input required type='number' name="prix" value=<?=$donneesAffichage['Prix']?>>
           </div>
           <div class="form-group">
 
@@ -44,7 +44,15 @@
             
 
           </div>
+          <div class="form-group">
 
+
+          <label for="recipient-name" class="col-form-label">Etat :</label>
+          <select  class="form-control" name="etat" ?>
+            <option value = neuf>Neuf</option>
+            <option value = abime>Abimé</option>
+            </select>
+          </div>
           <button type="submit" name="ajout_article" value ="<?=$donneesAffichage['ID']?>" class="btn btn-danger btn-sm">Ajouter</button>
         </div>
     </form>
