@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 20, 2018 at 09:08 AM
+-- Generation Time: Dec 20, 2018 at 10:41 AM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.8
 
@@ -311,7 +311,7 @@ ALTER TABLE `vendre`
 --
 ALTER TABLE `action`
   ADD CONSTRAINT `action_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`),
-  ADD CONSTRAINT `action_ibfk_2` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id`);
+  ADD CONSTRAINT `action_ibfk_2` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `appartenir`
