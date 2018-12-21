@@ -7,7 +7,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-        <form action="" method="post">
+        <form action="" method="post" onsubmit="return verifForm(this)">
       <div class="modal-body">
         <h3>Modification du compte:</h3>
           <div class="form-group">
@@ -16,7 +16,7 @@
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Nouveau mot de passe:</label>
-            <input required type="Password" name="newmdp" class="form-control" id="message-text">
+            <input required type="Password" name="newmdp" class="form-control" id="message-text" onblur="verifMdp(this)" placeholder="8 caractères minimum">
           </div>
         </div>
         <div class="modal-footer">

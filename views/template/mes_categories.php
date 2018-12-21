@@ -10,9 +10,9 @@
             </tr>
         </thead>
         <tbody>
-        <form action="" method="POST">
+        <form action="" method="POST" onsubmit="verifForm(this)">
         <tr><th scope="row"></th>
-            <td><input required type="text" class="form-control" name="nom"></td>
+            <td><input required type="text" class="form-control" name="nom" onblur="verifNom(this)"></td>
             <td></td>
             <td><button type="submit"  name="ajout_cat" value="true" class="btn btn-danger btn-sm" style="margin-left: 52%">Ajouter</button></td>
         </tr>
@@ -20,7 +20,7 @@
         <?php
         
     foreach($mes_categories as $id => $nom){
-        ?><form action="" method="POST">
+        ?><form action="" method="POST" onsubmit="verifForm(this)">
             
             <?php if(isset($_POST['modif_cat']) && $_POST['modif_cat'] == $id ){?>
             
@@ -30,7 +30,7 @@
                 </th>
             
             <td>
-                <input required type=text <?=$nom?> name='nom' value='<?=$nom?>' class="form-control">
+                <input required type=text <?=$nom?> name='nom' value='<?=$nom?>' class="form-control" onblur="verifNom(this)">
             </td>   
             <td>
                 <button type="submit" name="valid_modif_cat" value ="<?=$id?>" class="btn btn-danger btn-sm" style="margin-left: 95%">Valider</button>
