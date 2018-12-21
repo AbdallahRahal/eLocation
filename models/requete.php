@@ -365,14 +365,15 @@ function affichage_location() {
     return($affichage_location);
 }
 
-function proposition($titre,$description) {
+function proposition($titre,$description, $nom_photo) {
     include("models/db_connect.php");
-    $query = "INSERT INTO proposition (`titre`, `description`, `stade`, `date_propo`, `utilisateur_id`) VALUES (:titre, :descri, 'proposition', CURRENT_TIMESTAMP(), :id) ";
+    $query = "INSERT INTO proposition (`titre`, `description`, `photo1`, `stade`, `date_propo`, `utilisateur_id`) VALUES (:titre, :descri, :photo1, 'proposition', CURRENT_TIMESTAMP(), :id) ";
     $req = $bdd->prepare($query);    
     try {
 
     $req-> execute(array(":titre" => htmlspecialchars($titre),
                          ":descri" => htmlspecialchars($description),
+                         ":photo1" => $nom_photo ,
                          ":id" => $_SESSION['id']
                         ));
     

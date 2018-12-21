@@ -104,7 +104,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			$affichage_location = affichage_location();
 			include 'views/template/mes_locations.php';
 
-		}else if ($_GET['rub'] == 'vendre') { 
+		}else if ($_GET['rub'] == 'vendre') {
 		
 			include 'views/div/form_proposition_vente.php';
 			

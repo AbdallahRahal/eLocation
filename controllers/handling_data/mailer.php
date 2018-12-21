@@ -59,7 +59,7 @@ $message = (new Swift_Message('Avis après location '))
   Ce message est envoyé automatiquement.
   
   Votre article a bien été rendu, cliquez sur le lien ci desssous pour laisser un avis et une note, 
-  '.$_SERVER[HTTP_HOST].' lien
+  <html><body><a href="'.$_SERVER['HTTP_HOST'].'/projet/eLocation;com">cliques ici pour laisser un avis</a></body></html> lien
   ATTENTION !
   Ne répondez pas à ce mail et ne partagez jamais vos informations personnelles.
   
