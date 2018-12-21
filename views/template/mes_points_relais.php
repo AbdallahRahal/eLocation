@@ -21,7 +21,7 @@
             <td><input required type="text" class="form-control" name="adresse" style="max-width: 90%"></td>
             <td><input required type="time" class="form-control" name="ouverture" style="max-width: 100%"></td>
             <td><input required type="time" class="form-control" name="fermeture" style="max-width: 100%"></td>
-            <td><input required type="text" class="form-control" name="cp" style="max-width: 65%"></td>
+            <td><input required type="number" class="form-control" name="cp" style="max-width: 65%"></td>
             <td><input required type="text" class="form-control" name="ville" style="max-width: 80%"></td>
             <td></td>
             <td><button type="submit"  name="ajout_relais" value="true" class="btn btn-danger btn-sm" style="margin-left: 0%">Ajouter</button></td>
@@ -41,22 +41,22 @@
             <?php echo $donneesAffichage['id']; ?>
             </th>    
             <td>
-                <input type=text <?=$donneesAffichage['nom']?> name='nom' value='<?=$donneesAffichage['nom']?>' class="form-control" style="max-width: 90%">
+                <input required type=text <?=$donneesAffichage['nom']?> name='nom' value='<?=$donneesAffichage['nom']?>' class="form-control" style="max-width: 90%">
             </td>
             <td>
-                <input type=text <?=$donneesAffichage['adresse']?> name='adresse' value='<?=$donneesAffichage['adresse']?>' class="form-control">
+                <input required type=text <?=$donneesAffichage['adresse']?> name='adresse' value='<?=$donneesAffichage['adresse']?>' class="form-control">
             </td>
             <td>
-                <input type=time <?=$ouverture?> name='ouverture' value='<?=$ouverture?>' class="form-control" style="max-width: 100%">
+                <input required type=time <?=$ouverture?> name='ouverture' value='<?=$ouverture?>' class="form-control" style="max-width: 100%">
             </td>
             <td>
-                <input type=time <?=$fermeture?> name='fermeture' value='<?=$fermeture?>' class="form-control" style="max-width: 100%">
+                <input required type=time <?=$fermeture?> name='fermeture' value='<?=$fermeture?>' class="form-control" style="max-width: 100%">
             </td>
             <td>
-                <input type=text <?=$donneesAffichage['cp']?> name='cp' value='<?=$donneesAffichage['cp']?>' class="form-control" style="max-width: 65%">
+                <input required type=number <?=$donneesAffichage['cp']?> name='cp' value='<?=$donneesAffichage['cp']?>' class="form-control" style="max-width: 65%" max="99999" min="00000">
             </td>
             <td>
-                <input type=text <?=$donneesAffichage['ville']?> name='ville' value='<?=$donneesAffichage['ville']?>' class="form-control" style="max-width: 80%">
+                <input required type=text <?=$donneesAffichage['ville']?> name='ville' value='<?=$donneesAffichage['ville']?>' class="form-control" style="max-width: 80%">
             </td>
             <td>
                 <button type="submit" name="valid_modif_relais" value ="<?=$donneesAffichage['id']?>" class="btn btn-danger btn-sm" style="margin-left:-10%">Valider</button>
