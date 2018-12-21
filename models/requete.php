@@ -514,6 +514,13 @@ function avis($GET){
                         ));
 
 }
+
+function affichage_carrousel() {
+    include('models/db_connect.php');
+    $affichage_carrousel = $bdd->query('SELECT lien_photo as Photo FROM `article`;');
+    return($affichage_carrousel);
+}
+
 //------------------Template Fonction------------------//
 function name() {
     include('models/db_connect.php');
