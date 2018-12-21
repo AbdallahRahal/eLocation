@@ -46,11 +46,12 @@
 
 
           <label for="recipient-name" class="col-form-label">Etat :</label>
-          <select  class="form-control" name="etat" ?>
+          <select  class="form-control" name="etat" >
             <option value = neuf>Neuf</option>
             <option value = abime>Abimé</option>
             </select>
           </div>
+          <input type='hidden' name='uti' value=<?=$donneesAffichage['Utilisateur'];?>>
           <button type="submit" name="ajout_article" value ="<?=$donneesAffichage['ID']?>" class="btn btn-danger btn-sm">Ajouter</button>
         </div>
     </form>
