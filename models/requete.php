@@ -104,6 +104,19 @@ function info_article($GET) {
 
 }
 
+function commentaire_article($x) {
+
+    include('models/db_connect.php');
+    $req = $bdd->prepare("SELECT louer.commentaire as commentaire from article JOIN action on article_id = article.id  JOIN louer on action.id = louer.action_id WHERE article.id = :art AND louer.commentaire IS NOT NULL");
+    $req-> execute(array(":art" => htmlspecialchars($x)));
+    $donnees = $req->fetchAll(PDO::FETCH_ASSOC);
+    if(empty($donnees)) {
+        $donnees = NULL;
+    }
+    return $donnees;
+
+}
+
 function rendre_article($POST) {
 
     include('models/db_connect.php');
@@ -368,14 +381,15 @@ function affichage_location() {
     return($affichage_location);
 }
 
-function proposition($titre,$description) {
+function proposition($titre,$description, $nom_photo) {
     include("models/db_connect.php");
-    $query = "INSERT INTO proposition (`titre`, `description`, `stade`, `date_propo`, `utilisateur_id`) VALUES (:titre, :descri, 'proposition', CURRENT_TIMESTAMP(), :id) ";
+    $query = "INSERT INTO proposition (`titre`, `description`, `photo1`, `stade`, `date_propo`, `utilisateur_id`) VALUES (:titre, :descri, :photo1, 'proposition', CURRENT_TIMESTAMP(), :id) ";
     $req = $bdd->prepare($query);    
     try {
 
     $req-> execute(array(":titre" => htmlspecialchars($titre),
                          ":descri" => htmlspecialchars($description),
+                         ":photo1" => $nom_photo ,
                          ":id" => $_SESSION['id']
                         ));
     
@@ -432,13 +446,14 @@ function update_rep() {
 function ajout_article($GET) {
     $cat = $_GET['cat'];
     include('models/db_connect.php');
-    $query = "INSERT INTO article (`nom`, `description`, `prix_journee`, `lien_photo`, `statut`, `etat`) VALUES (:nom, :description, :prix_journee,'lienphotoafaire', 'dispo', 'neuf') ";
+    $query = "INSERT INTO article (`nom`, `description`, `prix_journee`, `lien_photo`, `statut`, `etat`) VALUES (:nom, :description, :prix_journee,:photo, 'dispo', 'neuf') ";
     $req = $bdd->prepare($query);    
     try {
 
     $req-> execute(array(":nom" => htmlspecialchars($_GET['titre']),
                          ":description" => htmlspecialchars($_GET['description']),
                          ":prix_journee" => htmlspecialchars($_GET['prix']),
+                         ":photo" => htmlspecialchars($_GET['photo']),
                         ));
     
     } catch (Exception $e) {

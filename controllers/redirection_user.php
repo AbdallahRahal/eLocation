@@ -20,7 +20,8 @@ if(isset($_SESSION['compte'])) {
 	include 'views/template/login_form.php';
 	include 'views/template/register_form.php';
 }
-if(isset($_GET['proposition'])) {
+
+if(isset($_POST['proposition'])) {
 	
 	include_once('controllers/handling_data/proposition.php');
 }
@@ -64,7 +65,8 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			
 					include 'views/div/affichage_page_vente.php';
 					$article = info_article($_GET['art']);
-					affichage_page_vente($article);
+					$commentaire = commentaire_article($_GET['art']);
+					affichage_page_vente($article, $commentaire);
 				}
 			}else{
 				if(isset($_GET['art'])) {
@@ -80,7 +82,8 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 					}else{
 						include 'views/div/affichage_page_vente.php';
 						$article = info_article($_GET['art']);
-						affichage_page_vente($article);
+						$commentaire = commentaire_article($_GET['art']);
+						affichage_page_vente($article, $commentaire);
 					}
 				}else{
 					$affiche = mes_articles_de_ma_cat();
@@ -90,6 +93,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 		}else if ($_GET['rub'] == 'loc') {
 			$affichage_location = affichage_location();
 			include 'views/template/mes_locations.php';
+
 		}else if ($_GET['rub'] == 'vendre') { 
 		
 			include 'views/div/form_proposition_vente.php';
@@ -135,15 +139,17 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 		
 					include 'views/div/affichage_page_vente.php';
 					$article = info_article($_GET['art']);
-					affichage_page_vente($article);
-				}
+					$commentaire = commentaire_article($_GET['art']);
+					affichage_page_vente($article, $commentaire);				}
+			
 			}else{
 				if(isset($_GET['art'])) {
 		
 				include 'views/div/affichage_page_vente.php';
 				$article = info_article($_GET['art']);
-				affichage_page_vente($article);
-			
+				$commentaire = commentaire_article($_GET['art']);
+				affichage_page_vente($article, $commentaire);			
+				
 				}else{
 				
 					$affiche = mes_articles_de_ma_cat();
