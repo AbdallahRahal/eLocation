@@ -35,6 +35,40 @@ $result = $mailer->send($message);
 
 }
 
+function traitement_propo () {
+require_once('vendor/autoload.php');
+
+// Create the Transport
+$transport = (new Swift_SmtpTransport('smtp.mailtrap.io', 25))
+  ->setUsername('398d1f9d470b89')
+  ->setPassword('ebfbd9c5816e21')
+;
+
+// Create the Mailer using your created Transport
+$mailer = new Swift_Mailer($transport);
+
+// Create a message
+$message = (new Swift_Message('Modification mdp '."Jade"))
+  ->setFrom(['eLocation@loc.com' => "Admin"])
+  ->setTo(["jade@gmail.com", "jade@gmail.com" => "Jade"])
+  ->setBody('
+  Bonjour Jade ,
+
+  Ce message est envoyé automatiquement.
+  
+Votre proposition a été traitée, nous vous initons à y repondre rapidement.
+  ATTENTION !
+  Ne répondez pas à ce mail et ne partagez jamais vos informations personnelles.
+  
+  Cordialement,
+  L’équipe eLocation
+  ');
+
+// Send the message
+$result = $mailer->send($message);
+
+}
+
 function confirmation_rendu ($x) {
   //var_dump($_POST);
   //var_dump($_SESSION); 

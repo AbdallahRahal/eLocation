@@ -27,10 +27,15 @@ if(verif_article_dispo($_GET['art'])==false){
     <?php
 
 echo "<br><br><br><h4>Commentaire : </h4> <br>";
+  if(!empty($commentaire)) {
+
+
     for($x =0;$x<count($commentaire); $x++) {
       echo $commentaire[$x]['commentaire']."<br>";
     }
-
+  }else{
+    echo "cet article n'as pas de commentaire";
+  }
 
 ?>
   </div>
