@@ -108,10 +108,10 @@ function rendre_article($POST) {
 
     include('models/db_connect.php');
 
-    $req = $bdd->query("SELECT louer.id as id FROM louer WHERE action_id = :id");
-    $req-> execute(array(":id" => $_POST['action']));
+    $req = $bdd->query("SELECT id FROM louer WHERE action_id = ".$_POST['action']." ");
+   // $req-> execute(array(":id" => $_POST['action']));
     $donnees=$req-> fetch();
-    $loc_id = $donnees['id']
+    $loc_id = $donnees['id'];
     $req = $bdd->prepare("UPDATE louer SET date_reelle = :daten WHERE action_id = :id");
     $req-> execute(array(":daten" => date("Y-m-d"), ":id" => $_POST['action']));
     $loc_id = $bdd->lastInsertId();
