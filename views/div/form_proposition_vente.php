@@ -1,10 +1,10 @@
 <div class="container" style="max-width: 60%;margin-top: 8%">
-<form action="" method="GET" action="page.php" enctype="multipart/form-data">
+<form action="" method="GET" action="page.php" enctype="multipart/form-data" onsubmit="return verifForm(this)">
     <input type='hidden' name='page' value='accueil' >
     <input type='hidden' name='rub' value='proposition' >
     <div class="form-group">
         <label for="exampleFormControlTextarea1">Titre de l'annonce :</label>
-        <input required class="form-control" type="text" name="titre">   
+        <input required class="form-control" type="text" name="titre" onblur="verifRelais(this)">   
     </div>
     <div class="form-group">
         <label for="exampleFormControlTextarea1">Texte de l'annonce :</label>
