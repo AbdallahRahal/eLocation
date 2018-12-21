@@ -108,7 +108,7 @@ function rendre_article($POST) {
 
     include('models/db_connect.php');
 
-    $req = $bdd->query("SELECT id FROM louer WHERE action_id = ".$_POST['action']." ");
+    $req = $bdd->query("SELECT id FROM louer WHERE action_id = ".$_POST['action']."  AND date_reelle is NULL");
    // $req-> execute(array(":id" => $_POST['action']));
     $donnees=$req-> fetch();
     $loc_id = $donnees['id'];
