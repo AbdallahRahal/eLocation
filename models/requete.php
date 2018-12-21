@@ -165,8 +165,6 @@ function valid_modif_cat($POST) {
 
 }
 
-
-
 function point_relais() {
     include('models/db_connect.php');
     $req = $bdd->query("SELECT * FROM point_relais");

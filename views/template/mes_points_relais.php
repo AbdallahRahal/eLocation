@@ -91,7 +91,7 @@
                 
             </tr>
             <?php
-    }}
+    }} 
     ?>
         </tbody>
     </table>
