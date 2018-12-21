@@ -30,7 +30,7 @@
                 </th>
             
             <td>
-                <input type=text <?=$nom?> name='nom' value='<?=$nom?>' class="form-control">
+                <input required type=text <?=$nom?> name='nom' value='<?=$nom?>' class="form-control">
             </td>   
             <td>
                 <button type="submit" name="valid_modif_cat" value ="<?=$id?>" class="btn btn-danger btn-sm" style="margin-left: 95%">Valider</button>
