@@ -116,7 +116,7 @@ function rendre_article($POST) {
     $requete = $bdd->prepare("SELECT FROM utilisateur where id =");
     $act_id = $_POST['action'];
     include('controllers/handling_data/mailer.php');
-    confirmation_rendu();
+    confirmation_rendu($loc_id);
 
     unset($_SESSION['nom_uti']);
     unset($_SESSION['mail_uti']);

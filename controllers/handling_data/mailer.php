@@ -35,7 +35,7 @@ $result = $mailer->send($message);
 
 }
 
-function confirmation_rendu () {
+function confirmation_rendu ($x) {
   //var_dump($_POST);
   //var_dump($_SESSION); 
 require_once('vendor/autoload.php');
@@ -60,7 +60,7 @@ $message = (new Swift_Message('Avis après location '))
   
   Votre article a bien été rendu, cliquez sur le lien ci desssous pour laisser un avis et une note, 
 
-  '.$_SERVER[HTTP_HOST].'/projet/eLocation?rub=avis?idact='.$act_id.'?idloue='.$loc_id.' .
+  '.$_SERVER['HTTP_HOST'].'/projet/eLocation?rub=laisser_avis?idloue='.$x.' .
   ATTENTION !
   Ne répondez pas à ce mail et ne partagez jamais vos informations personnelles.
   
