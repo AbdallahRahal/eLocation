@@ -54,8 +54,15 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 	rubriques($rubrique, $article);
 
 	if(isset($_GET['rub'])) {
+
+		if($_GET['rub'] == 'laisser_avis' ) {
+			$idloue = $_GET['idloue'];
+			include_once('views/template/avis.php');
+		}else if ($_GET['rub'] == 'avis') {
 		
-		if($_GET['rub'] == 'cat' ) {
+		avis($_POST);
+		include 'views/template/confirmation_avis.php';
+		}else if($_GET['rub'] == 'cat' ) {
 		
 			include 'views/div/affichage_article.php';
 			sidebar($article);

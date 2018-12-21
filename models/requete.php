@@ -505,6 +505,15 @@ function ajout_article($GET) {
         }
 
 }
+function avis($GET){
+    include('models/db_connect.php');
+    $req = $bdd->prepare("UPDATE louer SET note = :note, commentaire = :com WHERE id  = :id");
+    $req-> execute(array(":note" => $_GET['note'],
+                         ":com" => $_GET['commentaire'],
+                         ":id" => $_GET['idloue'],
+                        ));
+
+}
 //------------------Template Fonction------------------//
 function name() {
     include('models/db_connect.php');
