@@ -3,9 +3,7 @@
     <table class="table table-striped table-hover">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">ID</th>
                 <th scope="col">Pseudo</th>
-                <th scope="col">Mot de passe</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Prénom</th>
                 <th scope="col">Adresse</th>
@@ -22,9 +20,7 @@
         <tbody>
         <?php
     while($donneesAffichage = $affichage_utilisateur->fetch()){
-        echo"<tr><th scope=\"row\">".$donneesAffichage['id']."</th>
-            <td> ".$donneesAffichage['pseudo']."</td>
-            <td>*********</td>
+        echo"<th scope=\"row\"> ".$donneesAffichage['pseudo']."</th>
             <td> ".$donneesAffichage['nom']."</td>
             <td> ".$donneesAffichage['prenom']."</td>
             <td> ".$donneesAffichage['adresse']."</td>

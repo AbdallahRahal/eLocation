@@ -8,7 +8,7 @@
                 <th scope="col">Photo</th>
                 <th scope="col">Stade</th>
                 <th scope="col">Date</th>
-                <th scope="col">Prix</th>
+                <th scope="col">Prix (en €)</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -26,7 +26,7 @@
             <td><?=strftime('%d-%m-%Y',strtotime($donneesAffichage['Date']))?></td>
             <td></td>
             <td></td>
-            <td style="text-align: center;color: green;font-style: italic;">Proposition envoyée à un Administrateur</td>
+            <td style="text-align: center;color: orange;font-style: italic;">Proposition envoyée à un Administrateur</td>
             <td></td>
             </tr>
             <?php
@@ -36,7 +36,7 @@
             <td><img src="views/img/<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?=$donneesAffichage['Stade']?></td>
             <td><?=strftime('%d-%m-%Y',strtotime($donneesAffichage['Date']))?></td>
-            <th scope="row"  style="color: green;"><?=$donneesAffichage['Prix']?> €</th>
+            <th scope="row"  style="color: green;"><?=$donneesAffichage['Prix']?></th>
             <form action="index.php" method="get">
             <input type='hidden' name='page' value='accueil'>
             <input type='hidden' name='rub' value='proposition'>
@@ -52,7 +52,7 @@
             <td><img src="views/img/<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?=$donneesAffichage['Stade']?></td>
             <td><?=strftime('%d-%m-%Y',strtotime($donneesAffichage['Date']))?></td>
-            <th scope="row"><?=$donneesAffichage['Prix']?> €</th>
+            <th scope="row"><?=$donneesAffichage['Prix']?></th>
             <td></td>
             <td style="text-align: center;color: green;font-style: italic;width: 20%;">Votre article a été acheté, il sera bientôt disponible à la location</td>
             <td></td>

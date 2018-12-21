@@ -4,7 +4,7 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col">Nom</th>
-                <th scope="col">Prix</th>
+                <th scope="col">Prix (en €)</th>
                 <th scope="col">Description</th>
                 <th scope="col">Photo</th>
                 <th scope="col">Date de location</th>
@@ -15,7 +15,7 @@
         <?php
     while($donneesAffichage = $affichage_location->fetch()){
         ?>
-            <tr><td><?=$donneesAffichage['Nom']?></td>
+            <tr><th scope="row"><?=$donneesAffichage['Nom']?></th>
             <td><?=$donneesAffichage['Prix']?></td>
             <td><?=$donneesAffichage['Description']?></td>
             <td><img src="views/template/vbtwin1.jpg" style="width: 150px;height: 150px;"></td>
