@@ -104,17 +104,29 @@ function info_article($GET) {
 
 }
 
+function commentaire_article($x) {
+
+    include('models/db_connect.php');
+    $req = $bdd->prepare("SELECT louer.commentaire as commentaire from article JOIN action on article_id = article.id  JOIN louer on action.id = louer.action_id WHERE article.id = :art AND louer.commentaire IS NOT NULL");
+    $req-> execute(array(":art" => htmlspecialchars($x)));
+    $donnees = $req->fetchAll(PDO::FETCH_ASSOC);
+    if(empty($donnees)) {
+        $donnees = NULL;
+    }
+    return $donnees;
+
+}
+
 function rendre_article($POST) {
 
     include('models/db_connect.php');
 
-    $req = $bdd->query("SELECT id FROM louer WHERE action_id = ".$_POST['action']."  AND date_reelle is NULL");
+    $req = $bdd->query("SELECT louer.id as id FROM louer WHERE action_id = ".$_POST['action']."  AND date_reelle is NULL");
    // $req-> execute(array(":id" => $_POST['action']));
     $donnees=$req-> fetch();
     $loc_id = $donnees['id'];
     $req = $bdd->prepare("UPDATE louer SET date_reelle = :daten WHERE action_id = :id");
     $req-> execute(array(":daten" => date("Y-m-d"), ":id" => $_POST['action']));
-    $loc_id = $bdd->lastInsertId();
     $request = $bdd->prepare("UPDATE article SET statut = :dispo WHERE id = :id");
     $request-> execute(array(":dispo" => "dispo", ":id" => $_POST['art_id']));
     $requete = $bdd->prepare("SELECT FROM utilisateur where id =");
@@ -506,6 +518,15 @@ function ajout_article($GET) {
             echo 'Exception reçue : ',  $e->getMessage(), "\n";
             die("raterr");
         }
+
+}
+function avis($GET){
+    include('models/db_connect.php');
+    $req = $bdd->prepare("UPDATE louer SET note = :note, commentaire = :com WHERE id  = :id");
+    $req-> execute(array(":note" => $_GET['note'],
+                         ":com" => $_GET['commentaire'],
+                         ":id" => $_GET['idloue'],
+                        ));
 
 }
 //------------------Template Fonction------------------//
