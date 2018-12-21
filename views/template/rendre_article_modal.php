@@ -7,7 +7,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-        <form action="" method="post">
+        <form action="" method="POST">
       <div class="modal-body">
         <h3>Rendre un article :</h3>
           <div class="form-group">

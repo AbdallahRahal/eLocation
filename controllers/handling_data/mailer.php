@@ -35,15 +35,15 @@ $result = $mailer->send($message);
 
 }
 
-function confirmation_rendu () {
+function confirmation_rendu ($x) {
   //var_dump($_POST);
   //var_dump($_SESSION); 
 require_once('vendor/autoload.php');
 
 // Create the Transport
 $transport = (new Swift_SmtpTransport('smtp.mailtrap.io', 25))
-  ->setUsername('2d55accaed592c')
-  ->setPassword('8f937707d7ea51')
+  ->setUsername('398d1f9d470b89')
+  ->setPassword('ebfbd9c5816e21')
 ;
 
 // Create the Mailer using your created Transport
@@ -59,7 +59,7 @@ $message = (new Swift_Message('Avis après location '))
   Ce message est envoyé automatiquement.
   
   Votre article a bien été rendu, cliquez sur le lien ci desssous pour laisser un avis et une note, 
-  '.$_SERVER[HTTP_HOST].' lien
+  '.$_SERVER['HTTP_HOST'].'/projet/eLocation/index.php?page=accueil&rub=laisser_avis&idloue='.$x.' .
   ATTENTION !
   Ne répondez pas à ce mail et ne partagez jamais vos informations personnelles.
   

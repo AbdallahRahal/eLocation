@@ -108,21 +108,24 @@ function rendre_article($POST) {
 
     include('models/db_connect.php');
 
+    $req = $bdd->query("SELECT louer.id as id FROM louer WHERE action_id = ".$_POST['action']."  AND date_reelle is NULL");
+   // $req-> execute(array(":id" => $_POST['action']));
+    $donnees=$req-> fetch();
+    $loc_id = $donnees['id'];
     $req = $bdd->prepare("UPDATE louer SET date_reelle = :daten WHERE action_id = :id");
     $req-> execute(array(":daten" => date("Y-m-d"), ":id" => $_POST['action']));
     $request = $bdd->prepare("UPDATE article SET statut = :dispo WHERE id = :id");
     $request-> execute(array(":dispo" => "dispo", ":id" => $_POST['art_id']));
     $requete = $bdd->prepare("SELECT FROM utilisateur where id =");
+
     include('controllers/handling_data/mailer.php');
-    confirmation_rendu();
+    confirmation_rendu($loc_id);
 
     unset($_SESSION['nom_uti']);
     unset($_SESSION['mail_uti']);
     unset($_SESSION['uti_mail']);
     unset($_SESSION['mail']);
-   
-    var_dump($_SESSION);
-
+    
 }
 
 function mes_categories() {
@@ -355,7 +358,7 @@ function affichage_reprise() {
 
 function affichage_ajout() {
     include('models/db_connect.php');
-    $affichage_ajout = $bdd->query("SELECT proposition.id as ID,proposition.titre as Nom,proposition.prix as Prix,proposition.description as Description,proposition.photo1 as Photo,proposition.stade as Stade, proposition.date_propo as Date FROM `proposition` WHERE proposition.id = ".$_GET['ajout_rep']."");
+    $affichage_ajout = $bdd->query("SELECT utilisateur_id as Utilisateur , proposition.id as ID,proposition.titre as Nom,proposition.prix as Prix,proposition.description as Description,proposition.photo1 as Photo,proposition.stade as Stade, proposition.date_propo as Date FROM `proposition` WHERE proposition.id = ".$_GET['ajout_rep']."");
     return($affichage_ajout);
 }
 
@@ -444,7 +447,7 @@ function ajout_article($GET) {
     }
 
     $last_id = $bdd->lastInsertId();
-
+///////////////////////////
     foreach($cat as $key => $value){
         
         $query = "INSERT INTO appartenir (`categorie_id`,`article_id`) VALUES (:cat, :art) ";
@@ -461,7 +464,7 @@ function ajout_article($GET) {
         }
     }
 
-
+//////////////////////////////////////
     $query = "DELETE FROM proposition WHERE `proposition`.`id` = :id";
     $req = $bdd->prepare($query);    
     try {
@@ -472,6 +475,44 @@ function ajout_article($GET) {
         echo 'Exception reçue : ',  $e->getMessage(), "\n";
         die("raterr");
     }
+//////////////////////////////////
+    $query = "INSERT INTO action (`utilisateur_id`,`article_id`) VALUES (:uti, :art) ";
+    $req = $bdd->prepare($query);    
+    try {
+
+    $req-> execute(array(":uti" =>htmlspecialchars($_GET['uti']),
+                        ":art" => $last_id
+                        ));
+    
+    } catch (Exception $e) {
+        echo 'Exception reçue : ',  $e->getMessage(), "\n";
+        die("raterr");
+    }
+
+    $action_id = $bdd->lastInsertId();
+/////////////////////////////////////
+    $query = "INSERT INTO vendre (`date_vente`,`action_id`) VALUES (:dat, :art) ";
+        $req = $bdd->prepare($query);    
+        try {
+
+        $req-> execute(array(":dat" => date("Y-m-d"),
+                            ":art" => $action_id
+                            ));
+        
+        } catch (Exception $e) {
+            echo 'Exception reçue : ',  $e->getMessage(), "\n";
+            die("raterr");
+        }
+
+}
+function avis($GET){
+    include('models/db_connect.php');
+    $req = $bdd->prepare("UPDATE louer SET note = :note, commentaire = :com WHERE id  = :id");
+    $req-> execute(array(":note" => $_GET['note'],
+                         ":com" => $_GET['commentaire'],
+                         ":id" => $_GET['idloue'],
+                        ));
+
 }
 //------------------Template Fonction------------------//
 function name() {
