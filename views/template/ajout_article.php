@@ -27,6 +27,7 @@
 
             <label for="recipient-name" class="col-form-label">Photo :</label>
             <?=$donneesAffichage['Photo']?>
+            <input type='hidden' name='photo' value=<?=$donneesAffichage['Photo']?> >
 
           </div>
           <div class="form-group">

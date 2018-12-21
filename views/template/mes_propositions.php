@@ -21,7 +21,7 @@
         ?>
             <th scope="row"><?=$donneesAffichage['Nom']?></th>
             <td><?=$donneesAffichage['Description']?></td>
-            <td><img src="<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
+            <td><img src="views/img/<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?=$donneesAffichage['Stade']?></td>
             <td><?=strftime('%d-%m-%Y',strtotime($donneesAffichage['Date']))?></td>
             <td></td>
@@ -33,7 +33,7 @@
         }if($donneesAffichage['Stade'] == "offre"){?>
             <th scope="row"><?=$donneesAffichage['Nom']?></th>
             <td><?=$donneesAffichage['Description']?></td>
-            <td><img src="<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
+            <td><img src="views/img/<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?=$donneesAffichage['Stade']?></td>
             <td><?=strftime('%d-%m-%Y',strtotime($donneesAffichage['Date']))?></td>
             <th scope="row"  style="color: green;"><?=$donneesAffichage['Prix']?> €</th>
@@ -49,7 +49,7 @@
         }if($donneesAffichage['Stade'] == "valide"){?>
             <th scope="row"><?=$donneesAffichage['Nom']?></th>
             <td><?=$donneesAffichage['Description']?></td>
-            <td><img src="<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
+            <td><img src="views/img/<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?=$donneesAffichage['Stade']?></td>
             <td><?=strftime('%d-%m-%Y',strtotime($donneesAffichage['Date']))?></td>
             <th scope="row"><?=$donneesAffichage['Prix']?> €</th>

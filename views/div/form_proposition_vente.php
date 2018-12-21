@@ -1,5 +1,5 @@
 <div class="container" style="max-width: 60%;margin-top: 8%">
-<form action="" method="GET" action="" enctype="multipart/form-data">
+<form action="" method="POST" action="" enctype="multipart/form-data">
     <input type='hidden' name='page' value='accueil' >
     <input type='hidden' name='rub' value='proposition' >
     <div class="form-group">

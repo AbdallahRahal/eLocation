@@ -434,13 +434,14 @@ function update_rep() {
 function ajout_article($GET) {
     $cat = $_GET['cat'];
     include('models/db_connect.php');
-    $query = "INSERT INTO article (`nom`, `description`, `prix_journee`, `lien_photo`, `statut`, `etat`) VALUES (:nom, :description, :prix_journee,'lienphotoafaire', 'dispo', 'neuf') ";
+    $query = "INSERT INTO article (`nom`, `description`, `prix_journee`, `lien_photo`, `statut`, `etat`) VALUES (:nom, :description, :prix_journee,:photo, 'dispo', 'neuf') ";
     $req = $bdd->prepare($query);    
     try {
 
     $req-> execute(array(":nom" => htmlspecialchars($_GET['titre']),
                          ":description" => htmlspecialchars($_GET['description']),
                          ":prix_journee" => htmlspecialchars($_GET['prix']),
+                         ":photo" => htmlspecialchars($_GET['photo']),
                         ));
     
     } catch (Exception $e) {

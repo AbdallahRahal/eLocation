@@ -26,7 +26,7 @@
 
               </div>
               <div class="card-body" style="max-height: 325px;min-height: 325px;">
-              <center><img style="width: 230px" src="<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap"></center>
+              <center><img style="width: 230px" src="views/img/<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap"></center>
                 <p id="text<?=$i?>" class="card-text"><?= $affiche[$i][1] ?> </p>
               </div>
               <div class="card-footer" >

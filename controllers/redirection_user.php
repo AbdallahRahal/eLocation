@@ -28,9 +28,10 @@ if(isset($_SESSION['compte'])) {
 
 }
 
-if(isset($_GET['proposition'])) {
+if(isset($_POST['proposition'])) {
 	
 	include_once('controllers/handling_data/proposition.php');
+
 }
 
 include 'views/template/nav.php';

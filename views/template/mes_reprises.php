@@ -22,7 +22,7 @@
             <tr><th scope="row"><?=$donneesAffichage['ID']?></th>
             <td><?=$donneesAffichage['Nom']?></td>
             <td><?=$donneesAffichage['Description']?></td>
-            <td><img src="<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
+            <td><img src="views/img/<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?=$donneesAffichage['Stade']?></td>
             <td><?=strftime('%d-%m-%Y',strtotime($donneesAffichage['Date']))?></td>
             <th scope="row" style="color: red;"><?=$donneesAffichage['Prix']?></th>
@@ -34,7 +34,7 @@
             <tr><th scope="row"><?=$donneesAffichage['ID']?></th>
             <td><?=$donneesAffichage['Nom']?></td>
             <td><?=$donneesAffichage['Description']?></td>
-            <td><img src="<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
+            <td><img src="views/img/<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?=$donneesAffichage['Stade']?></td>
             <td><?=strftime('%d-%m-%Y',strtotime($donneesAffichage['Date']))?></td>
             <th scope="row"><?=$donneesAffichage['Prix']?> €</th>
@@ -46,7 +46,7 @@
             <tr><th scope="row"><?=$donneesAffichage['ID']?></th>
             <td><?=$donneesAffichage['Nom']?></td>
             <td><?=$donneesAffichage['Description']?></td>
-            <td><img src="<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
+            <td><img src="views/img/<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?=$donneesAffichage['Stade']?></td>
             <td><?=strftime('%d-%m-%Y',strtotime($donneesAffichage['Date']))?></td>
             <th scope="row"><?=$donneesAffichage['Prix']?> €</th>
