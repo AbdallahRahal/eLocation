@@ -41,10 +41,15 @@
                     }else{
                       echo">Diponible";
                     }
-                    
+
                ?></p>
                   </div>
-                  <a class="text-muted"><?= $affiche[$i][2]."€/jour" ?></a>
+                  <a class="text-muted"><?php echo $affiche[$i][2]-($affiche[$i]['7']/100)*$affiche[$i][2]."€/jour";
+                  if($affiche[$i]['7']>0) {
+                      echo" Réduction de =".$affiche[$i]['7']." % </a>";
+                  }else{
+                    echo" </a>";
+                  }?>
                 </div>
               </div>
             </div>

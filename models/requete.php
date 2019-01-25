@@ -94,7 +94,7 @@ function modification ($POST) {
 function info_article($GET) {
 
     include('models/db_connect.php');
-    $req = $bdd->prepare("SELECT  * from article WHERE article.id = :art");
+    $req = $bdd->prepare("SELECT  * FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE article.id = :art");
     $req-> execute(array(":art" => htmlspecialchars($_GET['art'])));
     $donnees = $req->fetch(PDO::FETCH_ASSOC);
     if(empty($donnees)) {
@@ -247,7 +247,7 @@ function valid_modif_relais($POST) {
 function mes_articles_de_ma_cat () {
     include('models/db_connect.php');
 
-    $req = $bdd->prepare("SELECT article.nom as nono, description, prix_journee, article.statut, article.id as id, lien_photo, categorie.id AS categorie  FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE categorie.id = :cat_id");
+    $req = $bdd->prepare("SELECT categorie.promo as promo, article.nom as nono, description, prix_journee, article.statut, article.id as id, lien_photo, categorie.id AS categorie  FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE categorie.id = :cat_id");
     $req-> execute(array(":cat_id"=> htmlspecialchars($_GET['cat'])));
 
     $i =0;
@@ -260,6 +260,7 @@ function mes_articles_de_ma_cat () {
         $donnees[$i][4] = $ligne['lien_photo'];
         $donnees[$i][5] = $ligne['statut'];
         $donnees[$i][6] = $ligne['categorie'];
+        $donnees[$i][7] = $ligne['promo'];
 
         $i++;
     }
@@ -272,7 +273,7 @@ function mes_articles_de_ma_cat () {
 
 function afficher_art_toute_categorie() {
     include('models/db_connect.php');
-    $req = $bdd->query("SELECT article.nom AS nom, description, prix_journee, article.id as id, lien_photo, statut, categorie.id AS categorie FROM article  join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id GROUP BY article.id");
+    $req = $bdd->query("SELECT categorie.promo AS promo, article.nom AS nom, description, prix_journee, article.id as id, lien_photo, statut, categorie.id AS categorie FROM article  join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id GROUP BY article.id");
     $i =0;
     while($ligne = $req->fetch() ) {
     
@@ -283,6 +284,7 @@ function afficher_art_toute_categorie() {
         $donnees[$i][4] = $ligne['lien_photo'];
         $donnees[$i][5] = $ligne['statut'];
         $donnees[$i][6] = $ligne['categorie'];
+        $donnees[$i][7] = $ligne['promo'];
         
 
         $i++;
@@ -372,6 +374,7 @@ function affichage_reprise() {
 function affichage_ajout() {
     include('models/db_connect.php');
     $affichage_ajout = $bdd->query("SELECT utilisateur_id as Utilisateur , proposition.id as ID,proposition.titre as Nom,proposition.prix as Prix,proposition.description as Description,proposition.photo1 as Photo,proposition.stade as Stade, proposition.date_propo as Date FROM `proposition` WHERE proposition.id = ".$_GET['ajout_rep']."");
+
     return($affichage_ajout);
 }
 

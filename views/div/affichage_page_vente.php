@@ -22,7 +22,12 @@ if(verif_article_dispo($_GET['art'])==false){
 }else{
     echo'<button type="submit" class="btn btn-danger btn-sm">Louer</button>';
 }
-?>
+
+echo' prix =  '.($art['prix_journee']-($art['promo']/100)*$art['prix_journee']).'€/jour';
+if($art['promo']>0) {
+  echo 'Réduction de '.$art['promo'].' %';
+} 
+?> 
     </form> 
     <?php
 
