@@ -31,7 +31,7 @@
                 <input required type=text  name='nom' value='<?=$table['nom']?>' class="form-control" onblur="verifNom(this)">
             </td>  
             <td>
-                <input required type=text  name='promo' value='<?=$table['promo']?>'   max='100' min='0' >
+                <input required type=number  name='promo' value='<?=$table['promo']?>'   max='100' min='0' >
             </td>
             <td>
                 <button type="submit" name="valid_modif_cat" value ="<?=$id?>" class="btn btn-danger btn-sm" style="margin-left: 95%">Valider</button>

@@ -6,7 +6,7 @@ function aff_loc ($locations) { ?>
     <table class="table table-striped table-hover" style="align-center: auto;">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">ID</th>
+                
                 <th scope="col">Nom</th>
                 <th scope="col">Articles</th>
                 <th scope="col"></th>
@@ -26,9 +26,6 @@ function aff_loc ($locations) { ?>
         //var_dump($envoi);
         ?>
             <tr>
-                <th scope="row">
-                <?php echo $i; ?>
-                </th>
             <td>
                 <?php echo $locations[$i][0]; ?>
             </td>
