@@ -3,7 +3,6 @@
 function modif_article ($info) {
 ?>
 <div style="margin-left: 20%;margin-top: 200px;">
-
 <input onclick="$('#nom').attr('readonly', false);$('#description ').attr('readonly', false);$('#prix_journee ').attr('readonly', false);$('#statut ').attr('disabled', false);$('#etat').attr('disabled', false);$('#m_sub').attr('disabled', false);$('#lien_photo').attr('disabled', false);" type="checkbox" name="">
 Cliques pour modifier tes info personelles
 

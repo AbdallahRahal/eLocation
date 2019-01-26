@@ -149,7 +149,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 						modifier_mon_article();
 					}
 					include 'views/template/modif_article.php';
-					$article = info_article($_GET['art']);
+					$article = info_article_modif($_GET['art']);
 					modif_article($article);				
 				}else{
 				

@@ -94,15 +94,32 @@ function modification ($POST) {
 function info_article($GET) {
 
     include('models/db_connect.php');
-    $req = $bdd->prepare("SELECT  * FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE article.id = :art");
+    $req = $bdd->prepare("SELECT * FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE article.id = :art");
     $req-> execute(array(":art" => htmlspecialchars($_GET['art'])));
     $donnees = $req->fetch(PDO::FETCH_ASSOC);
     if(empty($donnees)) {
         $donnees = NULL;
     }
+    var_dump($donnees);
+    die();
     return $donnees;
 
 }
+function info_article_modif($GET) {
+
+    include('models/db_connect.php');
+    $req = $bdd->prepare("SELECT article.id, article.nom, article.description, article.prix_journee, article.lien_photo, article.statut, article.etat FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE article.id = 7");
+    $req-> execute(array(":art" => htmlspecialchars($_GET['art'])));
+    $donnees = $req->fetch(PDO::FETCH_ASSOC);
+    if(empty($donnees)) {
+        $donnees = NULL;
+    }
+
+    return $donnees;
+
+}
+
+
 
 function commentaire_article($x) {
 
@@ -319,7 +336,6 @@ function afficher_art_toute_categorie() {
         $donnees[$i][5] = $ligne['statut'];
         $donnees[$i][6] = $ligne['categorie'];
         $donnees[$i][7] = $ligne['promo'];
-        
 
         $i++;
     }
