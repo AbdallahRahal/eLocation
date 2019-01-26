@@ -108,7 +108,7 @@ function info_article($GET) {
 function info_article_modif($GET) {
 
     include('models/db_connect.php');
-    $req = $bdd->prepare("SELECT article.id, article.nom, article.description, article.prix_journee, article.lien_photo, article.statut, article.etat FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE article.id = 7");
+    $req = $bdd->prepare("SELECT article.id, article.nom, article.description, article.prix_journee, article.lien_photo, article.statut, article.etat FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE article.id = :art");
     $req-> execute(array(":art" => htmlspecialchars($_GET['art'])));
     $donnees = $req->fetch(PDO::FETCH_ASSOC);
     if(empty($donnees)) {
