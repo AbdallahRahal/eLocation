@@ -13,8 +13,8 @@ function surligne(champ, erreur){
   
   function verifAdresse(champ){
   
-    var regex = /^[0-9]{1,5}\s[a-zA-Zéèàê ]+$/;
-    if(champ.value.length < 5 || champ.value.length > 30 || !regex.test(champ.value)){
+    var regex = /^[0-9]{1,5}\s[a-zA-Z0-9éèàê ]+$/;
+    if(champ.value.length < 8 || champ.value.length > 50 || !regex.test(champ.value)){
   
       surligne(champ, true);
       return false;
@@ -56,8 +56,8 @@ function surligne(champ, erreur){
   
   function verifPrenom(champ){
   
-    var regex = /^[a-zA-Z-]+$/;
-    if(champ.value.length < 2 || champ.value.length > 15 || !regex.test(champ.value)){
+    var regex = /^[a-zA-Z- ]+$/;
+    if(champ.value.length < 2 || champ.value.length > 25 || !regex.test(champ.value)){
       
       surligne(champ, true);
       return false;
@@ -71,8 +71,8 @@ function surligne(champ, erreur){
   
   function verifNom(champ){
   
-    var regex = /^[a-zA-Z]+$/;
-    if(champ.value.length < 2 || champ.value.length > 15 || !regex.test(champ.value)){
+    var regex = /^[a-zA-Z ]+$/;
+    if(champ.value.length < 2 || champ.value.length > 25 || !regex.test(champ.value)){
   
       surligne(champ, true);
       return false;

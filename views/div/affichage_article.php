@@ -3,7 +3,7 @@
  <div class="album py-5 bg-light" style="margin-left: 20%;margin-top: 100px">
       <div class="container">
         <div style="margin-left: 85%;margin-top: 10px;">
-        <input id="test1" type="text" placeholder="Search..." name=""><br><br>
+        <input id="test1" type="text" placeholder="Rechercher..." name=""><br><br>
         <select id="testJs" name="trier">
           <option>Trier par</option>
           <option id="test2" value="Croissant" > Prix Croissant</option>
@@ -41,10 +41,15 @@
                     }else{
                       echo">Diponible";
                     }
-                    
+
                ?></p>
                   </div>
-                  <a class="text-muted"><?= $affiche[$i][2]."€/jour" ?></a>
+                  <a class="text-muted"><?php echo $affiche[$i][2]-($affiche[$i]['7']/100)*$affiche[$i][2]."€/jour";
+                  if($affiche[$i]['7']>0) {
+                      echo" Réduction de =".$affiche[$i]['7']." % </a>";
+                  }else{
+                    echo" </a>";
+                  }?>
                 </div>
               </div>
             </div>

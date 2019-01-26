@@ -9,7 +9,7 @@
                 <th scope="col">Photo</th>
                 <th scope="col">Stade</th>
                 <th scope="col">Date</th>
-                <th scope="col">Prix</th>
+                <th scope="col">Prix (en €)</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
@@ -37,8 +37,8 @@
             <td><img src="views/img/<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?=$donneesAffichage['Stade']?></td>
             <td><?=strftime('%d-%m-%Y',strtotime($donneesAffichage['Date']))?></td>
-            <th scope="row"><?=$donneesAffichage['Prix']?> €</th>
-            <td style="text-align: center;color: green;font-style: italic;">Proposition Envoyée</td>
+            <th scope="row"><?=$donneesAffichage['Prix']?></th>
+            <td style="text-align: center;color: orange;font-style: italic;">Envoyée</td>
             <td style="text-align: center;"></td>
             </tr>
     <?php
@@ -49,8 +49,8 @@
             <td><img src="views/img/<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?=$donneesAffichage['Stade']?></td>
             <td><?=strftime('%d-%m-%Y',strtotime($donneesAffichage['Date']))?></td>
-            <th scope="row"><?=$donneesAffichage['Prix']?> €</th>
-            <td style="text-align: center;color: green;font-style: italic;">Proposition Validée</td>
+            <th scope="row"><?=$donneesAffichage['Prix']?></th>
+            <td style="text-align: center;color: green;font-style: italic;">Validée</td>
             <form action="index.php" method="get">
             <input type='hidden' name='page' value='accueil'>
             <input type='hidden' name='rub' value='reprises'>
