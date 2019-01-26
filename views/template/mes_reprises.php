@@ -3,7 +3,7 @@
     <table class="table table-striped table-hover" style="align-center: auto;">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">ID</th>
+               
                 <th scope="col">Nom</th>
                 <th scope="col">Description</th>
                 <th scope="col">Photo</th>
@@ -19,7 +19,7 @@
         while($donneesAffichage = $affichage_reprise->fetch()){
         if($donneesAffichage['Stade'] == "proposition"){
         ?>
-            <tr><th scope="row"><?=$donneesAffichage['ID']?></th>
+            <tr>
             <td><?=$donneesAffichage['Nom']?></td>
             <td><?=$donneesAffichage['Description']?></td>
             <td><img src="views/img/<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
@@ -31,7 +31,7 @@
             </tr>
             <?php
         }if($donneesAffichage['Stade'] == "offre"){?>
-            <tr><th scope="row"><?=$donneesAffichage['ID']?></th>
+            <tr>
             <td><?=$donneesAffichage['Nom']?></td>
             <td><?=$donneesAffichage['Description']?></td>
             <td><img src="views/img/<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
@@ -43,7 +43,7 @@
             </tr>
     <?php
         }if($donneesAffichage['Stade'] == "valide"){?>
-            <tr><th scope="row"><?=$donneesAffichage['ID']?></th>
+            <tr>
             <td><?=$donneesAffichage['Nom']?></td>
             <td><?=$donneesAffichage['Description']?></td>
             <td><img src="views/img/<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
