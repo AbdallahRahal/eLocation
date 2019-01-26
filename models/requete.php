@@ -181,7 +181,28 @@ function valid_modif_cat($POST) {
 
 }
 
-
+function modifier_mon_article () {
+     
+    if(!empty($_FILES['lien_photo']['name'])) {
+        $new = str_replace(" ", "-", $_FILES['lien_photo']['name']);
+        $return = move_uploaded_file($_FILES['lien_photo']['tmp_name'], "Views/img/".$new);
+    }else{
+        $new = $_POST['reste'];
+    }
+    /*echo "$new";
+    var_dump($_FILES);
+    die();*/
+    include('models/db_connect.php');
+    $query= 'UPDATE article SET nom = :nom, description = :description, prix_journee = :prix_journee, lien_photo = :lien_photo, statut = :statut, etat = :etat WHERE article.id = :id';
+    $req = $bdd->prepare($query);
+    $req-> execute(array(":nom" => $_POST['nom'],
+                         ":description" => $_POST['description'],
+                         ":prix_journee" => $_POST['prix_journee'],
+                         ":lien_photo" => $new,
+                         ":statut" => $_POST['statut'],
+                         ":etat" => $_POST['etat'],
+                         ":id" => $_POST['id']));
+}
 
 function point_relais() {
     include('models/db_connect.php');
@@ -201,7 +222,6 @@ function ajout_relais ($POST) {
     $query = "INSERT INTO point_relais (`nom`, `adresse`, `ouverture`, `fermeture`, `cp`, `ville`) VALUES (:nom, :adresse, :ouverture, :fermeture, :cp, :ville) ";
     $req = $bdd->prepare($query);
     try {
-
     $req-> execute(array(":nom" => htmlspecialchars($_POST['nom']),
                          ":adresse" => htmlspecialchars($_POST['adresse']),
                          ":ouverture" => htmlspecialchars($_POST['ouverture']),
@@ -363,6 +383,12 @@ function affichage_utilisateur() {
     return($affichage_utilisateur);
 }
 
+function affichage_prop_utilisateur() {
+    include('models/db_connect.php');
+    $affichage_reprise = $bdd->query("SELECT proposition.id as ID,proposition.titre as Nom,proposition.prix as Prix,proposition.description as Description,proposition.photo1 as Photo,proposition.stade as Stade, proposition.date_propo as Date FROM `proposition` where proposition.utilisateur_id = ".$_SESSION['id']." ORDER BY Stade");
+    return($affichage_reprise);
+}
+
 function affichage_reprise() {
     include('models/db_connect.php');
     $affichage_reprise = $bdd->query("SELECT proposition.id as ID,proposition.titre as Nom,proposition.prix as Prix,proposition.description as Description,proposition.photo1 as Photo,proposition.stade as Stade, proposition.date_propo as Date FROM `proposition` ORDER BY Stade");
@@ -383,7 +409,7 @@ function affichage_location() {
 
 function proposition($titre,$description, $nom_photo) {
     include("models/db_connect.php");
-    $query = "INSERT INTO proposition (`titre`, `description`, `photo1`, `stade`, `date_propo`, `utilisateur_id`) VALUES (:titre, :descri, :photo1, 'proposition', CURRENT_TIMESTAMP(), :id) ";
+    $query = "INSERT INTO proposition (`titre`, `description`, `photo1`, `stade`, `date_propo`, `utilisateur_id`) VALUES (:titre, :descri, :photo1, 'proposition', CURRENT_TIMESTAMP(), :id)";
     $req = $bdd->prepare($query);    
     try {
 

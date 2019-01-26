@@ -18,7 +18,7 @@
             <tr><td><?=$donneesAffichage['Nom']?></td>
             <td><?=$donneesAffichage['Prix']?></td>
             <td><?=$donneesAffichage['Description']?></td>
-            <td><img src="views/template/vbtwin1.jpg" style="width: 150px;height: 150px;"></td>
+            <td><img src="views/img/<?=$donneesAffichage['Photo']?>" style="width: 150px;height: 150px;"></td>
             <td><?=strftime('%d-%m-%Y',strtotime($donneesAffichage['Date_de_location']))?></td>
             <td><?=strftime('%d-%m-%Y',strtotime($donneesAffichage['Date_butoire']))?></td>
             </tr>

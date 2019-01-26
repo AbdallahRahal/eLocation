@@ -111,7 +111,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 				delete_rep();
 			}
 				
-			$affichage_reprise = affichage_reprise();
+			$affichage_reprise = affichage_prop_utilisateur();
 			include 'views/template/mes_propositions.php';
 		}
 	
@@ -144,12 +144,13 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			
 			}else{
 				if(isset($_GET['art'])) {
-		
-				include 'views/div/affichage_page_vente.php';
-				$article = info_article($_GET['art']);
-				$commentaire = commentaire_article($_GET['art']);
-				affichage_page_vente($article, $commentaire);			
 				
+					if (isset($_POST['envoyer'])) {
+						modifier_mon_article();
+					}
+					include 'views/template/modif_article.php';
+					$article = info_article($_GET['art']);
+					modif_article($article);				
 				}else{
 				
 					$affiche = mes_articles_de_ma_cat();
