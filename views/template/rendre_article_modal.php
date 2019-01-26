@@ -17,9 +17,9 @@
         <div class="modal-footer">
           <input type="hidden" id="var1" name="art_id" value="">
           <input type="hidden" id="var2" name="uti_id" value="">
-          <button type="submit" id="var0" name="action" value="" class="btn btn-primary">Oui</button>
+          <button type="submit" id="var0" name="action" value="" class="btn btn-warning btn-sm">Oui</button>
           <input type="hidden" id="var4" name="test" value="">
-          <a href="" ><button type="submit" name="retour_rendre_article" class="btn btn-primary">Non</button> </a>
+          <a href="" ><button type="submit" name="retour_rendre_article" class="btn btn-warning btn-sm">Non</button> </a>
         </div>
         </form>
     </div>

@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" id="tonModal" class="btn btn-primary" name="produit" >Proposer</button>
+          <button type="submit" id="tonModal" class="btn btn-warning btn-sm" name="produit" >Proposer</button>
         </div>
         </form>
     </div>

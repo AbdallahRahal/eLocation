@@ -50,7 +50,7 @@
              <input required type="text" class="form-control" name="ville" id="recipient-prenom"  value="<?=$donneesAffichage['ville']?>" onblur="verifVille(this)">
           </div>
 
-          <button type="submit" name="modif_user" value ="true" class="btn btn-danger btn-sm">Modifier</button>
+          <button type="submit" name="modif_user" value ="true" class="btn btn-warning btn-sm">Modifier</button>
         </div>
 <?php } ?>
     </form>

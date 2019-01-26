@@ -4,14 +4,14 @@
         <thead class="thead-dark">
             <tr>
                 
-                <th scope="col">Nom</th>
-                <th scope="col">Adresse</th>
-                <th scope="col">Ouverture</th>
-                <th scope="col">Fermeture</th>
-                <th scope="col">Code Postal</th>
-                <th scope="col">Ville</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Nom</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Adresse</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Ouverture</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Fermeture</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Code Postal</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Ville</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;"></th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;"></th>
             </tr>
         </thead>
         <tbody>
@@ -24,7 +24,7 @@
             <td><input required type="text" class="form-control" name="cp" style="max-width: 65%" onblur="verifCp(this)"></td>
             <td><input required type="text" class="form-control" name="ville" style="max-width: 80%" onblur="verifVille(this)"></td>
             <td></td>
-            <td><button type="submit"  name="ajout_relais" value="true" class="btn btn-danger btn-sm" style="margin-left: 0%">Ajouter</button></td>
+            <td><button type="submit"  name="ajout_relais" value="true" class="btn btn-warning btn-sm" style="margin-left: 0%">Ajouter</button></td>
         </tr>
         </form>
         <?php
@@ -56,10 +56,10 @@
                 <input required type=text <?=$donneesAffichage['ville']?> name='ville' value='<?=$donneesAffichage['ville']?>' class="form-control" style="max-width: 80%" onblur="verifVille(this)">
             </td>
             <td>
-                <button type="submit" name="valid_modif_relais" value ="<?=$donneesAffichage['id']?>" class="btn btn-danger btn-sm" style="margin-left:-10%">Valider</button>
+                <button type="submit" name="valid_modif_relais" value ="<?=$donneesAffichage['id']?>" class="btn btn-warning btn-sm" style="margin-left:-10%">Valider</button>
             </td>
             <td>
-                <a href=""><button type="submit" name="retour_relais" style="margin-left: -10%" class="btn btn-danger btn-sm">Retour</button></a>
+                <a href=""><button type="submit" name="retour_relais" style="margin-left: -10%" class="btn btn-warning btn-sm">Retour</button></a>
             </td>
             </tr>
             </form>
@@ -78,9 +78,9 @@
 
             <form action="" method="POST">
                 <td>
-                    <button type="submit" name="modif_relais" value ="<?=$donneesAffichage['id']?>" class="btn btn-danger btn-sm" style="margin-left:-10%">Modifier</button></td>
+                    <button type="submit" name="modif_relais" value ="<?=$donneesAffichage['id']?>" class="btn btn-warning btn-sm" style="margin-left:-10%">Modifier</button></td>
                 <td>
-                    <button type="submit" name="suppr_relais" value ="<?=$donneesAffichage['id']?>" style="margin-left: -10%" class="btn btn-danger btn-sm">Supprimer</button></td>
+                    <button type="submit" name="suppr_relais" value ="<?=$donneesAffichage['id']?>" style="margin-left: -10%" class="btn btn-warning btn-sm">Supprimer</button></td>
             </form>
                 
             </tr>

@@ -4,14 +4,14 @@
         <thead class="thead-dark">
             <tr>
                
-                <th scope="col">Nom</th>
-                <th scope="col">Description</th>
-                <th scope="col">Photo</th>
-                <th scope="col">Stade</th>
-                <th scope="col">Date</th>
-                <th scope="col">Prix (en €)</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Nom</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Description</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Photo</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Stade</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Date</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Prix (en €)</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;"></th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;"></th>
             </tr>
         </thead>
         <tbody>
@@ -26,8 +26,8 @@
             <td><?=$donneesAffichage['Stade']?></td>
             <td><?=strftime('%d-%m-%Y',strtotime($donneesAffichage['Date']))?></td>
             <th scope="row" style="color: red;"><?=$donneesAffichage['Prix']?></th>
-            <td style="text-align: center;"><button onclick="document.getElementById('tonModal').value = <?=$donneesAffichage['ID']?>;document.getElementById('prix').value = <?php if(!empty($donneesAffichage['Prix']) ){echo $donneesAffichage['Prix'];}else{echo 0;}?>;document.getElementById('prix').min = <?php if(!empty($donneesAffichage['Prix']) ){echo $donneesAffichage['Prix'];}else{echo 0;}?>" type="submit" data-toggle="modal" data-target="#RepriseModal" class="btn btn-danger btn-sm" href="">Traiter</button></td>
-            <td style="text-align: center;"><button onclick="document.getElementById('suppModal').value = <?=$donneesAffichage['ID']?>" type="submit" data-toggle="modal" data-target="#SuppModal" class="btn btn-danger btn-sm" href="">Supprimer</button></td>
+            <td style="text-align: center;"><button onclick="document.getElementById('tonModal').value = <?=$donneesAffichage['ID']?>;document.getElementById('prix').value = <?php if(!empty($donneesAffichage['Prix']) ){echo $donneesAffichage['Prix'];}else{echo 0;}?>;document.getElementById('prix').min = <?php if(!empty($donneesAffichage['Prix']) ){echo $donneesAffichage['Prix'];}else{echo 0;}?>" type="submit" data-toggle="modal" data-target="#RepriseModal" class="btn btn-warning btn-sm" href="">Traiter</button></td>
+            <td style="text-align: center;"><button onclick="document.getElementById('suppModal').value = <?=$donneesAffichage['ID']?>" type="submit" data-toggle="modal" data-target="#SuppModal" class="btn btn-warning btn-sm" href="">Supprimer</button></td>
             </tr>
             <?php
         }if($donneesAffichage['Stade'] == "offre"){?>
@@ -54,7 +54,7 @@
             <form action="index.php" method="get">
             <input type='hidden' name='page' value='accueil'>
             <input type='hidden' name='rub' value='reprises'>
-            <td style="text-align: center;"><button type="submit" name ="ajout_rep" value="<?=$donneesAffichage['ID']?>" class="btn btn-danger btn-sm">Ajouter l'article</button></td>
+            <td style="text-align: center;"><button type="submit" name ="ajout_rep" value="<?=$donneesAffichage['ID']?>" class="btn btn-warning btn-sm">Ajouter l'article</button></td>
             </form>
             </tr>
 <?php

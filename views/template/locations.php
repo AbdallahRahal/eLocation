@@ -7,9 +7,9 @@ function aff_loc ($locations) { ?>
         <thead class="thead-dark">
             <tr>
                 
-                <th scope="col">Nom</th>
-                <th scope="col">Articles</th>
-                <th scope="col"></th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Nom</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Articles</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;"></th>
             </tr>
         </thead>
         <tbody> 
@@ -33,7 +33,7 @@ function aff_loc ($locations) { ?>
                 <?php echo $locations[$i][1]; ?>
             </td>
             <td>
-                <button type="submit" onclick="document.getElementById('var0').value = <?= $envoi[0]?>;document.getElementById('var1').value = <?= $envoi[1]?>;document.getElementById('var2').value = <?= $envoi[2]?>;<?php $_SESSION['uti_mail'] = $envoi[3]; $_SESSION['nom_uti'] = $envoi[4]; ?>" class="btn btn-primary" data-toggle="modal" data-target="#Rendre_Art" class="btn btn-danger btn-sm" href="" style="margin-left: 50%;">Rendre</button>
+                <button type="submit" onclick="document.getElementById('var0').value = <?= $envoi[0]?>;document.getElementById('var1').value = <?= $envoi[1]?>;document.getElementById('var2').value = <?= $envoi[2]?>;<?php $_SESSION['uti_mail'] = $envoi[3]; $_SESSION['nom_uti'] = $envoi[4]; ?>" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#Rendre_Art" class="btn btn-danger btn-sm" href="" style="margin-left: 50%;">Rendre</button>
             </td>
             </tr>
             <?php $i++;

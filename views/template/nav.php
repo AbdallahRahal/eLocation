@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" >
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top"<?php if(isset($_SESSION['compte'])){if($_SESSION['compte'] == 'admin') {?>style="background-color: #99b3ff !important;"<?php }}?>>
   <a href="index.php">
     <img src="views/template/eLocation.png" width="10%">
   </a> 

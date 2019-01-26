@@ -53,7 +53,7 @@
             </select>
           </div>
           <input type='hidden' name='uti' value=<?=$donneesAffichage['Utilisateur'];?>>
-          <button type="submit" name="ajout_article" value ="<?=$donneesAffichage['ID']?>" class="btn btn-danger btn-sm">Ajouter</button>
+          <button type="submit" name="ajout_article" value ="<?=$donneesAffichage['ID']?>" class="btn btn-warning btn-sm">Ajouter</button>
         </div>
     </form>
 </div>

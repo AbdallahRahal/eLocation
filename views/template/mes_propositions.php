@@ -3,15 +3,15 @@
     <table class="table table-striped table-hover" style="align-center: auto;">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">Nom</th>
-                <th scope="col">Description</th>
-                <th scope="col">Photo</th>
-                <th scope="col">Stade</th>
-                <th scope="col">Date</th>
-                <th scope="col">Prix (en €)</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Nom</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Description</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Photo</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Stade</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Date</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;">Prix (en €)</th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;"></th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;"></th>
+                <th scope="col" style="background-color: #99b3ff !important;border-color: #99b3ff !important;"></th>
             </tr>
         </thead>
         <tbody>
@@ -40,9 +40,9 @@
             <form action="index.php" method="get">
             <input type='hidden' name='page' value='accueil'>
             <input type='hidden' name='rub' value='proposition'>
-            <td style="text-align: center;"><button name = "accepter" value ="<?=$donneesAffichage['ID']?>" type="submit" href="" class="btn btn-danger btn-sm">Accepter</button></td>
-            <td style="text-align: center;"><button name = "reprop" value ="<?=$donneesAffichage['ID']?>" type="submit" href="" class="btn btn-danger btn-sm">Refaire une offre</td>
-            <td style="text-align: center;"><button name = "refuser" value ="<?=$donneesAffichage['ID']?>" type="submit" href="" class="btn btn-danger btn-sm">Refuser</button></td>
+            <td style="text-align: center;"><button name = "accepter" value ="<?=$donneesAffichage['ID']?>" type="submit" href="" class="btn btn-warning btn-sm">Accepter</button></td>
+            <td style="text-align: center;"><button name = "reprop" value ="<?=$donneesAffichage['ID']?>" type="submit" href="" class="btn btn-warning btn-sm">Refaire une offre</td>
+            <td style="text-align: center;"><button name = "refuser" value ="<?=$donneesAffichage['ID']?>" type="submit" href="" class="btn btn-warning btn-sm">Refuser</button></td>
             </form>
             </tr>
             <?php

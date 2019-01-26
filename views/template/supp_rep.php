@@ -15,8 +15,8 @@
         <p>Voulez-vous vraiment supprimer la proposition de reprise ?</p>
         </div>
         <div class="modal-footer">
-            <button type="submit" id="suppModal" class="btn btn-primary" name="supp_rep" value="">Oui</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Non</button>
+            <button type="submit" id="suppModal" class="btn btn-warning btn-sm" name="supp_rep" value="">Oui</button>
+            <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Non</button>
         </div>
         </form>
     </div>
