@@ -3,35 +3,36 @@
     <table class="table table-striped table-hover" style="align-center: auto;">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">ID</th>
+                
                 <th scope="col">Nom</th>
+                <th scope="col">Promotion</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
         <form action="" method="POST" onsubmit="verifForm(this)">
-        <tr><th scope="row"></th>
+        <tr>
             <td><input required type="text" class="form-control" name="nom" onblur="verifNom(this)"></td>
+            <td><input required type="number" max='100' min='0' name="promo" ></td>
             <td></td>
             <td><button type="submit"  name="ajout_cat" value="true" class="btn btn-danger btn-sm" style="margin-left: 52%">Ajouter</button></td>
         </tr>
         </form>
         <?php
         
-    foreach($mes_categories as $id => $nom){
+    foreach($mes_categories as $id => $table){
         ?><form action="" method="POST" onsubmit="verifForm(this)">
             
             <?php if(isset($_POST['modif_cat']) && $_POST['modif_cat'] == $id ){?>
             
             <tr>
-                <th scope="row">
-                <?php echo $id; ?>
-                </th>
-            
             <td>
-                <input required type=text <?=$nom?> name='nom' value='<?=$nom?>' class="form-control" onblur="verifNom(this)">
-            </td>   
+                <input required type=text  name='nom' value='<?=$table['nom']?>' class="form-control" onblur="verifNom(this)">
+            </td>  
+            <td>
+                <input required type=text  name='promo' value='<?=$table['promo']?>'   max='100' min='0' >
+            </td>
             <td>
                 <button type="submit" name="valid_modif_cat" value ="<?=$id?>" class="btn btn-danger btn-sm" style="margin-left: 95%">Valider</button>
             </td>
@@ -44,11 +45,11 @@
         <?php  }else{
             ?>
             <tr>
-                <th scope="row">
-                <?php echo $id; ?>
-                </th>
             <td>
-                <?php echo $nom; ?>
+                <?php echo $table['nom']; ?>
+            </td>
+            <td>
+                <?php echo $table['promo'].' %'; ?>
             </td>
                 
                 
