@@ -6,8 +6,7 @@
 <script src='views/librairies/verif.js'></script>
 <script src='views/librairies/jquery.js'></script>
 <script src='views/librairies/bootstrap.min.js'></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBwodm52D7SCxnF-TiCtn_E2dNjcrqZJac"></script>
-
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCCGx7iveK21dme8OuLgX9Je7TUDDCw3_A-TiCtn_E2dNjcrqZJac"></script>
 <?php
 session_start();
 

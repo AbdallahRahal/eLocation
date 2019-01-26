@@ -12,22 +12,22 @@ Informations:
 
 <br>
 Point relais :
-<select name="point_relais"> 
+<select onchange="change_point('2');" id="point_relais" name="point_relais"> 
     <?php
     
     for($x=0;$x<count($point_relais);$x++){
         $ouverture = substr($point_relais[$x]['ouverture'], 0, 5);
-        $fermeture = substr($point_relais[$x]['fermeture'], 0, 5);
-        echo"<option value=".$point_relais[$x]['id']."> ".$point_relais[$x]['nom']."   ".$ouverture."-".$fermeture."</option>";
+        $fermeture = substr($point_relais[$x]['fermeture'], 0, 5); ?>
+        <option value="<?=$point_relais[$x]['id']?>">
+<?php   echo $point_relais[$x]['adresse']." / ".$ouverture."-".$fermeture."</option>";
     }
     ?>
 </select><br><br>
-<iframe width="100%" height="200" id="maps" class="z-depth-3" src="https://maps.google.com/maps?q=Paris, France&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br><br>
+<iframe width="300%" height="300" id="maps" class="z-depth-3" src="https://maps.google.com/maps?q=<?=$point_relais[0]['adresse']?>&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br><br>
 Date de rendu:
-<input required type='date' name='date_butoire' min='<?=date("Y-m-d")?>' max='<?=date("Y-m-d", mktime(0, 0, 0, date("m")+1, date("d"), date("Y")));?>' > 
-    
-    
-    <br><br>
+<input required type='date' name='date_butoire' min='<?=date("Y-m-d")?>' max='<?=date("Y-m-d", mktime(0, 0, 0, date("m")+1, date("d"), date("Y")));?>' >
+
+<br><br>
     <?php
 if(verif_article_dispo($_GET['louer_article'])==false){
     echo' <p class="btn btn-danger btn-sm">Non disponible</p>';

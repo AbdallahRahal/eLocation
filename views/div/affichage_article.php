@@ -13,21 +13,22 @@
         <div class="row" id="lists">
           <?php for($i=0; $i<count($affiche);$i++ ) { ?>
           <div id="card<?=$i?>" data-price="<?= $affiche[$i][2] ?>" class="col-md-4">
-            <div class="card mb-4 shadow-sm" 
+            <div class="card mb-4 shadow-sm"
             <?php 
               if($affiche[$i][5] != "dispo") { 
-               echo "style='background: linear-gradient(45deg, white 25%, #E8E8E8  25%, #E8E8E8  50%, white 50%, white 75%,#E8E8E8  75%); background-size: 100px 100px;' ";          
+               echo "style='background: linear-gradient(45deg, white 25%, #E8E8E8  25%, #E8E8E8  50%, white 50%, white 75%,#E8E8E8  75%); background-size: 100px 100px;'";
               }
               ?>
               >
               <div class="card-header" >
       
                 <center><h4 id="titre<?=$i?>"><?= $affiche[$i][0] ?></h4></center>
-
               </div>
               <div class="card-body" style="max-height: 325px;min-height: 325px;">
-              <center><img style="width: 230px" src="views/img/<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap"></center>
-                <p id="text<?=$i?>" class="card-text"><?= $affiche[$i][1] ?> </p>
+              <center>
+                <img style="width: 230px" src="views/img/<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap">
+              </center>
+                <p id="text<?=$i?>" class="card-text"><?= $affiche[$i][1] ?></p>
               </div>
               <div class="card-footer" >
 
@@ -59,7 +60,7 @@
       </div> 
 </div>
    <script>$('#test1').keyup(function(){recherche(<?= $i; ?>);});</script>
-   <script>$('#testJs').change(function(){tri(<?= $i; ?>);});</script>   
+   <script>$('#testJs').change(function(){tri(<?=$i;?>);});</script>
 
 <?php
 }

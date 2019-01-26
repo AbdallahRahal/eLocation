@@ -84,6 +84,17 @@ function recherche(amount) {
 
 };
 
+function change_point (adresse) {
+
+  var e = document.getElementById('point_relais');
+  var d = e.options[e.selectedIndex].textContent;
+  var r = d.split('/');
+  var t = r[0];
+
+$('#maps').attr("src", "https://maps.google.com/maps?q="+t+"&t=&z=13&ie=UTF8&iwloc=&output=embed");
+
+};
+
 function tri (amount) {
 
 var e = document.getElementById('testJs');
