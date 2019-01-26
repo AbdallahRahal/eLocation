@@ -143,7 +143,7 @@ function rendre_article($POST) {
 
 function mes_categories() {
     include('models/db_connect.php');
-    $req = $bdd->query("SELECT id,nom FROM categorie");
+    $req = $bdd->query("SELECT * FROM categorie");
 
     while($ligne = $req->fetch() ) {
     
@@ -153,9 +153,22 @@ function mes_categories() {
     return $donnees;
 }
 
-function ajout_cat($x) {
+function mes_categoriesA() {
     include('models/db_connect.php');
-    $query= "INSERT INTO categorie (`nom`) VALUES (:nom) ";
+    $req = $bdd->query("SELECT * FROM categorie");
+
+    while($ligne = $req->fetch() ) {
+    
+        $donnees[$ligne['id']]['nom'] = $ligne['nom'];
+        $donnees[$ligne['id']]['promo'] = $ligne['promo'];
+    }
+
+    return $donnees;
+}
+
+function ajout_cat($POST) {
+    include('models/db_connect.php');
+    $query= "INSERT INTO categorie (`nom`,'promo') VALUES (:nom,:promo) ";
     $req = $bdd->prepare($query);
     $req-> execute(array(":nom" => htmlspecialchars($x)));
 }
@@ -174,9 +187,10 @@ function suppr_cat($x) {
 
 function valid_modif_cat($POST) {
     include('models/db_connect.php');
-    $query= 'UPDATE categorie SET nom = :nom WHERE categorie.id = :id';
+    $query= 'UPDATE categorie SET nom = :nom, promo= :promo WHERE categorie.id = :id';
     $req = $bdd->prepare($query);
     $req-> execute(array(":id" => $_POST['valid_modif_cat'],
+                         ":promo" => $_POST['promo'],
                          ":nom" => $_POST['nom']));
 
 }

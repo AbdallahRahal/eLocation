@@ -221,7 +221,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
               
         	}
             
-        	$mes_categories = mes_categories();
+        	$mes_categories = mes_categoriesA();
         	include('views/template/mes_categories.php');
             
 		} else if($_GET['rub'] == 'mes_relais') {
