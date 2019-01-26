@@ -30,8 +30,20 @@ if($art['promo']>0) {
 ?> 
     </form> 
     <?php
+echo "<br><br><br> <br><table class='table'>";
 
-echo "<br><br><br><h4>Commentaire : </h4> <br><table class='table'>";
+
+if(!empty($commentaire)) {
+  $y=0;
+  $moy=0;
+  for($x=0;$x<count($commentaire); $x++) {
+    $moy+=$commentaire[$x]['note'];
+    $y++;
+  }
+  $moy=$moy/$y;
+  echo" <tr><th><h4>Commentaire : </h4></th><th>moyenne = ".$moy."</th></tr>";
+}
+
   if(!empty($commentaire)) {
 
 
