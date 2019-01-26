@@ -107,7 +107,7 @@ function info_article($GET) {
 function commentaire_article($x) {
 
     include('models/db_connect.php');
-    $req = $bdd->prepare("SELECT louer.commentaire as commentaire from article JOIN action on article_id = article.id  JOIN louer on action.id = louer.action_id WHERE article.id = :art AND louer.commentaire IS NOT NULL");
+    $req = $bdd->prepare("SELECT louer.note as note, louer.commentaire as commentaire from article JOIN action on article_id = article.id  JOIN louer on action.id = louer.action_id WHERE article.id = :art AND louer.commentaire IS NOT NULL");
     $req-> execute(array(":art" => htmlspecialchars($x)));
     $donnees = $req->fetchAll(PDO::FETCH_ASSOC);
     if(empty($donnees)) {

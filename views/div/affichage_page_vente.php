@@ -31,17 +31,17 @@ if($art['promo']>0) {
     </form> 
     <?php
 
-echo "<br><br><br><h4>Commentaire : </h4> <br>";
+echo "<br><br><br><h4>Commentaire : </h4> <br><table class='table'>";
   if(!empty($commentaire)) {
 
 
-    for($x =0;$x<count($commentaire); $x++) {
-      echo $commentaire[$x]['commentaire']."<br>";
+    for($x=0;$x<count($commentaire); $x++) {
+      echo "<tr><td>".$commentaire[$x]['commentaire']."</td><td>".$commentaire[$x]['note']."</td></tr>";
     }
   }else{
     echo "cet article n'as pas de commentaire";
   }
-
+echo"</table>";
 ?>
   </div>
 <?php
