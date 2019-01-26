@@ -100,8 +100,8 @@ function info_article($GET) {
     if(empty($donnees)) {
         $donnees = NULL;
     }
-    var_dump($donnees);
-    die();
+    /*var_dump($donnees);
+    die();*/
     return $donnees;
 
 }

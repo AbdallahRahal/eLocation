@@ -15,14 +15,14 @@ Point relais :
 <select name="point_relais"> 
     <?php
     
-    
     for($x=0;$x<count($point_relais);$x++){
         $ouverture = substr($point_relais[$x]['ouverture'], 0, 5);
         $fermeture = substr($point_relais[$x]['fermeture'], 0, 5);
         echo"<option value=".$point_relais[$x]['id']."> ".$point_relais[$x]['nom']."   ".$ouverture."-".$fermeture."</option>";
     }
     ?>
-</select> <br><br>
+</select><br><br>
+<iframe width="100%" height="150" id="maps" class="z-depth-3" src="https://maps.google.com/maps?q=Paris, France&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br><br>
 Date de rendu:
 <input required type='date' name='date_butoire' min='<?=date("Y-m-d")?>' max='<?=date("Y-m-d", mktime(0, 0, 0, date("m")+1, date("d"), date("Y")));?>' > 
     
