@@ -22,21 +22,38 @@ if(verif_article_dispo($_GET['art'])==false){
 }else{
     echo'<button type="submit" class="btn btn-danger btn-sm">Louer</button>';
 }
-?>
+
+echo' prix =  '.($art['prix_journee']-($art['promo']/100)*$art['prix_journee']).'€/jour';
+if($art['promo']>0) {
+  echo 'Réduction de '.$art['promo'].' %';
+} 
+?> 
     </form> 
     <?php
+echo "<br><br><br> <br><table class='table'>";
 
-echo "<br><br><br><h4>Commentaire : </h4> <br>";
+
+if(!empty($commentaire)) {
+  $y=0;
+  $moy=0;
+  for($x=0;$x<count($commentaire); $x++) {
+    $moy+=$commentaire[$x]['note'];
+    $y++;
+  }
+  $moy=$moy/$y;
+  echo" <tr><th><h4>Commentaire : </h4></th><th>moyenne = ".$moy."</th></tr>";
+}
+
   if(!empty($commentaire)) {
 
 
-    for($x =0;$x<count($commentaire); $x++) {
-      echo $commentaire[$x]['commentaire']."<br>";
+    for($x=0;$x<count($commentaire); $x++) {
+      echo "<tr><td>".$commentaire[$x]['commentaire']."</td><td>".$commentaire[$x]['note']."</td></tr>";
     }
   }else{
     echo "cet article n'as pas de commentaire";
   }
-
+echo"</table>";
 ?>
   </div>
   <div class="card" style="width: 18rem;">

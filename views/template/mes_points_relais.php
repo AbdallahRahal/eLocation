@@ -3,7 +3,7 @@
     <table class="table table-striped table-hover" style="align-center: auto;">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">ID</th>
+                
                 <th scope="col">Nom</th>
                 <th scope="col">Adresse</th>
                 <th scope="col">Ouverture</th>
@@ -16,7 +16,7 @@
         </thead>
         <tbody>
         <form action="" method="POST" onsubmit="return verifForm(this)">
-        <tr><th scope="row"></th>
+        <tr>
             <td><input required type="text" class="form-control" name="nom" style="max-width: 90%" onblur="verifRelais(this)"></td>
             <td><input required type="text" class="form-control" name="adresse" style="max-width: 90%" onblur="verifAdresse(this)"></td>
             <td><input required type="time" class="form-control" name="ouverture" style="max-width: 100%" ></td>
@@ -36,10 +36,7 @@
            
             <?php if(isset($_POST['modif_relais']) && $_POST['modif_relais'] == $donneesAffichage['id'] ){?>
             
-            <tr>
-            <th scope="row">
-            <?php echo $donneesAffichage['id']; ?>
-            </th>    
+            <tr>   
             <td>
                 <input required type=text <?=$donneesAffichage['nom']?> name='nom' value='<?=$donneesAffichage['nom']?>' class="form-control" style="max-width: 90%" onblur="verifRelais(this)">
             </td>
@@ -70,10 +67,7 @@
             <?php }else{
             ?>
             
-            <tr>
-            <th scope="row">
-            <?php echo $donneesAffichage['id']; ?>
-            </th>     
+            <tr>    
             <td><?php echo $donneesAffichage['nom']; ?></td>
             <td><?php echo $donneesAffichage['adresse']; ?></td>
             <td><?= $ouverture ?></td>

@@ -94,20 +94,37 @@ function modification ($POST) {
 function info_article($GET) {
 
     include('models/db_connect.php');
-    $req = $bdd->prepare("SELECT  * from article WHERE article.id = :art");
+    $req = $bdd->prepare("SELECT * FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE article.id = :art");
     $req-> execute(array(":art" => htmlspecialchars($_GET['art'])));
     $donnees = $req->fetch(PDO::FETCH_ASSOC);
     if(empty($donnees)) {
         $donnees = NULL;
     }
+    /*var_dump($donnees);
+    die();*/
+    return $donnees;
+
+}
+function info_article_modif($GET) {
+
+    include('models/db_connect.php');
+    $req = $bdd->prepare("SELECT article.id, article.nom, article.description, article.prix_journee, article.lien_photo, article.statut, article.etat FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE article.id = :art");
+    $req-> execute(array(":art" => htmlspecialchars($_GET['art'])));
+    $donnees = $req->fetch(PDO::FETCH_ASSOC);
+    if(empty($donnees)) {
+        $donnees = NULL;
+    }
+
     return $donnees;
 
 }
 
+
+
 function commentaire_article($x) {
 
     include('models/db_connect.php');
-    $req = $bdd->prepare("SELECT louer.commentaire as commentaire from article JOIN action on article_id = article.id  JOIN louer on action.id = louer.action_id WHERE article.id = :art AND louer.commentaire IS NOT NULL");
+    $req = $bdd->prepare("SELECT louer.note as note, louer.commentaire as commentaire from article JOIN action on article_id = article.id  JOIN louer on action.id = louer.action_id WHERE article.id = :art AND louer.commentaire IS NOT NULL");
     $req-> execute(array(":art" => htmlspecialchars($x)));
     $donnees = $req->fetchAll(PDO::FETCH_ASSOC);
     if(empty($donnees)) {
@@ -143,7 +160,7 @@ function rendre_article($POST) {
 
 function mes_categories() {
     include('models/db_connect.php');
-    $req = $bdd->query("SELECT id,nom FROM categorie");
+    $req = $bdd->query("SELECT * FROM categorie");
 
     while($ligne = $req->fetch() ) {
     
@@ -153,9 +170,22 @@ function mes_categories() {
     return $donnees;
 }
 
-function ajout_cat($x) {
+function mes_categoriesA() {
     include('models/db_connect.php');
-    $query= "INSERT INTO categorie (`nom`) VALUES (:nom) ";
+    $req = $bdd->query("SELECT * FROM categorie");
+
+    while($ligne = $req->fetch() ) {
+    
+        $donnees[$ligne['id']]['nom'] = $ligne['nom'];
+        $donnees[$ligne['id']]['promo'] = $ligne['promo'];
+    }
+
+    return $donnees;
+}
+
+function ajout_cat($POST) {
+    include('models/db_connect.php');
+    $query= "INSERT INTO categorie (`nom`,'promo') VALUES (:nom,:promo) ";
     $req = $bdd->prepare($query);
     $req-> execute(array(":nom" => htmlspecialchars($x)));
 }
@@ -174,14 +204,36 @@ function suppr_cat($x) {
 
 function valid_modif_cat($POST) {
     include('models/db_connect.php');
-    $query= 'UPDATE categorie SET nom = :nom WHERE categorie.id = :id';
+    $query= 'UPDATE categorie SET nom = :nom, promo= :promo WHERE categorie.id = :id';
     $req = $bdd->prepare($query);
     $req-> execute(array(":id" => $_POST['valid_modif_cat'],
+                         ":promo" => $_POST['promo'],
                          ":nom" => $_POST['nom']));
 
 }
 
-
+function modifier_mon_article () {
+     
+    if(!empty($_FILES['lien_photo']['name'])) {
+        $new = str_replace(" ", "-", $_FILES['lien_photo']['name']);
+        $return = move_uploaded_file($_FILES['lien_photo']['tmp_name'], "Views/img/".$new);
+    }else{
+        $new = $_POST['reste'];
+    }
+    /*echo "$new";
+    var_dump($_FILES);
+    die();*/
+    include('models/db_connect.php');
+    $query= 'UPDATE article SET nom = :nom, description = :description, prix_journee = :prix_journee, lien_photo = :lien_photo, statut = :statut, etat = :etat WHERE article.id = :id';
+    $req = $bdd->prepare($query);
+    $req-> execute(array(":nom" => $_POST['nom'],
+                         ":description" => $_POST['description'],
+                         ":prix_journee" => $_POST['prix_journee'],
+                         ":lien_photo" => $new,
+                         ":statut" => $_POST['statut'],
+                         ":etat" => $_POST['etat'],
+                         ":id" => $_POST['id']));
+}
 
 function point_relais() {
     include('models/db_connect.php');
@@ -201,7 +253,6 @@ function ajout_relais ($POST) {
     $query = "INSERT INTO point_relais (`nom`, `adresse`, `ouverture`, `fermeture`, `cp`, `ville`) VALUES (:nom, :adresse, :ouverture, :fermeture, :cp, :ville) ";
     $req = $bdd->prepare($query);
     try {
-
     $req-> execute(array(":nom" => htmlspecialchars($_POST['nom']),
                          ":adresse" => htmlspecialchars($_POST['adresse']),
                          ":ouverture" => htmlspecialchars($_POST['ouverture']),
@@ -247,7 +298,7 @@ function valid_modif_relais($POST) {
 function mes_articles_de_ma_cat () {
     include('models/db_connect.php');
 
-    $req = $bdd->prepare("SELECT article.nom as nono, description, prix_journee, article.statut, article.id as id, lien_photo, categorie.id AS categorie  FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE categorie.id = :cat_id");
+    $req = $bdd->prepare("SELECT categorie.promo as promo, article.nom as nono, description, prix_journee, article.statut, article.id as id, lien_photo, categorie.id AS categorie  FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE categorie.id = :cat_id");
     $req-> execute(array(":cat_id"=> htmlspecialchars($_GET['cat'])));
 
     $i =0;
@@ -260,6 +311,7 @@ function mes_articles_de_ma_cat () {
         $donnees[$i][4] = $ligne['lien_photo'];
         $donnees[$i][5] = $ligne['statut'];
         $donnees[$i][6] = $ligne['categorie'];
+        $donnees[$i][7] = $ligne['promo'];
 
         $i++;
     }
@@ -272,7 +324,7 @@ function mes_articles_de_ma_cat () {
 
 function afficher_art_toute_categorie() {
     include('models/db_connect.php');
-    $req = $bdd->query("SELECT article.nom AS nom, description, prix_journee, article.id as id, lien_photo, statut, categorie.id AS categorie FROM article  join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id GROUP BY article.id");
+    $req = $bdd->query("SELECT categorie.promo AS promo, article.nom AS nom, description, prix_journee, article.id as id, lien_photo, statut, categorie.id AS categorie FROM article  join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id GROUP BY article.id");
     $i =0;
     while($ligne = $req->fetch() ) {
     
@@ -283,7 +335,7 @@ function afficher_art_toute_categorie() {
         $donnees[$i][4] = $ligne['lien_photo'];
         $donnees[$i][5] = $ligne['statut'];
         $donnees[$i][6] = $ligne['categorie'];
-        
+        $donnees[$i][7] = $ligne['promo'];
 
         $i++;
     }
@@ -363,6 +415,12 @@ function affichage_utilisateur() {
     return($affichage_utilisateur);
 }
 
+function affichage_prop_utilisateur() {
+    include('models/db_connect.php');
+    $affichage_reprise = $bdd->query("SELECT proposition.id as ID,proposition.titre as Nom,proposition.prix as Prix,proposition.description as Description,proposition.photo1 as Photo,proposition.stade as Stade, proposition.date_propo as Date FROM `proposition` where proposition.utilisateur_id = ".$_SESSION['id']." ORDER BY Stade");
+    return($affichage_reprise);
+}
+
 function affichage_reprise() {
     include('models/db_connect.php');
     $affichage_reprise = $bdd->query("SELECT proposition.id as ID,proposition.titre as Nom,proposition.prix as Prix,proposition.description as Description,proposition.photo1 as Photo,proposition.stade as Stade, proposition.date_propo as Date FROM `proposition` ORDER BY Stade");
@@ -372,6 +430,7 @@ function affichage_reprise() {
 function affichage_ajout() {
     include('models/db_connect.php');
     $affichage_ajout = $bdd->query("SELECT utilisateur_id as Utilisateur , proposition.id as ID,proposition.titre as Nom,proposition.prix as Prix,proposition.description as Description,proposition.photo1 as Photo,proposition.stade as Stade, proposition.date_propo as Date FROM `proposition` WHERE proposition.id = ".$_GET['ajout_rep']."");
+
     return($affichage_ajout);
 }
 
@@ -383,7 +442,7 @@ function affichage_location() {
 
 function proposition($titre,$description, $nom_photo) {
     include("models/db_connect.php");
-    $query = "INSERT INTO proposition (`titre`, `description`, `photo1`, `stade`, `date_propo`, `utilisateur_id`) VALUES (:titre, :descri, :photo1, 'proposition', CURRENT_TIMESTAMP(), :id) ";
+    $query = "INSERT INTO proposition (`titre`, `description`, `photo1`, `stade`, `date_propo`, `utilisateur_id`) VALUES (:titre, :descri, :photo1, 'proposition', CURRENT_TIMESTAMP(), :id)";
     $req = $bdd->prepare($query);    
     try {
 
