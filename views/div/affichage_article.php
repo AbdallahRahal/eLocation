@@ -26,14 +26,13 @@
 
               </div>
               <div class="card-body" style="max-height: 325px;min-height: 325px;">
-              <center><img style="width: 230px" src="views/img/<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap"></center>
+              <center><img style="width: 230px" src="<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap"></center>
                 <p id="text<?=$i?>" class="card-text"><?= $affiche[$i][1] ?> </p>
               </div>
               <div class="card-footer" >
 
                 <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <a href="index.php?page=<?=$_GET['page']?>&rub=<?=$_GET['rub']?>&cat=<?=$affiche[$i][6] ?>&art=<?=$affiche[$i][3]?>" class="btn btn-sm btn-outline-secondary">Louer</a>
+                    <a href="index.php?page=<?=$_GET['page']?>&rub=<?=$_GET['rub']?>&cat=<?=$affiche[$i][6] ?>&art=<?=$affiche[$i][3]?>" class="btn btn-warning">Louer</a>
               <p class="text-muted" 
                     <?php 
                     if($affiche[$i][5] != "dispo") { 
@@ -43,7 +42,6 @@
                     }
                     
                ?></p>
-                  </div>
                   <a class="text-muted"><?= $affiche[$i][2]."€/jour" ?></a>
                 </div>
               </div>
