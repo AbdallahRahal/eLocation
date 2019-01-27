@@ -71,6 +71,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
                     $commentaire = commentaire_article($_GET['art']);
 					affichage_page_vente($article, $commentaire);
 				}
+			
 			}else{
 				if(isset($_GET['art'])) {
 					if(isset($_GET['louer_article'])) {

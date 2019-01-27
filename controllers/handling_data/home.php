@@ -42,6 +42,7 @@ include_once 'models/requete.php';
 $article = mes_categories();
 rubriques($rubrique, $article);
 $affichage_carrousel = affichage_carrousel();
+$dernier_art_visités = dernier_art_visités();
 include 'views/home_page.php';
 
 ?>

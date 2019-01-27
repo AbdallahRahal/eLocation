@@ -125,7 +125,7 @@ $('#lists').show(1500);
     console.log(liste[i].dataset.price);
   }*/
 
-}else if(e.options[e.selectedIndex].value == 'Décroissant' ) {
+} else if(e.options[e.selectedIndex].value == 'Décroissant' ) {
 
   var $sorted_items,
   getSorted = function(selector, attrName) {
@@ -139,6 +139,29 @@ $('#lists').show(1500);
   };
 
 $sorted_items = getSorted("#lists .col-md-4", "data-price").clone();
+
+$('#lists').html( $sorted_items );
+$('#lists').hide();
+$('#lists').show(1500);
+
+
+
+}else if(e.options[e.selectedIndex].value == 'Neuf' ) {
+
+  var $sorted_items,
+  getSorted = function(selector, attrName) {
+      return $(
+        $(selector).toArray().sort(function(a, b){
+            var aVal = parseInt(a.getAttribute(attrName)),
+                bVal = parseInt(b.getAttribute(attrName));
+            alert (selector);
+            return aVal - bVal;
+
+        })
+      );
+  };
+
+$sorted_items = getSorted("#lists .col-md-4", "data-etat").clone();
 
 $('#lists').html( $sorted_items );
 $('#lists').hide();
