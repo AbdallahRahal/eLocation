@@ -618,4 +618,15 @@ function verif_article_dispo($id) {
     }
 }
 
+function suppr_com() {
+    include('models/db_connect.php');
+    $suppr_com = $bdd->query("DELETE FROM louer WHERE id=".htmlspecialchars($_GET['suppr_com'])."");
+}
+
+function modif_com($POST) {
+    include('models/db_connect.php');
+    $modif_com = $bdd->prepare("UPDATE louer SET commentaire = :com WHERE id = :id");
+    $modif_com-> execute(array(":note" => $_GET['commentaiare']));
+}
+
 ?>

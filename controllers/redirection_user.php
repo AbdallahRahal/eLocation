@@ -65,7 +65,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			
 					include 'views/div/affichage_page_vente.php';
 					$article = info_article($_GET['art']);
-					$commentaire = commentaire_article($_GET['art']);
+                    $commentaire = commentaire_article($_GET['art']);
 					affichage_page_vente($article, $commentaire);
 				}
 			}else{
@@ -139,7 +139,8 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 		
 					include 'views/div/affichage_page_vente.php';
 					$article = info_article($_GET['art']);
-					$commentaire = commentaire_article($_GET['art']);
+					$suppr_com=suppr_com();
+                    $commentaire = commentaire_article($_GET['art']);
 					affichage_page_vente($article, $commentaire);				}
 			
 			}else{
