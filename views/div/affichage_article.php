@@ -4,11 +4,18 @@
         <nav class="navbar navbar-light bg-light">
         <input class="form-control mr-sm-2" id="test1" type="search" aria-label="Search" placeholder="Rechercher..." name="" style="max-width: 20%;">
         <?php
+        if(isset($_GET['cat'])){
+
           while($donneesAffichage = $aff_cat->fetch()){
         ?>
         <h3><?=$donneesAffichage['nom']?></h3>
         <?php
           };
+        }else{
+          ?>
+          <h3>Tout les articles</h3>
+          <?php
+        };
         ?>
         <select class="custom-select" id="testJs" name="trier" style="max-width: 20%;">
           <option>Trier par</option>
@@ -36,7 +43,7 @@
                       echo"<span class=\"badge badge-danger\" style=\"float:right;\">".$affiche[$i]['7']." % de réduction</span>";
                   }?>
               <center>
-                <img style="width: 230px" src="views/img/<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap">
+                <img style="width: 230px" src="<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap">
               </center>
                 <p id="text<?=$i?>" class="card-text"><?= $affiche[$i][1] ?></p>
               </div>

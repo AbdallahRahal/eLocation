@@ -617,8 +617,13 @@ function affichage_carrousel() {
 
 function aff_cat() {
     include('models/db_connect.php');
-    $aff_cat = $bdd->query("SELECT `id`, `nom`, `promo` FROM `categorie` WHERE `id`=".$_GET['cat']."");
+    if(isset($_GET['cat']) ) {
+        $aff_cat = $bdd->query("SELECT `id`, `nom`, `promo` FROM `categorie` WHERE `id`=".$_GET['cat']."");
+    }else{
+        $aff_cat = $bdd->query("SELECT `id`, `nom`, `promo` FROM `categorie`");
+    }
     return($aff_cat);
+
 }
 
 //------------------Template Fonction------------------//

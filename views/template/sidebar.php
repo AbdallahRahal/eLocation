@@ -4,7 +4,7 @@ function sidebar ($arg) { ?>
 
 <div class='container-fluid'>
 	<div class='row'>
-        <nav class='col-md-2 d-none d-md-block bg-light sidebar' style='margin-top: 7%;padding: 1px 0 0;z-index: 50;'>
+        <nav class='col-md-2 d-none d-md-block bg-light sidebar' style='margin-top: 6.5%;padding: 1px 0 0;z-index: 50;'>
         	<div class='sidebar-sticky'>
             <?php 
                 foreach ($arg as $key => $value) { ?>
