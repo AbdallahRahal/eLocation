@@ -10,7 +10,7 @@ function sidebar ($arg) { ?>
                 foreach ($arg as $key => $value) { ?>
                   <ul class='nav flex-column'>
                     <li class='nav-item'>
-                        <a class="nav-link active" href="index.php?page=accueil&rub=<?=$_GET['rub']?>&cat=<?=$key?>" > <?=$value?></a>
+                        <a class="nav-link active" style="color: #ef7f1b;" href="index.php?page=accueil&rub=<?=$_GET['rub']?>&cat=<?=$key?>"><h4><?=$value?></h4></a>
                     </li>
                  </ul>
 

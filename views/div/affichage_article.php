@@ -1,22 +1,22 @@
  <?php
  function affichage_article ($affiche) { /*var_dump($affiche); die('isma');*/ ?>
- <div class="album py-5 bg-light" style="margin-left: 20%;margin-top: 100px">
-      <div class="container">
-        <div style="margin-left: 85%;margin-top: 10px;">
-        <input id="test1" type="text" placeholder="Rechercher..." name=""><br><br>
-        <select id="testJs" name="trier">
+      <div class="container" style="margin-top: 5%;max-width: 60%;">
+        <nav class="navbar navbar-light bg-light">
+        <input class="form-control mr-sm-2" id="test1" type="search" aria-label="Search" placeholder="Rechercher..." name="" style="max-width: 20%;">
+        <h3>TEST</h3>
+        <select class="custom-select" id="testJs" name="trier" style="max-width: 20%;">
           <option>Trier par</option>
           <option id="test2" value="Croissant" > Prix Croissant</option>
           <option id="test3" value="Décroissant" >Prix Décroissant</option>
         </select>
-      </div>
-        <div class="row" id="lists">
+        </nav>
+          <div class="row" id="lists" style="margin-top: 3%;">
           <?php for($i=0; $i<count($affiche);$i++ ) { ?>
           <div id="card<?=$i?>" data-price="<?= $affiche[$i][2] ?>" class="col-md-4">
             <div class="card mb-4 shadow-sm" 
             <?php 
               if($affiche[$i][5] != "dispo") { 
-               echo "style='background: linear-gradient(45deg, white 25%, #E8E8E8  25%, #E8E8E8  50%, white 50%, white 75%,#E8E8E8  75%); background-size: 100px 100px;' ";          
+               echo "style='background: linear-gradient(45deg, white 25%, #E8E8E8  25%, #E8E8E8  50%, white 50%, white 75%,#E8E8E8  75% ); background-size: 100px 100px;' ";          
               }
               ?>
               >
@@ -49,7 +49,6 @@
                   }else{
                     echo" </a>";
                   }?>
-                </div>
               </div>
             </div>
           </div>
