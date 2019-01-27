@@ -32,6 +32,9 @@ function locations() {
 
         $i++;
     }
+    if(empty($result)) {
+        $result = NULL;
+    }
 
     return $result;
 }
@@ -298,7 +301,7 @@ function valid_modif_relais($POST) {
 function mes_articles_de_ma_cat () {
     include('models/db_connect.php');
 
-    $req = $bdd->prepare("SELECT categorie.promo as promo, article.nom as nono, description, prix_journee, article.statut, article.id as id, lien_photo, categorie.id AS categorie  FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE categorie.id = :cat_id");
+    $req = $bdd->prepare("SELECT categorie.promo as promo, article.nom as nono,article.etat as etat, description, prix_journee, article.statut, article.id as id, lien_photo, categorie.id AS categorie  FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE categorie.id = :cat_id");
     $req-> execute(array(":cat_id"=> htmlspecialchars($_GET['cat'])));
 
     $i =0;
@@ -312,6 +315,7 @@ function mes_articles_de_ma_cat () {
         $donnees[$i][5] = $ligne['statut'];
         $donnees[$i][6] = $ligne['categorie'];
         $donnees[$i][7] = $ligne['promo'];
+        $donnees[$i][8] = $ligne['etat'];
 
         $i++;
     }
@@ -324,7 +328,7 @@ function mes_articles_de_ma_cat () {
 
 function afficher_art_toute_categorie() {
     include('models/db_connect.php');
-    $req = $bdd->query("SELECT categorie.promo AS promo, article.nom AS nom, description, prix_journee, article.id as id, lien_photo, statut, categorie.id AS categorie FROM article  join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id GROUP BY article.id");
+    $req = $bdd->query("SELECT categorie.promo AS promo, article.etat as etat, article.nom AS nom, description, prix_journee, article.id as id, lien_photo, statut, categorie.id AS categorie FROM article  join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id GROUP BY article.id");
     $i =0;
     while($ligne = $req->fetch() ) {
     
@@ -336,6 +340,7 @@ function afficher_art_toute_categorie() {
         $donnees[$i][5] = $ligne['statut'];
         $donnees[$i][6] = $ligne['categorie'];
         $donnees[$i][7] = $ligne['promo'];
+        $donnees[$i][8] = $ligne['etat'];
 
         $i++;
     }
@@ -595,8 +600,25 @@ function avis($GET){
 
 function affichage_carrousel() {
     include('models/db_connect.php');
-    $affichage_carrousel = $bdd->query('SELECT lien_photo as Photo FROM `article`;');
+    $affichage_carrousel = $bdd->query('SELECT article.nom, article.id, article.lien_photo as Photo, vendre.date_vente, appartenir.categorie_id FROM `article`join action on action.article_id = article.id JOIN vendre on vendre.action_id = action.id join appartenir on appartenir.article_id like article.id  ORDER BY vendre.date_vente DESC LIMIT 6');
     return($affichage_carrousel);
+}
+
+function dernier_art_visités() {
+
+    if(isset($_COOKIE['visites']) && !empty($_COOKIE['visites'][0]) ) {
+    $art = " ".$_COOKIE['visites'][0]['id_art']." ";
+    for($i = 1; $i<count($_COOKIE['visites']); $i++) {
+        $art = $art." OR article.id like ".$_COOKIE['visites'][$i]['id_art']." ";
+    }
+    include('models/db_connect.php');
+    $dernier_art_visités = $bdd->query('SELECT article.nom, article.id, article.lien_photo as Photo, appartenir.categorie_id FROM article join appartenir on article.id = appartenir.article_id where article.id like '.$art.'GROUP BY article.id');
+    //echo "<br><br><br><br><br>SELECT article.nom, article.id, article.lien_photo as Photo, appartenir.categorie_id FROM article join appartenir on article.id = appartenir.categorie_id where article.id like ".$art;
+    //die();
+    }else{
+        $dernier_art_visités = NULL;
+    }
+    return($dernier_art_visités);
 }
 
 //------------------Template Fonction------------------//

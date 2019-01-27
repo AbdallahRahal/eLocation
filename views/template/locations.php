@@ -14,7 +14,8 @@ function aff_loc ($locations) { ?>
         </thead>
         <tbody> 
 
- <?php $i =1; //var_dump($locations); 
+ <?php $i =1; //var_dump($locations);
+    if(!empty($locations)) {
     while($i<=count($locations)) { //var_dump($locations);
         $envoi[0] = $locations[$i][2]; //action
         $envoi[1] = $locations[$i][3]; //article
@@ -24,6 +25,7 @@ function aff_loc ($locations) { ?>
         $t1 = strval($envoi[3]);
         $t2 = strval($envoi[4]);
         //var_dump($envoi);
+
         ?>
             <tr>
             <td>
@@ -37,7 +39,13 @@ function aff_loc ($locations) { ?>
             </td>
             </tr>
             <?php $i++;
+    
     }
+    
+    } else {
+        echo "<tr><td>pas de locations</td><td></td><td></td></tr>";
+    }
+    
     ?> 
     </tbody>
     </table>

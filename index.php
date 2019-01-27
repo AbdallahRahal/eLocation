@@ -9,7 +9,7 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCCGx7iveK21dme8OuLgX9Je7TUDDCw3_A-TiCtn_E2dNjcrqZJac"></script>
 <?php
 session_start();
-
+include 'controllers/handling_data/gerer_mes_cookies.php';
 include 'views/template/html_top.html';
 
 if(isset($_GET['page'])) {
@@ -27,4 +27,5 @@ if(isset($_GET['page'])) {
 
 include 'views/template/html_bottom.html';
 
+//var_dump($_COOKIE);
 ?>
