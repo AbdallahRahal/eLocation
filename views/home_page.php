@@ -10,38 +10,6 @@
       $categorie_id[$i] = $donneesAffichage['categorie_id'];
       $i++;
     }
-<<<<<<< HEAD
-        ?>
-        <br><h2>Les derniers articles ajoutés</h2><br>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="<?=$lien_photo[1]?>" alt="Première slide" style="max-width: 40%;margin-left: 30%;margin-top: 5%;">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="<?=$lien_photo[2]?>" alt="Seconde slide" style="max-width: 40%;margin-left: 30%;margin-top: 5%;">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="<?=$lien_photo[3]?>" alt="Troisième slide" style="max-width: 40%;margin-left: 30%;margin-top: 5%;">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="<?=$lien_photo[4]?>" alt="Quatrième slide" style="max-width: 40%;margin-left: 30%;margin-top: 5%;">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="<?=$lien_photo[5]?>" alt="Cinquième slide" style="max-width: 40%;margin-left: 30%;margin-top: 5%;">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Précédent</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Suivant</span>
-  </a>
-</div>
-      </div>
-</main>
-=======
     if ($dernier_art_visités != NULL) {
       
     while($test = $dernier_art_visités->fetchAll(PDO::FETCH_ASSOC)){
@@ -651,4 +619,3 @@ Copyright © 2017 Colorlib. All rights reserved.
 <script src="https://colorlib.com/etc/fashe/js/main.js"></script>
 </body>
 </html>
->>>>>>> 0bf97443c5b7a490af097b29867fed5d2b16de76
