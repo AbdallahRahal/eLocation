@@ -1,9 +1,15 @@
  <?php
- function affichage_article ($affiche) { /*var_dump($affiche); die('isma');*/ ?>
+ function affichage_article ($affiche, $aff_cat) { /*var_dump($affiche); die('isma');*/ ?>
       <div class="container" style="margin-top: 5%;max-width: 60%;">
         <nav class="navbar navbar-light bg-light">
         <input class="form-control mr-sm-2" id="test1" type="search" aria-label="Search" placeholder="Rechercher..." name="" style="max-width: 20%;">
-        <h3>TEST</h3>
+        <?php
+          while($donneesAffichage = $aff_cat->fetch()){
+        ?>
+        <h3><?=$donneesAffichage['nom']?></h3>
+        <?php
+          };
+        ?>
         <select class="custom-select" id="testJs" name="trier" style="max-width: 20%;">
           <option>Trier par</option>
           <option id="test2" value="Croissant" > Prix Croissant</option>
@@ -33,23 +39,23 @@
               <div class="card-footer" >
 
                 <div class="d-flex justify-content-between align-items-center">
-                    <a href="index.php?page=<?=$_GET['page']?>&rub=<?=$_GET['rub']?>&cat=<?=$affiche[$i][6] ?>&art=<?=$affiche[$i][3]?>" class="btn btn-warning">Louer</a>
-              <p class="text-muted" 
-                    <?php 
-                    if($affiche[$i][5] != "dispo") { 
-                      echo "style='background-color : red;'>Non diponible";        
-                    }else{
-                      echo">Diponible";
-                    }
-
-               ?></p>
-                  </div>
-                  <a class="text-muted"><?php echo $affiche[$i][2]-($affiche[$i]['7']/100)*$affiche[$i][2]."€/jour";
+                    <a href="index.php?page=<?=$_GET['page']?>&rub=<?=$_GET['rub']?>&cat=<?=$affiche[$i][6] ?>&art=<?=$affiche[$i][3]?>" class="btn btn-danger">Louer</a>
+                    <a class="text-muted"><?php echo $affiche[$i][2]-($affiche[$i]['7']/100)*$affiche[$i][2]."€/jour";
                   if($affiche[$i]['7']>0) {
-                      echo" Réduction de =".$affiche[$i]['7']." % </a>";
+                      echo" ".$affiche[$i]['7']." % de réduction</a>";
                   }else{
                     echo" </a>";
                   }?>
+                    <button type="button"
+                    <?php 
+                    if($affiche[$i][5] != "dispo") { 
+                      echo "class=\"btn btn-outline-danger disabled \">Non diponible";        
+                    }else{
+                      echo"class=\"btn btn-outline-success disabled \">Diponible";
+                    }
+
+               ?></button>
+                  </div>
               </div>
             </div>
           </div>
@@ -63,3 +69,4 @@
 <?php
 }
 ?>
+

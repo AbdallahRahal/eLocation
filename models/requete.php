@@ -599,6 +599,12 @@ function affichage_carrousel() {
     return($affichage_carrousel);
 }
 
+function aff_cat() {
+    include('models/db_connect.php');
+    $aff_cat = $bdd->query("SELECT `id`, `nom`, `promo` FROM `categorie` WHERE `id`=".$_GET['cat']."");
+    return($aff_cat);
+}
+
 //------------------Template Fonction------------------//
 function name() {
     include('models/db_connect.php');

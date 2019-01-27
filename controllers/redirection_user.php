@@ -59,7 +59,8 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			
 				if(!isset($_GET['art'])) {
 					$affiche = afficher_art_toute_categorie();
-					affichage_article($affiche);
+					$aff_cat = aff_cat();
+					affichage_article($affiche ,$aff_cat);
 				
 				}else{
 			
@@ -87,7 +88,8 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 					}
 				}else{
 					$affiche = mes_articles_de_ma_cat();
-					affichage_article($affiche);
+					$aff_cat = aff_cat();
+					affichage_article($affiche ,$aff_cat);
 				}
 			}
 		}else if ($_GET['rub'] == 'loc') {
@@ -130,10 +132,11 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			sidebar($article);
 		
 			if (!isset($_GET['cat']) || empty($_GET['cat'])) {
-		
+
 				if(!isset($_GET['art'])) {
 					$affiche = afficher_art_toute_categorie();
-					affichage_article($affiche);
+					$aff_cat = aff_cat();
+					affichage_article($affiche, $aff_cat);
 			
 				}else{
 		
