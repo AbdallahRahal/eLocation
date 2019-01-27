@@ -31,6 +31,10 @@
                 <center><h4 id="titre<?=$i?>"><?= $affiche[$i][0] ?></h4></center>
               </div>
               <div class="card-body" style="max-height: 325px;min-height: 325px;">
+              <?php
+                  if($affiche[$i]['7']>0) {
+                      echo"<span class=\"badge badge-danger\" style=\"float:right;\">".$affiche[$i]['7']." % de réduction</span>";
+                  }?>
               <center>
                 <img style="width: 230px" src="views/img/<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap">
               </center>
@@ -40,12 +44,7 @@
 
                 <div class="d-flex justify-content-between align-items-center">
                     <a href="index.php?page=<?=$_GET['page']?>&rub=<?=$_GET['rub']?>&cat=<?=$affiche[$i][6] ?>&art=<?=$affiche[$i][3]?>" class="btn btn-danger">Louer</a>
-                    <a class="text-muted"><?php echo $affiche[$i][2]-($affiche[$i]['7']/100)*$affiche[$i][2]."€/jour";
-                  if($affiche[$i]['7']>0) {
-                      echo" ".$affiche[$i]['7']." % de réduction</a>";
-                  }else{
-                    echo" </a>";
-                  }?>
+                    <a class="text-muted"><?php echo $affiche[$i][2]-($affiche[$i]['7']/100)*$affiche[$i][2]."€/jour </a>";?>
                     <button type="button"
                     <?php 
                     if($affiche[$i][5] != "dispo") { 
