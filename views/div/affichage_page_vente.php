@@ -44,17 +44,32 @@ if(!empty($commentaire)) {
   echo" <tr><th><h4>Commentaire : </h4></th><th>moyenne = ".$moy."</th></tr>";
 }
 
-  if(!empty($commentaire)) {
-
-
+if(!empty($commentaire)) {
+if (!isset($_GET['compte'])) { 
     for($x=0;$x<count($commentaire); $x++) {
       echo "<tr><td>".$commentaire[$x]['commentaire']."</td><td>".$commentaire[$x]['note']."</td></tr>";
-    }
-  }else{
+    }else{
     echo "cet article n'as pas de commentaire";
-  }
+    }
 echo"</table>";
+}elseif($_SESSION['compte'] == 'admin') {
+
+    for($x=0;$x<count($commentaire); $x++) {
+      echo "<tr><td>".$commentaire[$x]['commentaire']."</td><td>".$commentaire[$x]['note']."test<button type=\"submit\" class=\"btn btn-danger btn-sm\">Supprimer</button></td></tr>";
+    }else{
+    echo "cet article n'as pas de commentaire";
+    }
+echo"</table>";
+}elseif($_SESSION['compte'] == 'utilisateur') {
+    for($x=0;$x<count($commentaire); $x++) {
+      echo "<tr><td>".$commentaire[$x]['commentaire']."</td><td>".$commentaire[$x]['note']."</td></tr>";
+    }else{
+    echo "cet article n'as pas de commentaire";
+    }
+echo"</table>";
+}
 ?>
   </div>
 <?php
 } ?>
+
