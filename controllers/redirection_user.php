@@ -63,7 +63,9 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 					affichage_article($affiche ,$aff_cat);
 				
 				}else{
-			
+					if(isset($_POST['valider_modif_commentaire']) || isset($_POST['suppr_commentaire'] )) {
+						modif_commentaire($_POST);
+					}
 					include 'views/div/affichage_page_vente.php';
 					$article = info_article($_GET['art']);
                     $commentaire = commentaire_article($_GET['art']);
@@ -81,6 +83,9 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 						}
 						 
 					}else{
+						if(isset($_POST['valider_modif_commentaire']) || isset($_POST['suppr_commentaire'] )) {
+							modif_commentaire($_POST);
+						}
 						include 'views/div/affichage_page_vente.php';
 						$article = info_article($_GET['art']);
 						$commentaire = commentaire_article($_GET['art']);
@@ -140,6 +145,9 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			
 				}else{
 		
+					if(isset($_POST['valider_modif_commentaire']) || isset($_POST['suppr_commentaire'] )) {
+						modif_commentaire($_POST);
+					}
 					include 'views/div/affichage_page_vente.php';
 					$article = info_article($_GET['art']);
 					$suppr_com=suppr_com();

@@ -41,33 +41,48 @@ if(!empty($commentaire)) {
     $y++;
   }
   $moy=$moy/$y;
-  echo" <tr><th><h4>Commentaire : </h4></th><th>moyenne = ".$moy."</th></tr>";
+  echo" <tr><th><h4>Commentaire : </h4></th><th>moyenne = ".$moy."</th><th></th></tr>";
 }
-
+echo"<form action='' method=POST>";
 if(!empty($commentaire)) {
-if (!isset($_GET['compte'])) { 
-    for($x=0;$x<count($commentaire); $x++) {
-      echo "<tr><td>".$commentaire[$x]['commentaire']."</td><td>".$commentaire[$x]['note']."</td></tr>";
-    }else{
-    echo "cet article n'as pas de commentaire";
-    }
-echo"</table>";
-}elseif($_SESSION['compte'] == 'admin') {
 
-    for($x=0;$x<count($commentaire); $x++) {
-      echo "<tr><td>".$commentaire[$x]['commentaire']."</td><td>".$commentaire[$x]['note']."test<button type=\"submit\" class=\"btn btn-danger btn-sm\">Supprimer</button></td></tr>";
-    }else{
-    echo "cet article n'as pas de commentaire";
+    for($x=0;$x<count($commentaire); $x++){
+
+      if($_SESSION['compte'] == 'admin') {
+            echo "<tr><td>".$commentaire[$x]['commentaire']."</td><td>".$commentaire[$x]['note']."</td><td><button type=submit name='suppr_commentaire' value =".$commentaire[$x]['louer_id']." >Supprimer</button></td></tr>";
+        
+      }elseif(isset($_SESSION['id']) && $_SESSION['id'] == $commentaire[$x]['utilisateur_id']){
+
+        if(isset($_POST['modif_commentaire']) && $_POST['modif_commentaire'] ==$commentaire[$x]['louer_id'] ){
+
+          echo "<tr><td><input type=text required name=nouveauComm value=".$commentaire[$x]['commentaire']."></td><td>
+          <Select  name=nouveauNote>  >
+          <option selected  value=".$commentaire[$x]['note']."> ".$commentaire[$x]['note']."</option>
+          <option value=1 >1</option>
+          <option value=2 >2</option>
+          <option value=3 >3</option>
+          <option value=4 >4</option>
+          <option value=5 >5</option>
+          
+          </select></td><td>
+          <button type=submit value= ".$commentaire[$x]['louer_id']." name='valider_modif_commentaire' >Valider</button> ";
+    
+        }else{
+          echo "<tr><td>".$commentaire[$x]['commentaire']."</td><td>".$commentaire[$x]['note']." </td><td><button type=submit name='modif_commentaire' value =".$commentaire[$x]['louer_id']." >Modifier</button><button type=submit name='suppr_commentaire' value =".$commentaire[$x]['louer_id']." >Supprimer</button> </td></tr>";
+        }
+        
+      }else{
+        echo "<tr><td>".$commentaire[$x]['commentaire']."</td><td>".$commentaire[$x]['note']."</td><td></td></tr>";
+      }
+      
     }
-echo"</table>";
-}elseif($_SESSION['compte'] == 'utilisateur') {
-    for($x=0;$x<count($commentaire); $x++) {
-      echo "<tr><td>".$commentaire[$x]['commentaire']."</td><td>".$commentaire[$x]['note']."</td></tr>";
-    }else{
-    echo "cet article n'as pas de commentaire";
-    }
-echo"</table>";
+    
+}else{
+        echo "cet article n'as pas de commentaire";
 }
+
+
+echo"</form></table>";
 ?>
   </div>
   <div class="card" style="width: 18rem;">
