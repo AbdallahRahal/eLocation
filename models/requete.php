@@ -127,13 +127,27 @@ function info_article_modif($GET) {
 function commentaire_article($x) {
 
     include('models/db_connect.php');
-    $req = $bdd->prepare("SELECT louer.note as note, louer.commentaire as commentaire from article JOIN action on article_id = article.id  JOIN louer on action.id = louer.action_id WHERE article.id = :art AND louer.commentaire IS NOT NULL");
+    $req = $bdd->prepare("SELECT utilisateur_id ,louer.id as louer_id ,louer.note as note, louer.commentaire as commentaire from article JOIN action on article_id = article.id  JOIN louer on action.id = louer.action_id WHERE article.id = :art AND louer.commentaire != '' ");
     $req-> execute(array(":art" => htmlspecialchars($x)));
     $donnees = $req->fetchAll(PDO::FETCH_ASSOC);
     if(empty($donnees)) {
         $donnees = NULL;
     }
     return $donnees;
+
+}
+function modif_commentaire($POST) {
+    include('models/db_connect.php');
+    if(isset($_POST['suppr_commentaire'])){
+        $req = $bdd->exec("UPDATE louer SET commentaire = ' ', note = NULL  WHERE id = ".$_POST['suppr_commentaire']." ");
+
+    }elseif(isset($_POST['valider_modif_commentaire'])){
+        $req = $bdd->prepare("UPDATE louer SET commentaire = :nouComm , note = :nouNote   WHERE id = :id ");
+        $req-> execute(array(":nouComm" =>$_POST['nouveauComm'],":nouNote" =>$_POST['nouveauNote'],":id" =>$_POST['valider_modif_commentaire'] ));
+    }else{
+        return false;
+    }
+    return true;
 
 }
 
@@ -145,8 +159,10 @@ function rendre_article($POST) {
    // $req-> execute(array(":id" => $_POST['action']));
     $donnees=$req-> fetch();
     $loc_id = $donnees['id'];
+
     $req = $bdd->prepare("UPDATE louer SET date_reelle = :daten WHERE action_id = :id");
     $req-> execute(array(":daten" => date("Y-m-d"), ":id" => $_POST['action']));
+
     $request = $bdd->prepare("UPDATE article SET statut = :dispo WHERE id = :id");
     $request-> execute(array(":dispo" => "dispo", ":id" => $_POST['art_id']));
     $requete = $bdd->prepare("SELECT FROM utilisateur where id =");
@@ -638,6 +654,17 @@ function verif_article_dispo($id) {
     }else{
         return false;
     }
+}
+
+function suppr_com() {
+    include('models/db_connect.php');
+    $suppr_com = $bdd->query("DELETE FROM louer WHERE id=".htmlspecialchars($_GET['suppr_com'])."");
+}
+
+function modif_com($POST) {
+    include('models/db_connect.php');
+    $modif_com = $bdd->prepare("UPDATE louer SET commentaire = :com WHERE id = :id");
+    $modif_com-> execute(array(":note" => $_GET['commentaiare']));
 }
 
 ?>
