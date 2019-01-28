@@ -71,7 +71,7 @@ if(!empty($commentaire)) {
 
         if(isset($_POST['modif_commentaire']) && $_POST['modif_commentaire'] ==$commentaire[$x]['louer_id'] ){
 
-          echo "<li class='list-group-item'><input type=text class='form-control mr-2' style='max-width: 55%;float: left;'required name=nouveauComm value=".$commentaire[$x]['commentaire'].">   
+          echo "<li class='list-group-item'><input type=text class='form-control mr-2' onblur='verifPseudo(this)' style='max-width: 55%;float: left;'required name=nouveauComm value=".$commentaire[$x]['commentaire'].">   
           <select class='custom-select' style='max-width: 20%;' name=nouveauNote>
           <option selected  value=".$commentaire[$x]['note']."> ".$commentaire[$x]['note']."</option>
           <option value=1 >1</option>
