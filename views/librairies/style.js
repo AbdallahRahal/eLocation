@@ -154,9 +154,8 @@ $('#lists').show(1500);
         $(selector).toArray().sort(function(a, b){
             var aVal = parseInt(a.getAttribute(attrName)),
                 bVal = parseInt(b.getAttribute(attrName));
-            alert (selector);
-            return aVal - bVal;
-
+            console.log(aVal, bVal);
+            return aVal < bVal ? -1 : 1;
         })
       );
   };
