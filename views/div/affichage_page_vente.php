@@ -20,7 +20,7 @@ function affichage_page_vente ($art, $commentaire) { ?>
     <input type='hidden' value=<?=$_GET['rub']?> name='rub'>
     <input type='hidden' value=<?=$_GET['cat']?> name='cat'>
     <input type='hidden' value=<?=$_GET['art']?> name='art'>
-    <input type='hidden' value=<?=$art['id']?> name='louer_article'>
+    <input type='hidden' value=<?=$_GET['art']?> name='louer_article'>
     <ul class="list-group list-group-flush">
     <?php
 
