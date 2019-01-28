@@ -26,8 +26,9 @@
         </select>
         </nav>
           <div class="row" id="lists" style="margin-top: 3%;">
-          <?php for($i=0; $i<count($affiche);$i++ ) { ?>
-          <div id="card<?=$i?>" data-etat="<?= $affiche[$i][8]?>" data-price="<?= $affiche[$i][2] ?>" class="col-md-4">
+          <?php for($i=0; $i<count($affiche);$i++ ) { 
+            ($affiche[$i][8] == "neuf") ? $etat = 0 : $etat = 1;?>
+          <div id="card<?=$i?>" data-etat="<?=$etat?>" data-price="<?= $affiche[$i][2] ?>" class="col-md-4">
             <div class="card mb-4 shadow-sm"
             <?php 
               if($affiche[$i][5] != "dispo") { 

@@ -10,6 +10,7 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   modal.find('.modal-body input').val(recipient)
 })
 
+
 $('#RepriseModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
   var recipient = button.data('whatever') // Extract info from data-* attributes
@@ -144,8 +145,6 @@ $('#lists').html( $sorted_items );
 $('#lists').hide();
 $('#lists').show(1500);
 
-
-
 }else if(e.options[e.selectedIndex].value == 'Neuf' ) {
 
   var $sorted_items,
@@ -154,8 +153,7 @@ $('#lists').show(1500);
         $(selector).toArray().sort(function(a, b){
             var aVal = parseInt(a.getAttribute(attrName)),
                 bVal = parseInt(b.getAttribute(attrName));
-            console.log(aVal, bVal);
-            return aVal < bVal ? -1 : 1;
+            return aVal - bVal;
         })
       );
   };
@@ -166,7 +164,24 @@ $('#lists').html( $sorted_items );
 $('#lists').hide();
 $('#lists').show(1500);
 
+}else if(e.options[e.selectedIndex].value == 'Abime' ) {
 
+  var $sorted_items,
+  getSorted = function(selector, attrName) {
+      return $(
+        $(selector).toArray().sort(function(a, b){
+            var aVal = parseInt(a.getAttribute(attrName)),
+                bVal = parseInt(b.getAttribute(attrName));
+            return bVal - aVal;
+        })
+      );
+  };
+
+$sorted_items = getSorted("#lists .col-md-4", "data-etat").clone();
+
+$('#lists').html( $sorted_items );
+$('#lists').hide();
+$('#lists').show(1500);
 
 }
 };
