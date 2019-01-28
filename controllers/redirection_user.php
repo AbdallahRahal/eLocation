@@ -167,7 +167,8 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 				}else{
 				
 					$affiche = mes_articles_de_ma_cat();
-					affichage_article($affiche);
+					$aff_cat = aff_cat();
+					affichage_article($affiche ,$aff_cat);
 				}
 			}
 		}else if($_GET['rub'] == 'reprises') {
