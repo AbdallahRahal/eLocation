@@ -96,6 +96,7 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 					$affiche = mes_articles_de_ma_cat();
 					$aff_cat = aff_cat();
 					affichage_article($affiche ,$aff_cat);
+				
 				}
 			}
 		}else if ($_GET['rub'] == 'loc') {
@@ -157,13 +158,26 @@ if(!isset($_SESSION['compte']) || $_SESSION['compte'] == 'utilisateur' ) {
 			
 			}else{
 				if(isset($_GET['art'])) {
-				
-					if (isset($_POST['envoyer'])) {
+
+					if(isset($_GET['modif'])) {
+
+						if (isset($_POST['envoyer'])) {
 						modifier_mon_article();
+						}
+						include 'views/template/modif_article.php';
+						$article = info_article_modif($_GET['art']);
+						modif_article($article);
+					}else{
+				
+					if(isset($_POST['valider_modif_commentaire']) || isset($_POST['suppr_commentaire'] )) {
+							modif_commentaire($_POST);
+						}
+						include 'views/div/affichage_page_vente.php';
+						$article = info_article($_GET['art']);
+						$commentaire = commentaire_article($_GET['art']);
+						affichage_page_vente($article, $commentaire);				
 					}
-					include 'views/template/modif_article.php';
-					$article = info_article_modif($_GET['art']);
-					modif_article($article);				
+					
 				}else{
 				
 					$affiche = mes_articles_de_ma_cat();
