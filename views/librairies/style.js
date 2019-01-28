@@ -154,7 +154,6 @@ $('#lists').show(1500);
             var aVal = parseInt(a.getAttribute(attrName)),
                 bVal = parseInt(b.getAttribute(attrName));
             return aVal - bVal;
-
         })
       );
   };

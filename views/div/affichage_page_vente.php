@@ -65,7 +65,7 @@ if(!empty($commentaire)) {
     for($x=0;$x<count($commentaire); $x++){
 
       if($_SESSION['compte'] == 'admin') {
-            echo "<li class='list-group-item'>".$commentaire[$x]['commentaire']."".$commentaire[$x]['note']."<button type=submit name='suppr_commentaire' value =".$commentaire[$x]['louer_id']." >Supprimer</button></li>";
+            echo "<li class='list-group-item'>".$commentaire[$x]['commentaire']."".$commentaire[$x]['note']."<button class='btn btn-light' style='float: right;margin-top: -2%;' type=submit name='suppr_commentaire' value =".$commentaire[$x]['louer_id']." >Supprimer</button></li>";
         
       }elseif(isset($_SESSION['id']) && $_SESSION['id'] == $commentaire[$x]['utilisateur_id']){
 
