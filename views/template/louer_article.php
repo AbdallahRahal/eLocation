@@ -1,8 +1,6 @@
 <div class="" style="margin-left: 20%;margin-top: 100px">
 <p><h2>Location d'article</h2></p>
 
-Informations:
-
 <form action="" method="GET">
 <input type='hidden' value=<?=$_GET['page']?> name='page'>
 <input type='hidden' value=<?=$_GET['rub']?> name='rub'>
@@ -11,7 +9,7 @@ Informations:
 <input type='hidden' value=<?=$_GET['louer_article']?> name='louer_article'>
 
 <br>
-Point relais :
+<h5>Choississez votre point relais :</h5>
 <select onchange="change_point('2');" id="point_relais" name="point_relais"> 
     <?php
     

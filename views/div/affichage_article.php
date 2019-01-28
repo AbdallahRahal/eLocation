@@ -45,7 +45,7 @@
                       echo"<span class=\"badge badge-danger\" style=\"float:right;\">".$affiche[$i]['7']." % de réduction</span>";
                   }?>
               <center>
-                <img style="width: 230px" src="views/img/<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap">
+                <img style="max-width: 70%" src="views/img/<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap">
               </center>
                 <p id="text<?=$i?>" class="card-text"><?= $affiche[$i][1]."---".$affiche[$i][8] ?></p>
               </div>
