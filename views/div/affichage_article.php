@@ -52,12 +52,9 @@
               <center>
                 <img style="max-width: 70%;max-height: 210px;" src="views/img/<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap">
               </center>
-<<<<<<< HEAD
               <div style="max-height: 75px;min-height: 75px;overflow: scroll;" >
                 <p id="text<?=$i?>" class="card-text"><?= $affiche[$i][1]?></p></div>
-=======
-                <p id="text<?=$i?>" class="card-text"><?= $affiche[$i][1]?></p>
->>>>>>> a0ce911de400130b5d059bc5b67d59f4c2fcf416
+
               </div>
               <div class="card-footer" >
 
