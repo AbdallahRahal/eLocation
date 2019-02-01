@@ -94,11 +94,11 @@ function modification ($POST) {
 
 }
 
-function info_article($GET) {
+function info_article($x) {
 
     include('models/db_connect.php');
     $req = $bdd->prepare("SELECT *, article.nom as Nom FROM article join appartenir on article.id = appartenir.article_id join categorie on categorie.id = appartenir.categorie_id WHERE article.id = :art");
-    $req-> execute(array(":art" => htmlspecialchars($_GET['art'])));
+    $req-> execute(array(":art" => htmlspecialchars($x)));
     $donnees = $req->fetch(PDO::FETCH_ASSOC);
     if(empty($donnees)) {
         $donnees = NULL;

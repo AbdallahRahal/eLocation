@@ -56,7 +56,7 @@ function surligne(champ, erreur){
   
   function verifPrenom(champ){
   
-    var regex = /^[a-zA-Z- ]+$/;
+    var regex = /^[a-zA-Z-]+\s*[a-zA-Z]+$/;
     if(champ.value.length < 2 || champ.value.length > 25 || !regex.test(champ.value)){
       
       surligne(champ, true);
@@ -71,7 +71,7 @@ function surligne(champ, erreur){
   
   function verifNom(champ){
   
-    var regex = /^[a-zA-Z ]+$/;
+    var regex = /^[a-z A-Z ]+$/;
     if(champ.value.length < 2 || champ.value.length > 25 || !regex.test(champ.value)){
   
       surligne(champ, true);
