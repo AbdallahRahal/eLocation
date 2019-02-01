@@ -30,7 +30,7 @@
 if(verif_article_dispo($_GET['louer_article'])==false){
     echo' <p class="btn btn-outline-danger disabled ">Non disponible</p>';
 }elseif(isset($_SESSION['compte']) && $_SESSION['compte'] == 'utilisateur' ) {
-    echo'<button type="submit" name="valider" value="true" class="btn btn-outline-success>Louer</button>';
+    echo'<button type="submit" name="valider" value="true" class="btn btn-outline-success">Louer</button>';
 }else{ echo' <p class="btn btn-outline-danger disabled">Vous devez être connecté</p>';}
 ?>
 </form>

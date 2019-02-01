@@ -19,6 +19,7 @@
       $dernier_photo[$s] = $test[$s]['Photo'];
       $dernier_id[$s] = $test[$s]['id'];
       $dernier_cat_id[$s] = $test[$s]['categorie_id'];
+      $dernier_prix[$s] = $test[$s]['prix'];
       }
     }
 
@@ -64,13 +65,13 @@
 Nouvelles arrivées, sois le premier à louer</h2>
 <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
 
-<a href="index.php?page=accueil&rub=cat&cat=4" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+<a href="index.php?page=accueil&rub=cat&cat=6" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
 Louer
 </a>
 </div>
 </div>
 </div>
-<div class="item-slick1 item2-slick1" style="background-image: url(views/img/hiver.jpg);height: 120%">
+<div class="item-slick1 item2-slick1" style="background-image: url(views/img/saison-hiver.jpg);height: 120%">
 <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 <span style="color: black;" class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rollIn">
   <strong>
@@ -82,7 +83,7 @@ Louer
 Préparez votre hiver à l'avance</h2>
 <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">
 
-<a href="index.php?page=accueil&rub=cat&cat=3" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+<a href="index.php?page=accueil&rub=cat&cat=7" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
 Louer
 </a>
 </div>
@@ -101,8 +102,7 @@ Loues nos articles</h2>
 <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">
 
 <a href="index.php?page=accueil&rub=cat&cat=1" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
-Shop Now
-</a>
+Loeues</a>
 </div>
 </div>
 </div>
@@ -177,18 +177,12 @@ Quelques Nouveautées
 </div>
 </div>
 
-<div style="margin-top: 260px;" class="block2 wrap-pic-w pos-relative m-b-30">
+<div style="margin-top: 160px;" class="block2 wrap-pic-w pos-relative m-b-30">
 <div class="block2-content sizefull ab-t-l flex-col-c-m">
 <h4 class="m-text4 t-center w-size3 p-b-8">
-Une offre en vue les freres</h4>
+Decouvres vite le site</h4>
 <p class="t-center w-size4">
-Inscris toi et obtiens -20% sur ta première location
-</p>
-<div class="w-size2 p-t-25">
-
-<a href="#" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
-S'inscrire</a>
-</div>
+Deviens un bon client, et obtiens des réductions</p>
 </div>
 </div>
 </div>
@@ -207,7 +201,7 @@ Vos dernières visites
 <div class="wrap-slick2">
 <div class="slick2">
 <div class="item-slick2 p-l-15 p-r-15">
-<?php (empty($dernier_photo[0])) ? $photo = "pas_assez.jpg" : $photo = $dernier_photo[0]; ?>
+<?php (empty($dernier_photo[0])) ? $photo = "bonhomme-pas-content.jpg" : $photo = $dernier_photo[0]; ?>
 <div class="block2">
 <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
 <img src="views/img/<?=$photo?>" alt="IMG-PRODUCT">
@@ -229,13 +223,13 @@ Voir l'article
 <?php echo (isset($no_visite) && $no_visite == true || !isset($dernier_id[0]) )? "tu n'as pas assez surfer sur le site" : $dernier_nom[0]; ?>
 </a>
 <span class="block2-price m-text6 p-r-5">
-$75.00
+<?php echo (isset($no_visite) && $no_visite == true || !isset($dernier_id[0]) )? "" : $dernier_prix[0]." €";?>
 </span>
 </div>
 </div>
 </div>
 <div class="item-slick2 p-l-15 p-r-15">
-<?php (empty($dernier_photo[1])) ? $photo = "pas_assez.jpg" : $photo = $dernier_photo[1]; ?>
+<?php (empty($dernier_photo[1])) ? $photo = "bonhomme-pas-content.jpg" : $photo = $dernier_photo[1]; ?>
 <div class="block2">
 <div class="block2-img wrap-pic-w of-hidden pos-relative">
 <img src="views/img/<?=$photo?>" alt="IMG-PRODUCT">
@@ -257,13 +251,13 @@ Voir l'article
 <?php echo (isset($no_visite) && $no_visite == true || !isset($dernier_id[1]) )? "tu n'as pas assez surfer sur le site" : $dernier_nom[1]; ?>
 </a>
 <span class="block2-price m-text6 p-r-5">
-$92.50
+<?php echo (isset($no_visite) && $no_visite == true || !isset($dernier_id[1]) )? "" : $dernier_prix[1]." €"; ?>
 </span>
 </div>
 </div>
 </div>
 <div class="item-slick2 p-l-15 p-r-15">
-<?php (empty($dernier_photo[2])) ? $photo = "pas_assez.jpg" : $photo = $dernier_photo[2]; ?>
+<?php (empty($dernier_photo[2])) ? $photo = "bonhomme-pas-content.jpg" : $photo = $dernier_photo[2]; ?>
 <div class="block2">
 <div class="block2-img wrap-pic-w of-hidden pos-relative">
 <img src="views/img/<?=$photo?>" alt="IMG-PRODUCT">
@@ -285,13 +279,13 @@ Voir l'article
 <?php echo (isset($no_visite) && $no_visite == true || !isset($dernier_id[2]) )? "tu n'as pas assez surfer sur le site" : $dernier_nom[2]; ?>
 </a>
 <span class="block2-price m-text6 p-r-5">
-$165.90
+<?php echo (isset($no_visite) && $no_visite == true || !isset($dernier_id[2]) )? "" : $dernier_prix[2]." €"; ?>
 </span>
 </div>
 </div>
 </div>
 <div class="item-slick2 p-l-15 p-r-15">
-<?php (empty($dernier_photo[3])) ? $photo = "pas_assez.jpg" : $photo = $dernier_photo[3]; ?>
+<?php (empty($dernier_photo[3])) ? $photo = "bonhomme-pas-content.jpg" : $photo = $dernier_photo[3]; ?>
 <div class="block2">
 <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
 <img src="views/img/<?=$photo?>" alt="IMG-PRODUCT">
@@ -313,16 +307,13 @@ Voir l'article
 <?php echo (isset($no_visite) && $no_visite == true || !isset($dernier_id[3]) )? "tu n'as pas assez surfer sur le site" : $dernier_nom[3]; ?>
 </a>
 <span class="block2-oldprice m-text7 p-r-5">
-$29.50
-</span>
-<span class="block2-newprice m-text8 p-r-5">
-$15.90
+<?php echo (isset($no_visite) && $no_visite == true || !isset($dernier_id[3]) )? "" : $dernier_prix[3]." €"; ?>
 </span>
 </div>
 </div>
 </div>
 <div class="item-slick2 p-l-15 p-r-15">
-<?php (empty($dernier_photo[4])) ? $photo = "pas_assez.jpg" : $photo = $dernier_photo[4]; ?>
+<?php (empty($dernier_photo[4])) ? $photo = "bonhomme-pas-content.jpg" : $photo = $dernier_photo[4]; ?>
 <div class="block2">
 <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
 <img src="views/img/<?=$photo?>" alt="IMG-PRODUCT">
@@ -344,13 +335,13 @@ Voir l'article
 <?php echo (isset($no_visite) && $no_visite == true || !isset($dernier_id[4]))? "tu n'as pas assez surfer sur le site" : $dernier_nom[4]; ?>
 </a>
 <span class="block2-price m-text6 p-r-5">
-$75.00
+<?php echo (isset($no_visite) && $no_visite == true || !isset($dernier_id[4]) )? "" : $dernier_prix[4]." €"; ?>
 </span>
 </div>
 </div>
 </div>
 <div class="item-slick2 p-l-15 p-r-15">
-<?php (empty($dernier_photo[5])) ? $photo = "pas_assez.jpg" : $photo = $dernier_photo[5]; ?>
+<?php (empty($dernier_photo[5])) ? $photo = "bonhomme-pas-content.jpg" : $photo = $dernier_photo[5]; ?>
 <div class="block2">
 <div class="block2-img wrap-pic-w of-hidden pos-relative">
 <img src="views/img/<?=$photo?>" alt="IMG-PRODUCT">
@@ -371,7 +362,7 @@ Voir l'article
 <?php echo (isset($no_visite) && $no_visite == true || !isset($dernier_id[5]) )? "tu n'as pas assez surfer sur le site" : $dernier_nom[5]; ?>
 </a>
 <span class="block2-price m-text6 p-r-5">
-$92.50
+<?php echo (isset($no_visite) && $no_visite == true || !isset($dernier_id[5]) )? "" : $dernier_prix[5]." €"; ?>
 </span>
 </div>
 </div>
@@ -387,16 +378,15 @@ $92.50
 ELocation, c'est quoi ?</h3>
 </div>
 <div style="margin-left: 20%;" class="flex-w">
-
 <div class="block4 wrap-pic-w">
+<div style="margin-top: 90px;" >
 <img src="views/img/eLocation.png" alt="IMG-INSTAGRAM">
+</div>
 <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 <span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-<span class="p-t-2">39</span>
 </span>
 <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-<p class="s-text10 m-b-15 h-size1 of-hidden">
+<p style="font-size: 20px;" class="s-text10 m-b-15 h-size1 of-hidden">
 Un projet de semestre 2, dévelopéé en php, qui permet de louer en ligne toutes sortes de materiel sportif
 </p>
 <span class="s-text9">
@@ -405,17 +395,15 @@ Photo by @Ferras
 </div>
 </a>
 </div>
-
 <div class="block4 wrap-pic-w">
 <img src="views/img/matos.jpg" alt="IMG-INSTAGRAM">
 <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 <span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-<span class="p-t-2">39</span>
 </span>
 <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-<p class="s-text10 m-b-15 h-size1 of-hidden">
-Un site de location de materiel sportif frero, tu veut faire zerma devant ta tiper que tu pousses les plus gros alter de panam, viens sur eLocation et loues les ils t'attendent!!!
+<p style="font-size: 20px;" class="s-text10 m-b-15 h-size1 of-hidden">
+Eté, Hiver, Foot, Basket...
+Viens sur eLocation et loues toutes sortes d'articles, ils t'attendent!!!
 </p>
 <span class="s-text9">
 Photo by @nancyward
@@ -428,12 +416,11 @@ Photo by @nancyward
 <img src="views/img/serrer.jpg" alt="IMG-INSTAGRAM">
 <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 <span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-<span class="p-t-2">39</span>
+
 </span>
 <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-<p class="s-text10 m-b-15 h-size1 of-hidden">
-Tu pourras egalement nouos vendre tout les articles sportifs que tu as, s'ils nous interessent ils seront dsiponible a la location pour les gens qui n'ont ps les moyens d'acheter l'article chez eux</p>
+<p style="font-size: 20px;" class="s-text10 m-b-15 h-size1 of-hidden">
+Vends nous tes articles, ils seront disponible a la location pour ceux qui n'ont pas les moyens d'acheter l'article</p>
 <span class="s-text9">
 Photo by @nancyward
 </span>
@@ -445,12 +432,11 @@ Photo by @nancyward
 <img src="views/img/intech.jpg" alt="IMG-INSTAGRAM">
 <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
 <span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-<span class="p-t-2">39</span>
+
 </span>
 <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-<p class="s-text10 m-b-15 h-size1 of-hidden">
-Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
+<p style="font-size: 17px;" class="s-text10 m-b-15 h-size1 of-hidden">
+IN’TECH est une École Supérieure d’Ingénierie Informatique, rattachée au Groupe d'enseignement supérieur et de recherche ESIEA.
 </p>
 <span class="s-text9">
 Photo by @nancyward
@@ -467,7 +453,7 @@ Photo by @nancyward
 <h4 class="m-text12 t-center">
 Récupérez vos articles dans le point relais que vous souhaitez</h4>
 <a href="#" class="s-text11 t-center">
-Click here for more info
+Plusieurs autour de chez vous
 </a>
 </div>
 <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 bo2 respon2">
@@ -487,7 +473,8 @@ Toujours ouvert</h4>
 </section>
 
 <footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
-<div class="flex-w p-b-90">
+<center>
+<div style="margin-left: 31%" class="flex-w p-b-90">
 <div class="w-size6 p-t-30 p-l-15 p-r-15 respon3">
 <h4 class="s-text12 p-b-30">
 eLocation
@@ -496,13 +483,6 @@ eLocation
 <p class="s-text7 w-size27">
 Semestre 2
 </p>
-<div class="flex-m p-t-30">
-<a href="#" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
-<a href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a>
-<a href="#" class="fs-18 color1 p-r-20 fa fa-pinterest-p"></a>
-<a href="#" class="fs-18 color1 p-r-20 fa fa-snapchat-ghost"></a>
-<a href="#" class="fs-18 color1 p-r-20 fa fa-youtube-play"></a>
-</div>
 </div>
 </div>
 <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
@@ -511,22 +491,22 @@ Categories
 </h4>
 <ul>
 <li class="p-b-9">
-<a href="index.php?page=accueil&rub=cat&cat=4" class="s-text7">
+<a href="index.php?page=accueil&rub=cat&cat=6" class="s-text7">
 Eté
 </a>
 </li>
 <li class="p-b-9">
-<a href="index.php?page=accueil&rub=cat&cat=1" class="s-text7">
+<a href="index.php?page=accueil&rub=cat&cat=2" class="s-text7">
 Foot
 </a>
 </li>
 <li class="p-b-9">
-<a href="index.php?page=accueil&rub=cat&cat=3" class="s-text7">
+<a href="index.php?page=accueil&rub=cat&cat=7" class="s-text7">
 Hiver
 </a>
 </li>
 <li class="p-b-9">
-<a href="index.php?page=accueil&rub=cat&cat=2" class="s-text7">
+<a href="index.php?page=accueil&rub=cat&cat=3" class="s-text7">
 Tennis
 </a>
 </li>
@@ -534,39 +514,18 @@ Tennis
 </div>
 
 <form>
-<div class="effect1 w-size9">
-<input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="email@example.com">
-<span class="effect1-line"></span>
-</div>
 <div class="w-size2 p-t-20">
-
-<button class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
-Subscribe
-</button>
 </div>
 </form>
 </div>
 </div>
 <div class="t-center p-l-15 p-r-15">
-<a href="#">
-<img class="h-size2" src="images/icons/paypal.png" alt="IMG-PAYPAL">
-</a>
-<a href="#">
-<img class="h-size2" src="images/icons/visa.png" alt="IMG-VISA">
-</a>
-<a href="#">
-<img class="h-size2" src="images/icons/mastercard.png" alt="IMG-MASTERCARD">
-</a>
-<a href="#">
-<img class="h-size2" src="images/icons/express.png" alt="IMG-EXPRESS">
-</a>
-<a href="#">
-<img class="h-size2" src="images/icons/discover.png" alt="IMG-DISCOVER">
-</a>
+Intech, eLocation, Semester 2.
 <div class="t-center s-text8 p-t-20">
 Copyright © 2017 Colorlib. All rights reserved.
 </div>
 </div>
+</center>
 </footer>
 
 <div class="btn-back-to-top bg0-hov" id="myBtn">

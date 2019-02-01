@@ -204,9 +204,11 @@ function mes_categoriesA() {
 
 function ajout_cat($POST) {
     include('models/db_connect.php');
-    $query= "INSERT INTO categorie (`nom`,'promo') VALUES (:nom,:promo) ";
+    $query= "INSERT INTO categorie (nom, promo) VALUES (:nom,:promo)";
     $req = $bdd->prepare($query);
-    $req-> execute(array(":nom" => htmlspecialchars($x)));
+    $req-> execute(array(":nom" => htmlspecialchars($_POST['nom']),
+                         ":promo" => $_POST['promo']
+                         ));
 }
 
 function suppr_cat($x) {
@@ -638,7 +640,7 @@ function dernier_art_visités() {
         $art = $art." OR article.id like ".$_COOKIE['visites'][$i]['id_art']." ";
     }
     include('models/db_connect.php');
-    $dernier_art_visités = $bdd->query('SELECT article.nom, article.id, article.lien_photo as Photo, appartenir.categorie_id FROM article join appartenir on article.id = appartenir.article_id where article.id like '.$art.'GROUP BY article.id');
+    $dernier_art_visités = $bdd->query('SELECT article.nom, article.id, article.lien_photo as Photo, appartenir.categorie_id, article.prix_journee as prix FROM article join appartenir on article.id = appartenir.article_id where article.id like '.$art.'GROUP BY article.id');
     //echo "<br><br><br><br><br>SELECT article.nom, article.id, article.lien_photo as Photo, appartenir.categorie_id FROM article join appartenir on article.id = appartenir.categorie_id where article.id like ".$art;
     //die();
     }else{

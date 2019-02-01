@@ -11,7 +11,7 @@
 session_start();
 include 'controllers/handling_data/gerer_mes_cookies.php';
 include 'views/template/html_top.html';
-
+// On parcourt tous les cookies envoyés
 if(isset($_GET['page'])) {
   switch($_GET['page']):
     case 'accueil';

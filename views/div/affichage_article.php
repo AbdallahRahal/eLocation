@@ -43,16 +43,17 @@
               <div class="card-body" style="max-height: 325px;min-height: 325px;">
               <?php
                   $lien = "index.php?page=".$_GET['page']."&rub=".$_GET['rub']."&cat=".$affiche[$i][6]."&art=".$affiche[$i][3]."&modif=true";
-                  if($affiche[$i]['7']>0) {
                     if(isset($_SESSION['compte']) && $_SESSION['compte'] == 'admin'){
                       echo"<a href='".$lien."' class='badge badge-info'>Modifier l'article</a>";
                     }
+                  if($affiche[$i]['7']>0) {
                       echo"<span class=\"badge badge-danger\" style=\"float:right;\">".$affiche[$i]['7']." % de réduction</span>";
                   }?>
               <center>
-                <img style="max-width: 70%" src="views/img/<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap">
+                <img style="max-width: 70%;max-height: 210px;" src="views/img/<?= $affiche[$i][4] ?>" class="card-img-top"  alt="Card image cap">
               </center>
-                <p id="text<?=$i?>" class="card-text"><?= $affiche[$i][1]."---".$affiche[$i][8] ?></p>
+              <div style="max-height: 75px;min-height: 75px;overflow: scroll;" >
+                <p id="text<?=$i?>" class="card-text"><?= $affiche[$i][1]?></p></div>
               </div>
               <div class="card-footer" >
 
