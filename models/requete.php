@@ -618,7 +618,7 @@ function avis($GET){
 
 function affichage_carrousel() {
     include('models/db_connect.php');
-    $affichage_carrousel = $bdd->query('SELECT article.nom, article.id, article.lien_photo as Photo, vendre.date_vente, appartenir.categorie_id FROM `article`join action on action.article_id = article.id JOIN vendre on vendre.action_id = action.id join appartenir on appartenir.article_id like article.id  ORDER BY vendre.date_vente DESC LIMIT 6');
+    $affichage_carrousel = $bdd->query('SELECT article.nom, article.id, article.lien_photo as Photo, vendre.date_vente, appartenir.categorie_id FROM `article`join action on action.article_id = article.id JOIN vendre on vendre.action_id = action.id join appartenir on appartenir.article_id like article.id GROUP BY article.id ORDER BY vendre.date_vente DESC LIMIT 6 ');
     return($affichage_carrousel);
 }
 

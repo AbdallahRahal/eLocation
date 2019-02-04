@@ -54,14 +54,14 @@
 <div class="slick1">
 <div class="item-slick1 item1-slick1" style="background-image: url(views/img/sport.jpg);height: 120%">
 <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-<span style="color: black;" class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
+<span style="color: white;" class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
   <strong>
     <h3>
       Sport été saison 2019
     </h3>
   </strong>
 </span>
-<h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" style="color: black;" data-appear="fadeInUp">
+<h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" style="color: white;" data-appear="fadeInUp">
 Nouvelles arrivées, sois le premier à louer</h2>
 <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
 
@@ -73,13 +73,13 @@ Louer
 </div>
 <div class="item-slick1 item2-slick1" style="background-image: url(views/img/saison-hiver.jpg);height: 120%">
 <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-<span style="color: black;" class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rollIn">
+<span style="color: white;" class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rollIn">
   <strong>
     <h3>
       Sport Hiver saison 2019
     </h3>
   </strong></span>
-<h2 style="color: black;" class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="lightSpeedIn">
+<h2 style="color: white;" class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="lightSpeedIn">
 Préparez votre hiver à l'avance</h2>
 <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">
 
@@ -91,18 +91,19 @@ Louer
 </div>
 <div class="item-slick1 item3-slick1" style="background-image: url(views/img/foott.jpg);height: 120%">
 <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-<span style="color: black;" class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rotateInDownLeft">
+<span style="color: white;" class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rotateInDownLeft">
     <strong>
     <h3>
 Deviens le meilleur joueur du 94
     </h3>
   </strong></span>
-<h2 style="color: black;" class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="rotateInUpRight">
-Loues nos articles</h2>
+<h2 style="color: white;" class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="rotateInUpRight">
+Loue nos articles</h2>
 <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">
 
 <a href="index.php?page=accueil&rub=cat&cat=1" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
-Loeues</a>
+Louer
+</a>
 </div>
 </div>
 </div>
@@ -180,7 +181,7 @@ Quelques Nouveautées
 <div style="margin-top: 160px;" class="block2 wrap-pic-w pos-relative m-b-30">
 <div class="block2-content sizefull ab-t-l flex-col-c-m">
 <h4 class="m-text4 t-center w-size3 p-b-8">
-Decouvres vite le site</h4>
+Decouvre vite le site</h4>
 <p class="t-center w-size4">
 Deviens un bon client, et obtiens des réductions</p>
 </div>
